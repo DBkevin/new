@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Category;
 use App\Topic;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -34,36 +35,17 @@ class TopicController extends AdminController
         $grid->column('slug', __('SEO标题'));
         $grid->column('description', __('栏目描述'));
         $grid->column('keywords', __('关键词'));
-        $grid->column('pic', __('栏目缩略图'));
-        $grid->column('category_id', __('所属栏目'));
+        $grid->column('pic', __('栏目缩略图'))->image(env('APP_URL').'/storage',50,50);
+        $grid->column('category_id', __('所属栏目'))->display(function($Category_id){
+            return Category::find($Category_id)->title;
+        })->label();
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
         // 去掉查看
         return $grid;
     }
 
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        $show = new Show(Topic::findOrFail($id));
-
-        $show->field('id', __('Id'));
-        $show->field('title', __('Title'));
-        $show->field('slug', __('Slug'));
-        $show->field('description', __('Description'));
-        $show->field('keywords', __('Keywords'));
-        $show->field('pic', __('Pic'));
-        $show->field('category_id', __('Category id'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-
-        return $show;
-    }
+   
 
     /**
      * Make a form builder.
@@ -74,12 +56,19 @@ class TopicController extends AdminController
     {
         $form = new Form(new Topic());
 
-        $form->text('title', __('栏目标题'));
-        $form->textarea('slug', __('SEO标题'));
-        $form->text('description', __('栏目描述'));
-        $form->text('keywords', __('栏目关键词'));
-        $form->textarea('pic', __('pic'));
-        $form->number('category_id', __('上级栏目'));
+        $form->text('title', __('栏目标题'))->rules(function ($form) {
+            // 如果不是编辑状态，则添加字段唯一验证
+            if (!$id = $form->model()->id) {
+                return 'required|unique:topics,title';
+            }
+        });
+        $form->text('slug', __('SEO标题'))->rules('required');
+        $form->text('description', __('栏目描述'))->rules('required');
+        $form->text('keywords', __('栏目关键词'))->rules('required');
+        $form->image('pic', __('栏目缩略图'))->rules('required|image')->uniqueName();
+        $form->select('category_id', '上级栏目')->options(Category::all()->pluck('title', 'id'))->rules('required', [
+            'required' => '必须选择上级栏目'
+        ]);
 
         return $form;
     }

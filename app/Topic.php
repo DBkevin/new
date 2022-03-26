@@ -3,7 +3,7 @@
 namespace App;
 
 use App\baseModel as Model;
-
+use Illuminate\Database\Eloquent\Model as OLDModel;
 class Topic extends Model
 {
     //反向多对1

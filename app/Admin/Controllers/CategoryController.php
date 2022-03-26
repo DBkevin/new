@@ -32,7 +32,7 @@ class CategoryController extends AdminController
         $grid->column('description', __('栏目秒速'));
         $grid->column('keywords', __('关键词'));
         $grid->column('created_at', __('创建时间'));
-        $grid->column('updated_at', __('更新时间'))->date('Y-m-d');
+        $grid->column('updated_at', __('更新时间'));
         $grid->actions(function ($actions) {
             $actions->disableView();
             $actions->disableDelete();

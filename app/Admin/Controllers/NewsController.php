@@ -3,11 +3,12 @@
 namespace App\Admin\Controllers;
 
 use App\News;
+use App\Topic;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
-use Encore\Admin\Show;
-
+use Encore\Admin\Admin;
+use Symfony\Component\HttpFoundation\Request;
 class NewsController extends AdminController
 {
     /**
@@ -39,28 +40,6 @@ class NewsController extends AdminController
         return $grid;
     }
 
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        $show = new Show(News::findOrFail($id));
-
-        $show->field('id', __('Id'));
-        $show->field('title', __('文章标题'));
-        $show->field('description', __('文章描述'));
-        $show->field('keywords', __('关键词'));
-        $show->field('body', __('文章正文'));
-        $show->field('viewCount', __('点击次数,可以不填'));
-        $show->field('topic_id', __('所属栏目'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
-
-        return $show;
-    }
 
     /**
      * Make a form builder.
@@ -71,13 +50,16 @@ class NewsController extends AdminController
     {
         $form = new Form(new News());
 
-        $form->text('title', __('文章标题'));
-        $form->text('description', __('文章描述'));
-        $form->text('keywords', __('文章关键词'));
-        $form->textarea('body', __('正文'));
+        $form->select('topic_id')->options(Topic::all()->pluck('title','id'))->rules('required');
+        $form->text('title', __('文章标题'))->rules('required');
+        $form->text('description', __('文章描述'))->rules('required');
+        $form->text('keywords', __('文章关键词'))->rules('required');
+        $form->editor('body', __('正文'));
         $form->number('viewCount', __('点击次数,可不填'));
-        $form->number('topic_id', __('所属栏目'));
 
         return $form;
     }
 }
+Admin::script(' $(document).ready(function(){
+     $(".wangEditor-txt").height(400);
+ });');

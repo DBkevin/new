@@ -153,7 +153,7 @@ return [
     'upload' => [
 
         // Disk in `config/filesystem.php`.
-        'disk' => 'admin',
+        'disk' => 'public',
 
         // Image and file upload path under the disk above.
         'directory' => [
@@ -223,7 +223,7 @@ return [
          * or specific method to path like: get:admin/auth/logs.
          */
         'except' => [
-            env('ADMIN_ROUTE_PREFIX', 'admin').'/auth/logs*',
+            env('ADMIN_ROUTE_PREFIX', 'admin') . '/auth/logs*',
         ],
     ],
 
@@ -348,9 +348,7 @@ return [
     'minify_assets' => [
 
         // Assets will not be minified.
-        'excepts' => [
-
-        ],
+        'excepts' => [],
 
     ],
 
@@ -405,48 +403,48 @@ return [
     |
     */
     'extensions' => [
-         // 新增编辑器配置开始
+        // 新增编辑器配置开始
         'wang-editor2' => [
-        // 如果要关掉这个扩展，设置为false
-        'enable' => true,
-        // 编辑器的配置
-        'config' => [
-            'uploadImgFileName' => 'upload', //这个应该wangEditor的上传方法名字，不要乱改
-            'uploadImgUrl' => '/admin/upload', //注意这里是上传的路由地址
-            'menus' => [
-                'source',
-                '|',
-                'bold',
-                'underline',
-                'italic',
-                'strikethrough',
-                'eraser',
-                'forecolor',
-                'bgcolor',
-                '|',
-                'quote',
-                'fontfamily',
-                'fontsize',
-                'head',
-                'unorderlist',
-                'orderlist',
-                'alignleft',
-                'aligncenter',
-                'alignright',
-                '|',
-                'link',
-                'unlink',
-                'table',
-                '|',
-                'img',
-                'video',
-                'insertcode',
-                '|',
-                'undo',
-                'redo',
-                'fullscreen'
-            ],
+            // 如果要关掉这个扩展，设置为false
+            'enable' => true,
+            // 编辑器的配置
+            'config' => [
+                'uploadImgFileName' => 'upload', //这个应该wangEditor的上传方法名字，不要乱改
+                'uploadImgUrl' => '/admin/upload', //注意这里是上传的路由地址
+                'menus' => [
+                    'source',
+                    '|',
+                    'bold',
+                    'underline',
+                    'italic',
+                    'strikethrough',
+                    'eraser',
+                    'forecolor',
+                    'bgcolor',
+                    '|',
+                    'quote',
+                    'fontfamily',
+                    'fontsize',
+                    'head',
+                    'unorderlist',
+                    'orderlist',
+                    'alignleft',
+                    'aligncenter',
+                    'alignright',
+                    '|',
+                    'link',
+                    'unlink',
+                    'table',
+                    '|',
+                    'img',
+                    'video',
+                    'insertcode',
+                    '|',
+                    'undo',
+                    'redo',
+                    'fullscreen'
+                ],
+            ]
         ]
-        ]
-        ]
+    ]
 ];

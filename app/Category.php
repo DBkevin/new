@@ -3,7 +3,7 @@
 namespace App;
 
 use App\baseModel;
-
+use Illuminate\Database\Eloquent\Model;
 class Category extends baseModel
 {   
    
