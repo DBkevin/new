@@ -15,9 +15,14 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable(false)->uniqie();
-            $table->string('descript')->nullable(true);
-            $table->text('body')->nullable(false);
+            $table->char('title',100)->unique();
+            $table->char('description',255);
+            $table->char('keywords',255);
+            $table->text('body')->require();
+            $table->integer('viewCount')->default(0);
+             $table->foreignId('topic_id')
+                ->constrained()
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

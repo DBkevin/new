@@ -12,8 +12,8 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('home');
-    $router->get('/news', 'NewsController@index');
-    $router->post('/news', 'NewsController@store');
-    $router->get('/news/create', 'NewsController@create');
+    $router->resource('categories', CategoryController::class);
+    $router->resource('topics', TopicController::class);
+    $router->resource('news', NewsController::class);
     $router->post('upload', 'UploadController@upImage');
 });

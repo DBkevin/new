@@ -1,0 +1,19 @@
+<?php
+
+namespace App;
+
+use App\baseModel as Model;
+
+class Topic extends Model
+{
+    //反向多对1
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
+    }
+    //1对多关联
+    public function news()
+    {
+        return $this->hasMany('App\New');
+    }
+}
