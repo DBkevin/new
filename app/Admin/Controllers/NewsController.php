@@ -27,16 +27,21 @@ class NewsController extends AdminController
     protected function grid()
     {
         $grid = new Grid(new News());
+         $grid->actions(function ($actions) {
+            $actions->disableView();
+            $actions->disableDelete();
+        });
 
         $grid->column('id', __('Id'));
-        $grid->column('title', __('文章标题'));
-        $grid->column('description', __('文章描述'));
-        $grid->column('keywords', __('文章关键词'));
-        $grid->column('body', __('文章详情'));
-        $grid->column('viewCount', __('查看次数'));
-        $grid->column('topic_id', __('所属栏目'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('title', __('文章标题'))->limit(30);
+        $grid->column('description', __('文章描述'))->limit(30);
+        $grid->column('keywords', __('文章关键词'))->limit(30);
+        $grid->column('body', __('文章详情'))->limit(30);
+        $grid->column('viewCount', __('查看次数'))->hide();
+        $grid->column('topic_id', __('所属栏目'))->display(function($Category_id){
+            return Topic::find($Category_id)->title;
+        })->label();
+        $grid->column('created_at', __('发布时间'));
 
         return $grid;
     }
