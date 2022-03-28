@@ -15,12 +15,12 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->char('title',100)->unique();
-            $table->char('description',255);
-            $table->char('keywords',255);
+            $table->char('title', 100)->unique();
+            $table->char('description', 255);
+            $table->char('keywords', 255);
             $table->text('body')->require();
-            $table->integer('viewCount')->default(0);
-             $table->foreignId('topic_id')
+            $table->integer('viewCount')->default(1)->nullable(true);
+            $table->foreignId('topic_id')
                 ->constrained()
                 ->onDelete('cascade');
             $table->timestamps();

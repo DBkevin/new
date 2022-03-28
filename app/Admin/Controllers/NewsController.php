@@ -9,6 +9,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Admin;
 use Symfony\Component\HttpFoundation\Request;
+
 class NewsController extends AdminController
 {
     /**
@@ -40,7 +41,6 @@ class NewsController extends AdminController
         return $grid;
     }
 
-
     /**
      * Make a form builder.
      *
@@ -50,13 +50,12 @@ class NewsController extends AdminController
     {
         $form = new Form(new News());
 
-        $form->select('topic_id')->options(Topic::all()->pluck('title','id'))->rules('required');
+        $form->select('topic_id')->options(Topic::all()->pluck('title', 'id'))->rules('required');
         $form->text('title', __('文章标题'))->rules('required');
         $form->text('description', __('文章描述'))->rules('required');
         $form->text('keywords', __('文章关键词'))->rules('required');
         $form->editor('body', __('正文'));
         $form->number('viewCount', __('点击次数,可不填'));
-
         return $form;
     }
 }

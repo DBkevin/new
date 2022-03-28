@@ -11,4 +11,5 @@ class News extends  baseModel
         return $this->belongsToMany('App\Topic');
     }
     
+    
 }
