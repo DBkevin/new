@@ -11,6 +11,9 @@ module.exports = {
     container: {
       center: true,
     },
+    boxShadow: {
+     '3xl': '0 0 10px 5px  rgb(0 0 0 / 10%)',
+    },
     colors: {
       'baseColor': '#7e3c92',
       'baseGray': '#E8E8E8',

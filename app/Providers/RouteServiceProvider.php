@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+use App\Topic;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +33,7 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        Route::model('slug',Topic::class);
     }
 
     /**

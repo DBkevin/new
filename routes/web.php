@@ -16,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/news','newsController@index');
-Route::get('/news/{id}','newsController@show');
+Route::get('/{slug}','TopicController@index');
+Route::get('/{slug}/{id}','TopicController@show');
+Route::get('/{new-slug}','NewsController@index');
+Route::get('/news/{id}','NewsController@show');

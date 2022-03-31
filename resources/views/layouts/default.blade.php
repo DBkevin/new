@@ -9,7 +9,7 @@
 	<link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="font-sans">
+<body class="font-sans" >
 	<div class="mx-auto min-w-min xl">
 		@include('layouts.header')
 		@include('layouts.banner')
