@@ -16,4 +16,5 @@ Route::group([
     $router->resource('topics', TopicController::class);
     $router->resource('news', NewsController::class);
     $router->post('upload', 'UploadController@upImage');
+    $router->resource('links', LinkController::class);
 });

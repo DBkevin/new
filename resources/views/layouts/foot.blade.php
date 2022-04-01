@@ -4,7 +4,7 @@
 			<img src="{{asset('img/logo.jpg')}}" alt="">
 		</div>
 		<div class="w-2/3 text-center text-gray-500 text-sm flex flex-row items-center align-content justify-items-center ">
-			沪ICP备18038503号 隐私政策 法律信息 网站地图 XML地图
+			{{config('app.ICP')}} 隐私政策 法律信息 网站地图 XML地图
 			</br>
 			</br>
 			免责声明：本网站所收集的素材来源于互联网,如权利人发现存在误传其作品情形，请及时与本站联系。
