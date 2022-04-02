@@ -62,49 +62,23 @@
 		<h2 class="m-12 text-4xl leading-8  tracking-tight text-gray-900 ">美莱项目</h2>
 	</div>
 	<div class="my-12 text-center flex flex-row flex-nowrap  w-1240 mx-auto  py-1">
+		@foreach($Categories as $item)
 		<div class="h-items w-2/12 py-1">
-			<div class="itemTitle w-full  bg-baseGray h-20 py-4 text-black hover:bg-baseColor hover:text-white text-xl leading-loose cursor-pointer ">眼部整形</div>
+			<div class="itemTitle w-full  bg-baseGray h-20 py-4 text-black hover:bg-baseColor hover:text-white text-xl leading-loose cursor-pointer ">{{$item->title}}</div>
 		</div>
+		@foreach($item->topics as $topic)
 		<div class="h-items w-10/12 p-1 text-white">
 			<div class="itemCentent w-full flex flex-row flex-wrap item-center justify-between">
 				<div class="relative w-1/3 h-1/2 p-1 overflow-hidden">
-					<img src="{{asset('img/syp1.jpg')}}" alt="">
+					<img src="/storage/{{$topic->pic}}" alt="">
 					<p class="absolute w-full h-1/4 bottom-0 lift-0 bg-opacity-30 bg-black  flex justify-center content-center items-center">
-						双眼皮
-					</p>
-				</div>
-				<div class="relative w-1/3 h-1/2 p-1  overflow-hidden">
-					<img src="{{asset('img/syp2.jpg')}}" alt="">
-					<p class="absolute w-full h-1/4 bottom-0 lift-0 bg-opacity-30 bg-black  flex justify-center content-center items-center">
-						双眼皮1
-					</p>
-				</div>
-				<div class="relative w-1/3 h-1/2 p-1  overflow-hidden">
-					<img src="{{asset('img/syp3.jpg')}}" alt="">
-					<p class="absolute w-full h-1/4 bottom-0 lift-0 bg-opacity-30 bg-black  flex justify-center content-center items-center">
-						双眼皮3
-					</p>
-				</div>
-				<div class="relative w-1/3 h-1/2 p-1  overflow-hidden">
-					<img src="{{asset('img/syp4.jpg')}}" alt="">
-					<p class="absolute w-full h-1/4 bottom-0 lift-0 bg-opacity-30 bg-black  flex justify-center content-center items-center">
-						双眼皮2
-					</p>
-				</div>
-				<div class="relative w-1/3 h-1/2 p-1  overflow-hidden">
-					<img src="{{asset('img/syp5.jpg')}}" alt="">
-					<p class="absolute w-full h-1/4 bottom-0 lift-0 bg-opacity-30 bg-black  flex justify-center content-center items-center">
-						双眼皮4
-					</p>
-				</div>
-				<div class="relative w-1/3 h-1/2 p-1  overflow-hidden">
-					<img src="{{asset('img/syp5.jpg')}}" alt="">
-					<p class="absolute w-full h-1/4 bottom-0 lift-0 bg-opacity-30 bg-black  flex justify-center content-center items-center">
-						双眼皮6
+						{{$topic->title}}
 					</p>
 				</div>
 			</div>
 		</div>
+		@endforeach
+		@endforeach
 	</div>
 </div>
 @endsection

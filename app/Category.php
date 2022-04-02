@@ -12,7 +12,5 @@ class Category extends baseModel
     {
         return $this->hasMany('App\Topic');
     }
-    
-    
    
 }

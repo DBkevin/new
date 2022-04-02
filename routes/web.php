@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'CategoryController@index');
 Route::get('/{slug}/{id}','TopicController@show');
 Route::get('/sitemap.xml', 'SitemapController@index');
 Route::get('/{slug}','TopicController@index');
