@@ -12,7 +12,7 @@ class SitemapController extends Controller
     public function index()
     {
         $podcast = Topic::orderBy('updated_at', 'desc')->get();
-                return response()->view('sitemap', [
+        return response()->view('sitemap', [
             'posts' => $podcast,
         ])->header('Content-Type', 'text/xml');
     }

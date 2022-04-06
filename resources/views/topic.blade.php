@@ -1,5 +1,7 @@
 @extends('layouts.default')
-
+@section('title', $topic->title.'--')
+@section('keywords',$topic->keywords)
+@section('description',$topic->description)
 @section('content')
 <div class="section1 mx-auto xl">
 	<div class="w-1240 h-16 py-4 mx-auto leading-loose text-gray-600">
