@@ -18,8 +18,6 @@ class Topic extends Model
     {
         return $this->hasMany('App\News');
     }
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+  
+    
 }

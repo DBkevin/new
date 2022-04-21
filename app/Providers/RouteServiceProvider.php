@@ -33,7 +33,7 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
-        Route::model('slug',Topic::class);
+    
     }
 
     /**

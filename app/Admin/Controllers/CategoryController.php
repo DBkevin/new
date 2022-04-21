@@ -51,7 +51,7 @@ class CategoryController extends AdminController
         $show = new Show(Category::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('title', __('Title'));
+        $show->field('title', __('123123312'));
         $show->field('slug', __('Slug'));
         $show->field('description', __('Description'));
         $show->field('keywords', __('Keywords'));

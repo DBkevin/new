@@ -10,6 +10,7 @@ class CategoryController extends Controller
     //
     public function index(){
         $Categories=Category::all(); 
-        return view('index',compact('Categories'));
+        //return view('index',compact('Categories'));
+        return view('MIndex',compact('Categories'));
     }
 }
