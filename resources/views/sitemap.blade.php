@@ -4,7 +4,7 @@
     <url>
         <loc>{{config('app.url')}}/{{ $post->slug }}</loc>
         <lastmod>{{ $post->news[0]->updated_at->tz('UTC')->toAtomString() }}</lastmod>
-        <changefreq>weekly</changefreq>
+        <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
     @foreach ($post->news as $new)
