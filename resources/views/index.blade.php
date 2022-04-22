@@ -66,8 +66,8 @@
 		<div class="h-items w-2/12 py-1">
 			<div  class="itemTitle w-full block  bg-baseGray h-20 py-4 text-black hover:bg-baseColor hover:text-white text-xl leading-loose cursor-pointer ">{{$item->title}}</div>
 		</div>
-		@foreach($item->topics as $topic)
 		<div class="h-items w-10/12 text-white">
+		@foreach($item->topics as $topic)
 			<div class="itemCentent w-full flex flex-row flex-wrap item-center justify-between">
 				<a href="{{$topic->slug}}" class="relative block w-1/3 h-1/2 p-1 overflow-hidden">
 					<img src="/storage/{{$topic->pic}}" alt="">
@@ -76,8 +76,8 @@
 					</p>
 				</a>
 			</div>
-		</div>
 		@endforeach
+		</div>
 		@endforeach
 	</div>
 </div>
