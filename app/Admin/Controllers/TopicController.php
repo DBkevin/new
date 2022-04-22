@@ -60,6 +60,8 @@ class TopicController extends AdminController
             // 如果不是编辑状态，则添加字段唯一验证
             if (!$id = $form->model()->id) {
                 return 'required|unique:topics,title';
+            }else{
+                return 'required';
             }
         });
         $form->text('slug', __('SEO标题'))->rules('required');
