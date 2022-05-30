@@ -15,7 +15,6 @@ class CreateNoticeTable extends Migration
     {
         Schema::create('notice', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id')->index()->comment('所属的栏目ID');
             $table->string('plan')->nullable()->comment('术前准备');
             $table->string('nurse')->nullable()->comment('术后护理');
             $table->string('sideEffects')->nullable()->comment('副作用及处理');

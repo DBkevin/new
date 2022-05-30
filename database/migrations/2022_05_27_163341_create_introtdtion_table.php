@@ -15,7 +15,6 @@ class CreateIntrotdtionTable extends Migration
     {
         Schema::create('introtdtion', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id')->index()->comment('跟项目的关联ID');
             $table->string('operationTime')->nullable()->comment('手术时长');
             $table->string('swellingTime')->nullable()->comment('消肿时长');
             $table->string('removeTime')->nullable()->comment('恢复时长');

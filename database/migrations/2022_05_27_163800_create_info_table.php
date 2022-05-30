@@ -15,7 +15,6 @@ class CreateInfoTable extends Migration
     {
         Schema::create('info', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id')->index()->comment('所属项目ID');
             $table->string('site')->nullable()->comment('手术部位');
             $table->string('price')->nullable()->comment('手术价格');
             $table->string('methods')->nullable()->comment('手术方式');

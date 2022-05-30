@@ -15,7 +15,6 @@ class CreateCommitTable extends Migration
     {
         Schema::create('commit', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('topic_id')->index()->comment('所属项目ID');
             $table->string('effect')->nullable()->comment('手术效果');
             $table->text('merit')->nullable()->comment('优点');
             $table->text('defect')->nullable()->comment('缺点');
