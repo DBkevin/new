@@ -29,4 +29,11 @@ class Topic extends Model
 	public function Notice(){
 		return $this->hasOne('App\Models\Notice');
 	}
+	//自关联父级
+	public function Parent(){
+		return $this->hasOne('App\Models\Topic','id','parent_id');
+	}
+	public function child(){
+		return $this->hasMany('App\Models\Topic','parent_id','id');
+	}
 }
