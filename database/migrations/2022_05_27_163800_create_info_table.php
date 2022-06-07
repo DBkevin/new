@@ -22,8 +22,8 @@ class CreateInfoTable extends Migration
             $table->string('keep')->nullable()->comment('效果维持');
             $table->string('narcosis')->nullable()->comment('麻醉方式');
             $table->string('materials')->nullable()->comment('手术材料');
-            $table->string('lengthOfStay')->nullable()->comment('住院时间');
-            $table->string('removeTheTime')->nullable()->comment('拆线时间');
+            $table->string('lengthofstay')->nullable()->comment('住院时间');
+            $table->string('removethetime')->nullable()->comment('拆线时间');
             $table->timestamps();
         });
     }

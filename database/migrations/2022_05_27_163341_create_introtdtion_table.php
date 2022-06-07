@@ -15,9 +15,9 @@ class CreateIntrotdtionTable extends Migration
     {
         Schema::create('introtdtion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('operationTime')->nullable()->comment('手术时长');
-            $table->string('swellingTime')->nullable()->comment('消肿时长');
-            $table->string('removeTime')->nullable()->comment('恢复时长');
+            $table->string('operationtime')->nullable()->comment('手术时长');
+            $table->string('swellingtime')->nullable()->comment('消肿时长');
+            $table->string('removetime')->nullable()->comment('恢复时长');
             $table->string('price')->nullable()->comment('参考价格');
             $table->string('material')->nullable()->comment('材料设备');
             $table->timestamps();

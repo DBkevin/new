@@ -17,7 +17,7 @@ class CreateNoticeTable extends Migration
             $table->increments('id');
             $table->string('plan')->nullable()->comment('术前准备');
             $table->string('nurse')->nullable()->comment('术后护理');
-            $table->string('sideEffects')->nullable()->comment('副作用及处理');
+            $table->string('sideeffects')->nullable()->comment('副作用及处理');
             $table->timestamps();
         });
     }
