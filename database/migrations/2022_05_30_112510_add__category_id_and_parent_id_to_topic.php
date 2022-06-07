@@ -16,7 +16,7 @@ class AddCategoryIdAndParentIdToTopic extends Migration
         Schema::table('topic', function (Blueprint $table) {
             $table->integer('category_id')->unsigned()->after('keyword')->commit("外键,关联category表");
             $table->foreign('category_id')->references('id')->on('category');
-             $table->integer('parent_id')->unsigned()->after('category_id')->default(0)->commit("外键,自关联零为父级");
+             $table->integer('parent_id')->unsigned()->after('category_id')->nullable(true)->commit("外键,自关联零为父级");
             $table->foreign('parent_id')->references('id')->on('topic');
         });
     }
