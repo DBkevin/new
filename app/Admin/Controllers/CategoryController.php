@@ -19,10 +19,9 @@ class CategoryController extends AdminController
     {
         return Grid::make(new Category(), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('title');
+            $grid->column('title','大栏目标题');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
         
@@ -56,8 +55,7 @@ class CategoryController extends AdminController
     {
         return Form::make(new Category(), function (Form $form) {
             $form->display('id');
-            $form->text('title');
-        
+            $form->text('title','大栏目标题')->creationRules('unique:category,title|min:2',['unique'=>'大标题不能重复','min'=>'最少需要2个字符']);
             $form->display('created_at');
             $form->display('updated_at');
         });
