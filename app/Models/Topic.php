@@ -23,8 +23,8 @@ class Topic extends Model
 	public function Commit(){
 		return $this->hasOne('App\Models\Commit');
 	}
-	public function  Intodtion(){
-		return $this->hasOne('App\Models\Intodtion');
+	public function  Introtdtion(){
+		return $this->hasOne('App\Models\Introtdtion');
 	}
 	public function Notice(){
 		return $this->hasOne('App\Models\Notice');
