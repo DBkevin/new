@@ -15,7 +15,7 @@ class AddDirnameToTopicTable extends Migration
     {
         Schema::table('topic', function (Blueprint $table) {
             //
-            $table->string('dirname')->nullable(true)->after('title')->uniqid()->comment();
+            $table->string('dirname')->nullable(true)->after('title')->unique()->comment("栏目地址");
         });
     }
 
