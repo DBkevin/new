@@ -8,7 +8,7 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use App\Models\Category as CategoryModel;
-use App\Models\Info;
+use App\Admin\Repositories\Topic as RepTopic;
 
 class TopicController extends AdminController
 {
@@ -19,41 +19,23 @@ class TopicController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Topic(), function (Grid $grid) {
+        return Grid::make(new RepTopic(['Category', 'Parent']), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('title', '标题');
-            $grid->column('description', '栏目描述');
-            $grid->column('keyword', '栏目关键字');
-            $grid->column('category_id', '所属大栏目');
-            $grid->column('parent_id', '父级标题');
+            $grid->column('picture')->image('http://cf.test/storage/', 50, 100);
+            $grid->column('description', '栏目描述')->width('15%')->limit(20, '...');
+            $grid->column('keyword', '栏目关键字')->width('15%')->limit(20, '...');
+            $grid->column('category.title', '所属大栏目')->badge('danger');;
+            $grid->column('parent.title', '父级标题')->badge('success');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->equal('id');
             });
+            $grid->disableViewButton();
         });
     }
 
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     *
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        return Show::make($id, new Topic(), function (Show $show) {
-            $show->field('id');
-            $show->field('title');
-            $show->field('description');
-            $show->field('keyword');
-            $show->field('category_id');
-            $show->field('parent_id');
-            $show->field('created_at');
-            $show->field('updated_at');
-        });
-    }
 
     /**
      * Make a form builder.
@@ -62,7 +44,7 @@ class TopicController extends AdminController
      */
     protected function form()
     {
-        return Form::make(Topic::with(['Category', 'Info', 'Introtdtion', 'Commit','Notice']), function (Form $form) {
+        return Form::make(Topic::with(['Category', 'Info', 'Introtdtion', 'Commit', 'Notice']), function (Form $form) {
             $form->display('id');
             $form->text('title', '栏目标题')->creationRules('unique:topic,title|min:2', ['unique' => '标题不能重复', 'min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('description', '栏目描述');
@@ -79,12 +61,12 @@ class TopicController extends AdminController
             $form->text('Info.keep', '效果维持');
             $form->text('Info.narcosis', '麻醉方式');
             $form->text('Info.materials', '手术材料');
-            $form->text('Info.lengthOfStay', '住院时间');
-            $form->text('Info.removeTheTime', '拆线时间');
+            $form->text('Info.lengthofstay', '住院时间');
+            $form->text('Info.removethetime', '拆线时间');
             $form->html('<h3 style="text-align: center;">项目介绍栏</h3>',);
-            $form->text('Introtdtion.operationTime', '手术时长');
-            $form->text('Introtdtion.swellingTime', '消肿时长');
-            $form->text('Introtdtion.removeTime', '恢复时长');
+            $form->text('Introtdtion.operationtime', '手术时长');
+            $form->text('Introtdtion.swellingtime', '消肿时长');
+            $form->text('Introtdtion.removetime', '恢复时长');
             $form->text('Introtdtion.price', '参考价格');
             $form->text('Introtdtion.material', '材料设备');
             $form->html('<h3 style="text-align: center;">项目常识栏</h3>',);
@@ -94,9 +76,9 @@ class TopicController extends AdminController
             $form->text('Commit.crowd', '适应人群');
             $form->text('Commit.risk', '风险提示');
             $form->html('<h3 style="text-align: center;">项目常识栏</h3>',);
-            $form->textarea('Notice.plan','术前准备')->rows(3);
-            $form->textarea('Notice.nurse','术后护理')->rows(3);
-            $form->textarea('Notice.sideEffects','副作用及处理')->rows(3);
+            $form->textarea('Notice.plan', '术前准备')->rows(3);
+            $form->textarea('Notice.nurse', '术后护理')->rows(3);
+            $form->textarea('Notice.sideeffects', '副作用及处理')->rows(3);
             $form->display('created_at');
             $form->display('updated_at');
         });
