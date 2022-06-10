@@ -6,7 +6,15 @@ module.exports = {
   ],
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'headbg': '#dfdfdf',
+      },
+      spacing: {
+        'cen': '75rem',
+        'input':'424px',
+      }
+    },
   },
   plugins: [],
 }
