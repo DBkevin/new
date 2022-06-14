@@ -1,8 +1,3 @@
-@section('headCss')
-<link href="/css/index.css" rel="stylesheet">
-@endsection
-@extends('layouts.default')
-@section('content')
 <div class="w-full h-px"></div>
 <div class="w-cen mx-auto mt-10 h-24 pb-2 flex  flex-row flex-nowrap align-content items-center justify-between">
 	<img src="/images/logo.png" class="w-72" alt="">
@@ -28,30 +23,3 @@
 	</ul>
 	<img src="/images/tel.png" alt="">
 </div>
-<ul class="w-full navs-menu">
-	<li class="w-cen mx-auto flex flex-nowrap align-content  items-center  justify-start ">
-		<a href="#">首页</a>
-		<a href="#">整形项目</a>
-		<a href="#">找医生</a>
-		<a href="#">整形咨询</a>
-		<a href="#">整形知识</a>
-		<a href="#">整形攻略</a>
-	</li>
-</ul>
-<div class="w-full banner mx-auto  relative">
-	<ul class="w-full mx-auto">
-		<li style="background:url('/images/ban_1.jpg') center">
-		</li>
-	</ul>
-	<ul class="absolute">
-		<li>
-			<div class="nav_left">
-					<i class="h-sprite h-one">
-					</i>
-					<span>眼部</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-	</ul>
-</div>
-@endsection
