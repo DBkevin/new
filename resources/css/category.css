@@ -1,0 +1,43 @@
+.categoryCen {
+	width: 1200px;
+	height: auto;
+	margin: 0 auto;
+}
+
+.categoryCen>li span.cen_title a {
+	font-size: 22px;
+	color: #333;
+}
+
+.categoryCen>li a {
+	color: #999;
+}
+
+.categoryCen>li span.gray-ls {
+	display: inline-block;
+	width: 1px;
+	height: 25px;
+	margin-left: 14px;
+	background: #e5e5e5;
+}
+
+.categoryCen>li div.wach-more {
+	display: inline-block;
+	margin-left: 13px;
+	font-size: 15px;
+	color: #999;
+}
+
+.categoryCen>li div .wach-more>span {
+	display: inline-block;
+	width: 0;
+	height: 0;
+	margin-left: 9px;
+	border-top: 5px solid transparent;
+	border-bottom: 5px solid transparent;
+	border-left: 5px solid #999;
+}
+
+.topic_concat>li>.concat-info span.active {
+	color: #ff5959 !important;
+}

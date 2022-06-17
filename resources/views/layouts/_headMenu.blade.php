@@ -1,4 +1,4 @@
-<div class="w-full h-px"></div>
+<div class="w-full h-9"></div>
 <div class="w-cen mx-auto mt-10 h-24 pb-2 flex  flex-row flex-nowrap align-content items-center justify-between">
 	<img src="/images/logo.png" class="w-72" alt="">
 	<ul class="flex flex-wrap flex flex-col justify-end head-middle">

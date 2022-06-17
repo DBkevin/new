@@ -8,11 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'headbg': '#dfdfdf',
+        'headbg': '#f2f2f2',
+        'headBor':'#dedede',
       },
       spacing: {
         'cen': '75rem',
-        'input':'424px',
+        'input': '424px',
+        'tcleft': '890px',
+        'tcright': '280px',
+        'tc-pic': '387px',
       }
     },
   },
