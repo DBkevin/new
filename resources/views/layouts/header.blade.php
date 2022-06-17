@@ -1,4 +1,4 @@
-<div class="h-9 w-full border-b border-headbg bg-headbg fixed top-0 z-auto">
+<div class="h-9 w-full border-b border-headbg bg-headbg fixed top-0 z-50">
 	<div class="w-cen mx-auto flex flex-row flex-nowrap h-9 align-content items-center justify-between">
 		<ul class="flex flex-row flex-nowrap">
 			<li>
