@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Topic;
 class TopicController extends Controller
 {
     //
-    public function Index(Request $request)
+    public function show(Request $request,Topic $topic)
     {
-        return view('Topic.index');
+     
+        $topic=Topic::find($request->id);
+        dd($topic);
+        return view('Topic.show',['topic'=>$topic]);
     }
 }

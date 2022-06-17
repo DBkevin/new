@@ -3,7 +3,9 @@
 @endsection
 @extends('layouts.default')
 @section('content')
+
 @include('layouts._CategoryAndTopicMenu')
+{{$topic}};
 <ul class="h-9 w-full bg-headbg border-b border-t border-headBor border-solid">
 	<li class="h-9 w-cen flex flex-row mx-auto items-center text-gray-400 text-sm">
 		<a href="#">厦门美莱</a>> <a href="#">口腔整形</a>><a href="#">牙呲美白</a>
@@ -502,7 +504,7 @@
 						</div>
 						<div class=" ns-text">
 							<div class=" two-line"><a href="/zs/1158.html" target="_blank">开眼角前后对比图—真实经验分享</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>8/20/20 2:14:58</div>
+							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>8/20/20 2:14:58 PM</div>
 						</div>
 					</li>
 					<li>
@@ -550,7 +552,7 @@
 						</div>
 						<div class=" ns-text">
 							<div class=" two-line"><a href="/zs/78545.html" target="_blank">开内眼角多少钱</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>9/6/19 5:56:09</div>
+							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>9/6/19 5:56:09 PM</div>
 						</div>
 					</li>
 				</ul>
