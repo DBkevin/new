@@ -10,7 +10,7 @@ class Topic extends Model
 {
 	use HasDateTimeFormatter;
     protected $table = 'topic';
-    
+    protected $with=['Category','Info','Commit','Introtdtion','Notice'];
 
 	//category的一对多反向关联
 	public function Category(){
@@ -33,7 +33,7 @@ class Topic extends Model
 	public function Parent(){
 		return $this->hasOne('App\Models\Topic','id','parent_id');
 	}
-	public function child(){
+	public function Child(){
 		return $this->hasMany('App\Models\Topic','parent_id','id');
 	}
 }

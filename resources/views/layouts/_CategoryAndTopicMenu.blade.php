@@ -1,4 +1,4 @@
-@inject('menus', 'App\Models\Category');
+@inject('menus', 'App\Models\Category')
 
 
 <ul class="w-full navs-menu" style="background-color:#fff;">

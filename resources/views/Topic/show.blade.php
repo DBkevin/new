@@ -1,14 +1,14 @@
+@section("title",$topic->title)
 @section('headCss')
 <link href="/css/topic.css" rel="stylesheet">
 @endsection
 @extends('layouts.default')
 @section('content')
-
 @include('layouts._CategoryAndTopicMenu')
-{{$topic}};
+
 <ul class="h-9 w-full bg-headbg border-b border-t border-headBor border-solid">
 	<li class="h-9 w-cen flex flex-row mx-auto items-center text-gray-400 text-sm">
-		<a href="#">厦门美莱</a>> <a href="#">口腔整形</a>><a href="#">牙呲美白</a>
+		<a href="/">{{env('APP_NAME')}}</a>> <a href="{{route('catgory',[$topic->Category->dirname])}}">{{$topic->Category->title}}</a>><a href="{{route('showTopic',[$topic->id])}}">{{$topic->title}}</a>
 	</li>
 </ul>
 <!--列表-->
@@ -44,21 +44,21 @@
 	</ul>
 	<ul class="flex flex-row flex-nowrap justify-between">
 		<li class="w-tcleft">
-			<div class="tcpic overflow-hidden relative">
-				<img src="/storage/images/picture_1654585012_QOMVLQc35v.jpg" alt="">
+			<div class="tcpic overflow-hidden relative beauty-pic">
+				<img src="/storage/{{$topic->picture}}" alt="">
 				<div class="bottom-text">
 					<div style="margin-bottom:15px;margin-top:15px;">
 						<i></i>
-						<h1>玻尿酸丰额头</h1>
+						<h1>{{$topic->title}}</h1>
 					</div>
-					<p>更新时间：2021-11-16 10:09:19&emsp;&emsp;阅读人数：1851人 </p>
+					<p>更新时间：{{$topic->updated_at}}&emsp;&emsp;阅读人数：1851人 </p>
 				</div>
 			</div>
-			<div class="addCt"></div>
-			<ul class="w-tcleft mt-5 overflow-hidden flex flex-row flex-nowrap justify-between">
+			<div class="add-ct"></div>
+			<ul class="w-tcleft mt-5 overflow-hidden flex flex-row flex-nowrap justify-between ct-bottom">
 				<li class="table-left">
 					<ul class="common">
-						<li class="pj-in pointer">项目介绍</li>
+						<li class="pj-in pointer ">项目介绍</li>
 						<li class="pointer a-but"><span>美学标准</span></li>
 						<li class="pointer b-but"><span>价格费用</span></li>
 						<li class="pointer c-but"><span>时间周期</span></li>
@@ -80,34 +80,34 @@
 				</li>
 				<li class="table-right">
 					<div class="tab-common">
-						<p class="common-title"><i class="pj-indor"></i>玻尿酸丰额头项目简介</p>
+						<p class="common-title"><i class="pj-indor"></i>{{$topic->title}}项目简介</p>
 						<div class="mt-5">
-							<p>通过注射方式将适量的玻尿酸注射到额头处，改善额头部位的凹陷、形态不对称等情况，显得额头饱满，以此达到修饰面部轮廓线条的目的。</p>
+							<p>{{$topic->description}}</p>
 						</div>
 					</div>
 					<div class="tab-common">
-						<p class=" common-title"><i class="pj-infor"></i>玻尿酸丰额头项目信息</p>
+						<p class=" common-title"><i class="pj-infor"></i>{{$topic->title}}项目信息</p>
 						<div class="mt-5 flex flex-wrap content-between justify-between items-center">
-							<div class="detail-opt"><span>手术部位：</span>额头</div>
-							<div class="detail-opt"><span>手术费用：</span>-</div>
-							<div class="detail-opt ellipsis"><span>治疗方式：</span>-</div>
-							<div class="detail-opt"><span>治疗次数：</span>多次</div>
-							<div class="detail-opt"><span>效果维持：</span>-</div>
+							<div class="detail-opt"><span>手术部位：</span>{{$topic->Info->site}}</div>
+							<div class="detail-opt"><span>手术费用：</span>{{$topic->Info->price}}</div>
+							<div class="detail-opt ellipsis"><span>治疗方式：</span>{{$topic->Info->methods}}</div>
+							<div class="detail-opt"><span>治疗次数：</span>{{$topic->Info->count}}</div>
+							<div class="detail-opt"><span>效果维持：</span>{{$topic->Info->keep}}</div>
 							<div class="detail-opt">
 								<span>麻醉方式：</span>
-								表面麻醉
+								{{$topic->Info->narcosis??"-"}}
 							</div>
 							<div class="detail-opt">
 								<span>
 									手术材料：
-									<i>暂无数据</i>
+									<i>{{$topic->Info->materials??'-'}}</i>
 								</span>
 							</div>
 							<div class="detail-opt">
 								<span>住院时间：</span>
-								无需住院
+								{{$topic->Info->lengthofstay??'-'}}
 							</div>
-							<div class="detail-opt"><span>拆线时间：</span>无需拆线</div>
+							<div class="detail-opt"><span>拆线时间：</span>{{$topic->Info->removethetime??'-'}}</div>
 						</div>
 					</div>
 				</li>
@@ -121,19 +121,19 @@
 					</div>
 					<div class=" mt30">
 						<div class=" yellow-text font18">价格费用</div>
-						<div class=" ft156 mt16">参考价格：-</div>
+						<div class=" ft156 mt16">参考价格：{{$topic->Introtdtion->price??'='}}</div>
 					</div>
 
 					<div class=" mt30">
 						<div class=" yellow-text font18">时间周期</div>
-						<div class=" ft156 mt16"><span class="color9">手术时长：</span>10-20分钟</div>
-						<div class=" ft156 mt16"><span class="color9">消肿时长：</span>3-5天</div>
-						<div class=" ft156 mt16"><span class="color9">恢复时长：</span>5-7天</div>
+						<div class=" ft156 mt16"><span class="color9">手术时长：</span>{{$topic->Introtdtion->operationtime??'-'}}</div>
+						<div class=" ft156 mt16"><span class="color9">消肿时长：</span>{{$topic->Introtdtion->swellingtime??'-'}}</div>
+						<div class=" ft156 mt16"><span class="color9">恢复时长：</span>{{$topic->Introtdtion->removetime??'-'}}</div>
 					</div>
 					<div class=" mt30">
 						<div class=" yellow-text font18">材料设备</div>
 						<div class=" ft156 mt16">
-							<div class=" ft156">常见设备</div>
+							<div class=" ft156">{{$topic->Introtdtion->material??'-'}}</div>
 						</div>
 					</div>
 				</div>
@@ -143,7 +143,7 @@
 				<div class=" mt30">
 					<div class=" yellow-text font18">手术效果</div>
 					<div class=" ft156 mt16">
-						面部饱满,额头平整,丰额头
+						{{$topic->Commit->effect??'-'}}
 					</div>
 				</div>
 				<div class=" mt30">
@@ -152,18 +152,13 @@
 						<div class="wd50 left">
 							<div class=" flex-start"><span class="op-good  master-spirte"></span> 优点：</div>
 							<div>
-								<p>1、操作时间短，无需等待，可快速看到额头部位改善效果；</p>
-								<p>2、玻尿酸会被人体代谢分解，不会存在残留，安全性高；</p>
-								<p>3、注射创口不明显，只有小部分红肿，基本无恢复期，不影响工作和生活；</p>
-								<p>4、痛感小，一般无需麻醉，或皮肤表面麻醉；</p>
-								<p>5、效果可逆，不满意可用溶解酶溶解。</p>
+								{!!$topic->Commit->merit??'-'!!}
 							</div>
 						</div>
 						<div class="wd50 right">
 							<div class=" flex-start"><span class="op-bad  master-spirte"></span> 缺点：</div>
 							<div>
-								<p>1、维持时间短，需要定期注射维持效果；</p>
-								<p>2、注射量较大，一次注射花费较高。</p>
+								{!!$topic->Commit->defect??'-'!!}
 							</div>
 						</div>
 					</div>
@@ -172,12 +167,12 @@
 				<div class=" mt30">
 					<div class=" yellow-text font18">适宜人群</div>
 					<div class=" ft156 mt16">
-						<p>额头扁平、后倾以及额头凹凸不平者</p>
+						<p>{{$topic->Commit->crowd??'-'}}</p>
 					</div>
 				</div>
 				<div class=" mt30">
 					<div class=" yellow-text font18">风险提示</div>
-					<div class=" ft156 mt16">-</div>
+					<div class=" ft156 mt16">{{$topic->Commit->risk??'-'}}</div>
 				</div>
 			</div>
 			<div class="pj-intro" id="three">
@@ -185,38 +180,32 @@
 				<div class=" mt30">
 					<div class=" yellow-text font18">术前准备</div>
 					<div class=" ft156 mt16 tenheight">
-						<p>1、注射当天不要化妆，保持面部清洁；</p>
-						<p>2、女性需避开生理期、妊娠期和哺乳期；</p>
-						<p>3、近期需要禁用抗凝血药物，如阿司匹林一类药物；</p>
-						<p>4、注射部位皮肤无感染病灶、无炎症（例如痤疮、皮疹等）。</p>
+						{!!$topic->Notice->plan??'-'!!}
 					</div>
 				</div>
 				<div class=" mt30">
 					<div class=" yellow-text font18">术后护理</div>
-					<div class=" ft156 mt16 telheight"><i>暂无术后护理数据</i></div>
+					<div class=" ft156 mt16 telheight"><i>{{$topic->Notice->nurse??'-'}}</i></div>
 				</div>
 				<div class=" mt30">
 					<div class=" yellow-text font18">副作用及处理</div>
 					<div class=" ft156 mt16">
-						<p>1、局部发红。</p>
-						<p>2、局部淤血。</p>
-						<p>3、局部肿胀。</p>
+						{!!$topic->Notice->sideeffects??'-'!!}
 					</div>
-
 				</div>
 				<div class=" mt30">
 					<div class="wd400 left" style="margin-right:28px">
-						<div class=" font16 color6"><span class="blue-line"></span>玻尿酸丰额头价格的相关文章：</div>
+						<div class=" font16 color6"><span class="blue-line"></span>{{$topic->title}}的相关文章：</div>
 						<ul class=" blue-list blue-lists">
-							<li class=" ellipsis"><a href="/zs/137019.html" target="_blank"><span></span>额头扁平，如何让额头变饱满</a></li>
-							<li class=" ellipsis"><a href="/zs/201382.html" target="_blank"><span></span>额头太窄怎么变宽</a></li>
+							<!-- <li class=" ellipsis"><a href="/zs/137019.html" target="_blank"><span></span>额头扁平，如何让额头变饱满</a></li>
+							<li class=" ellipsis"><a href="/zs/201382.html" target="_blank"><span></span>额头太窄怎么变宽</a></li> -->
 						</ul>
 					</div>
 					<div class="wd400 left">
-						<div class=" font16 color6"><span class="blue-line"></span>玻尿酸丰额头价格的相关问答：</div>
+						<div class=" font16 color6"><span class="blue-line"></span>{{$topic->title}}的相关问答：</div>
 						<ul class=" blue-list blue-listss">
-							<li class=" ellipsis"><a href="/question/1878704.html" target="_blank"><span></span>丰额头的好方法</a></li>
-							<li class=" ellipsis"><a href="/question/11801.html" target="_blank"><span></span>填充额头是用自身脂肪填充还是玻尿酸好？</a></li>
+							<!-- <li class=" ellipsis"><a href="/question/1878704.html" target="_blank"><span></span>丰额头的好方法</a></li>
+							<li class=" ellipsis"><a href="/question/11801.html" target="_blank"><span></span>填充额头是用自身脂肪填充还是玻尿酸好？</a></li> -->
 						</ul>
 					</div>
 				</div>
@@ -224,94 +213,76 @@
 			<div class="re-project  mb30 mt30">
 				<div class="title"><span></span>相关项目<span></span></div>
 				<div class="re-items">
-					<ul class="re-item left" style="height: 392px;">
+					<ul class="re-item left">
+						@foreach($child as $item)
+						@if($loop->first)
 						<li class="pointer active">
-							<a class="no-choose" data-toggle="tab" href="#0" aria-expanded="true">开外眼角</a>
+							<a class="no-choose" data-toggle="tab" href="#{{$loop->index}}" aria-expanded="true">{{$item->title}}</a>
 						</li>
+						@else
 						<li class="pointer">
-							<a class="no-choose" data-toggle="tab" href="#1" aria-expanded="false">开内眼角</a>
+							<a class="no-choose" data-toggle="tab" href="#{{$loop->index}}" aria-expanded="false">{{$item->title}}</a>
 						</li>
-						<li class="pointer">
-							<a class="no-choose" data-toggle="tab" href="#2">开内眼角</a>
-						</li>
+						@endif
+						@endforeach
 					</ul>
-					<div class="re-item-right left tab-content" style="width: 740px;">
-						<div class="re-lists tab-pane fade active in" id="0">
+					
+					<div class="re-item-right left tab-content">
+						@foreach($child as $item)
+						@if($loop->first)
+						<div class="re-lists tab-pane fade active in" id="{{$loop->index}}">
 							<!--二级项目展示-->
 							<!--项目简介-->
 							<div>
 								<div class="ftitle">项目简介</div>
 								<div class="ft156 mt20">
-									<p>通过手术切开眼尾皮肤，来延长和开大外眦角的方法，改变眼睛水平长度，让眼睛看起来更长一点。</p>
+									<p>{{$item->description}}</p>
 								</div>
 							</div>
 							<!--适用人群-->
 							<div class=" mt35">
 								<div class="ftitle">适用人群</div>
 								<div class="ft156 mt20">
-									眼球突出、眼睛发困无神、眼神凶狠者； 想为双眼皮锦上添花者； 先天性小眼症患者； 眼睛过小希望通过手术进行矫正者。
+									{{$item->Commit->crowd}}
 								</div>
 							</div>
 							<div>
-								<div onclick="common.init('','','','眼部整形','开眼角','晓多','项目')" class="learn-more">了解更多</div>
-
+								<div class="learn-more">了解更多</div>
 							</div>
-
 						</div>
-						<div class="re-lists tab-pane fade" id="1">
+						@else
+						<div class="re-lists tab-pane fade in" id="{{$loop->index}}">
 							<!--二级项目展示-->
 							<!--项目简介-->
 							<div>
 								<div class="ftitle">项目简介</div>
 								<div class="ft156 mt20">
-									通过手术方式，对内侧眼角进行矫正放大，以去除内眦赘皮、延长眼裂水平长度，从而实现放大双眼的效果。
+									<p>{{$item->description}}</p>
 								</div>
 							</div>
 							<!--适用人群-->
 							<div class=" mt35">
 								<div class="ftitle">适用人群</div>
 								<div class="ft156 mt20">
-									眼睛小，眼间距宽，内眼角钝，眼睛形状不佳，上眼睑，眼，眼睛，眼睛太小。
+									{{$item->Commit->crowd}}
 								</div>
 							</div>
 							<div>
-								<div onclick="common.init('','','','眼部整形','开眼角','晓多','项目')" class="learn-more">了解更多</div>
-
-							</div>
-
-						</div>
-						<div class="re-lists tab-pane fade" id="2">
-							<!--二级项目展示-->
-							<!--项目简介-->
-							<div>
-								<div class="ftitle">项目简介</div>
-								<div class="ft156 mt20">
-									通过手术方式，对内侧眼角进行矫正放大，以去除内眦赘皮、延长眼裂水平长度，从而实现放大双眼的效果。
-								</div>
-							</div>
-							<!--适用人群-->
-							<div>
-								<div onclick="common.init('','','','眼部整形','开眼角','晓多','项目')" class="learn-more">了解更多</div>
+								<div class="learn-more">了解更多</div>
 							</div>
 						</div>
+						@endif
+						@endforeach
 					</div>
 				</div>
-			</div>
 		</li>
 		<li class="w-tcright">
-			<div class=" relative-zx">
+			<div class="relative-zx">
 				<h3><i class="master-spirte rela-pj"></i>相关项目</h3>
 				<ul class="pj-box">
-					<li><a href="/project/3/" target="_blank">去黑眼圈</a></li>
-					<li><a href="/project/2279/" target="_blank">眼窝</a></li>
-					<li><a href="/project/1404/" target="_blank">去眼袋</a></li>
-					<li><a href="/project/813/" target="_blank">卧蚕</a></li>
-					<li><a href="/project/846/" target="_blank">眼修复</a></li>
-					<li><a href="/project/532/" target="_blank">双眼皮</a></li>
-					<li><a href="/project/322/" target="_blank">眼睑矫正</a></li>
-					<li><a href="/project/1893/" target="_blank">下眼睑下至</a></li>
-					<li><a href="/project/1339/" target="_blank">泪沟</a></li>
-
+					@foreach($child as $item)
+						<li><a href="{{route('showTopic',[$item->id])}}" target="_blank">{{$item->title}}</a></li>
+					@endforeach
 				</ul>
 			</div>
 			<div class=" relative-zx mt20">
@@ -576,7 +547,105 @@
 			console.log('img');
 			$(this).find("img").attr("src", url + img);
 			$(this).find('.concat-info>span:first-child').removeClass('active');
+		});
+		let oneHeigth = $(".beauty-pic").height();
+		let twoHeigth = $(".add-ct").height();
+		let threeHeigth = $(".ct-bottom").height();
+		let fourHeigth = $("#one").height();
+		let fiveHeigth = $("#two").height();
+		let sevenHeight = 0;
+		let sixHeight = $(".wd400").height();
+		let tenheight = $(".tenheight").height();
+		let telheight = $(".telheight").height();
+		$(".a-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + 400
+			}, 400);
 		})
+		$(".b-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + 550
+			}, 400);
+		})
+		$(".c-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + sixHeight + sevenHeight + 800
+			}, 400);
+		})
+		$(".d-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + sixHeight + sevenHeight + 1000
+			}, 400);
+		})
+		$(".e-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + fourHeigth + 500
+			}, 400);
+		})
+		$(".f-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + fourHeigth + 600
+			}, 400);
+		})
+		$(".g-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + fourHeigth + 750
+			}, 400);
+		})
+		$(".h-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + fourHeigth + 850
+			}, 400);
+		})
+		$(".i-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + fourHeigth + fiveHeigth + 500
+			}, 400);
+		})
+		$(".j-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + fourHeigth + fiveHeigth + tenheight + 600
+			}, 400);
+		})
+		$(".k-but").click(function() {
+			$('html,body').animate({
+				scrollTop: oneHeigth + twoHeigth + threeHeigth + fourHeigth + fiveHeigth + telheight + tenheight + 700
+			}, 400);
+		})
+		$(function() {
+			$(".re-item-right").width(890 - $(".re-item").width() - 15 - 3);
+			$('.re-item li:eq(0) a').tab('show');
+			$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+
+				if ($(".re-item li").length * 66 < $(".tab-content .active ")[0].offsetHeight) {
+					$(".re-item").height($(".tab-content .active ")[0].offsetHeight);
+				} else {
+					$(".tab-content .active").height($(".re-item li").length * 66 - 30);
+				}
+				// 获取已激活的标签页的名称
+				var activeTab = $(e.target).text();
+				// 获取前一个激活的标签页的名称
+				var previousTab = $(e.relatedTarget).text();
+				$(".active-tab span").html(activeTab);
+				$(".previous-tab span").html(previousTab);
+			});
+			let txt = "";
+			$(".re-item a").each(function(i) {
+				$(this).hover(function() {
+					if (!$('.re-item li:eq(' + i + ')').hasClass("active")) {
+						$(".tab-content .active").removeClass("in").removeClass("active");
+					}
+					$('.re-item li:eq(' + i + ') a').tab('show');
+				}, function() {
+					txt = $(this).context.hash;
+					$(".re-lists").each(function(j) {
+						var num = parseInt(txt.substring(1));
+						$(".tab-content:eq(" + num + ")").removeClass("in").removeClass("active");
+					});
+
+				});
+			});
+		});
 	</script>
 </div>
 @endsection
