@@ -19,5 +19,7 @@ Route::get('/', function () {
     return view('home');
 })->name('index');
 Route::get('/project/{topic:id}','TopicController@show')->where('id','[0-9]+')->name("showTopic"); //匹配数字必须考前
-
-Route::get("/project/{category:dirname}","CategoryController@Index")->where('dirname', '[A-Za-z]+')->name('catgory');
+//Route::get("/project/{category:dirname}","CategoryController@Index")->where('dirname', '[A-Za-z]+')->name('catgory');
+Route::get('/project/{category:dirname}',function($dirname){
+    return $dirname;
+});
