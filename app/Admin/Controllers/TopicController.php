@@ -25,10 +25,16 @@ class TopicController extends AdminController
             $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
             $grid->column('dirname','栏目地址')->badge();
             $grid->column('picture','栏目缩略图')->image('http://cf.test/storage/', 50, 100);
-            $grid->column('description', '栏目描述')->width('15%')->limit(20, '...');
-            $grid->column('keyword', '栏目关键字')->width('15%')->limit(20, '...');
+            $grid->column('description', '栏目描述')->width('10%')->limit(20, '...');
+            $grid->column('keyword', '栏目关键字')->width('10%')->limit(20, '...');
             $grid->column('category.title', '所属大栏目')->badge('danger');;
-            $grid->column('parent.title', '父级标题')->badge('success');
+            $grid->column('parent.title', '父级标题')->display(function($title){
+                if(!$title){
+                    return '无父级';
+                }else{
+                    return $title;
+                }
+            })->badge('success');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->filter(function (Grid\Filter $filter) {
