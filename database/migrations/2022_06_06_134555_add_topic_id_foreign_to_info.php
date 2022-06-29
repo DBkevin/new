@@ -16,7 +16,7 @@ class AddTopicIdForeignToInfo extends Migration
         Schema::table('info', function (Blueprint $table) {
             //
             $table->integer('topic_id')->unsigned()->after('id')->commit('外键和topic关联');
-            $table->foreign('topic_id')->references('id')->on('topic');
+            $table->foreign('topic_id')->references('id')->on('topic')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -44,7 +44,7 @@
 	</ul>
 	<ul class="flex flex-row flex-nowrap justify-between">
 		<li class="w-tcleft">
-			<div class="tcpic overflow-hidden relative beauty-pic">
+			<div class="topic overflow-hidden relative beauty-pic">
 				<img src="/storage/{{$topic->picture}}" alt="">
 				<div class="bottom-text">
 					<div style="margin-bottom:15px;margin-top:15px;">
@@ -167,7 +167,7 @@
 				<div class=" mt30">
 					<div class=" yellow-text font18">适宜人群</div>
 					<div class=" ft156 mt16">
-						<p>{{$topic->Commit->crowd??'-'}}</p>
+						<p>{!!$topic->Commit->crowd??'-'!!}</p>
 					</div>
 				</div>
 				<div class=" mt30">
