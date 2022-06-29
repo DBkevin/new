@@ -21,7 +21,8 @@ class TopicController extends AdminController
     {
         return Grid::make(new RepTopic(['Category', 'Parent']), function (Grid $grid) {
             $grid->column('id')->sortable();
-            $grid->column('title', '标题');
+            $grid->column('title', '标题')->width('10%')->limit(20, '...');
+            $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
             $grid->column('dirname','栏目地址')->badge();
             $grid->column('picture','栏目缩略图')->image('http://cf.test/storage/', 50, 100);
             $grid->column('description', '栏目描述')->width('15%')->limit(20, '...');
@@ -48,6 +49,7 @@ class TopicController extends AdminController
         return Form::make(Topic::with(['Category', 'Info', 'Introtdtion', 'Commit', 'Notice']), function (Form $form) {
             $form->display('id');
             $form->text('title', '栏目标题')->creationRules('unique:topic,title|min:2', ['unique' => '标题不能重复', 'min' => '最少需要2个字符'])->updateRules('min:2');
+            $form->text('seotitle', 'seo标题');
             $form->text('dirname','栏目地址')->creationRules('unique:topic,dirname|min:2',['unique' => '标题不能重复', 'min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('description', '栏目描述');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images')->autoUpload();
