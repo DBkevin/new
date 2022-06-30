@@ -1,10 +1,10 @@
-@section("title",$topic->title)
+@section("title",$topic->seotitle??$topic->title)
 @section('headCss')
 <link href="/css/topic.css" rel="stylesheet">
 @endsection
 @extends('layouts.default')
 @section('content')
-@include('layouts._CategoryAndTopicMenu')
+@include('layouts._CategoryAndTopicMenu',['thisCategory'=>$topic->Category->title])
 
 <ul class="h-9 w-full bg-headbg border-b border-t border-headBor border-solid">
 	<li class="h-9 w-cen flex flex-row mx-auto items-center text-gray-400 text-sm">
@@ -226,7 +226,7 @@
 						@endif
 						@endforeach
 					</ul>
-					
+
 					<div class="re-item-right left tab-content">
 						@foreach($child as $item)
 						@if($loop->first)
@@ -243,7 +243,7 @@
 							<div class=" mt35">
 								<div class="ftitle">适用人群</div>
 								<div class="ft156 mt20">
-									{{$item->Commit->crowd}}
+									{!!$item->Commit->crowd!!}
 								</div>
 							</div>
 							<div>
@@ -264,7 +264,7 @@
 							<div class=" mt35">
 								<div class="ftitle">适用人群</div>
 								<div class="ft156 mt20">
-									{{$item->Commit->crowd}}
+									{!!$item->Commit->crowd!!}
 								</div>
 							</div>
 							<div>
@@ -275,13 +275,14 @@
 						@endforeach
 					</div>
 				</div>
+			</div>
 		</li>
 		<li class="w-tcright">
 			<div class="relative-zx">
 				<h3><i class="master-spirte rela-pj"></i>相关项目</h3>
 				<ul class="pj-box">
 					@foreach($child as $item)
-						<li><a href="{{route('showTopic',[$item->id])}}" target="_blank">{{$item->title}}</a></li>
+					<li><a href="{{route('showTopic',[$item->id])}}" target="_blank">{{$item->title}}</a></li>
 					@endforeach
 				</ul>
 			</div>
@@ -530,13 +531,15 @@
 			</div>
 		</li>
 	</ul>
+	<div style="width:0px;height:0px;display:none" id="categoryClass" data-value="{{$topic->Category->title}}">
+		{{$topic->Category->title}}
+	</div>
 	<script>
 		$(".topic_concat>li").hover(function() {
 			let src = $(this).find("img").attr("src");
 			let url = src.slice(0, src.lastIndexOf("/"));
 			let img = src.slice(src.lastIndexOf("/"), src.length);
 			img = img.replace(".", "-1.");
-			console.log('img');
 			$(this).find("img").attr("src", url + img);
 			$(this).find('.concat-info>span:first-child').addClass('active');
 		}, function() {
@@ -544,7 +547,6 @@
 			let url = src.slice(0, src.lastIndexOf("/"));
 			let img = src.slice(src.lastIndexOf("/"), src.length);
 			img = img.replace("-1", "");
-			console.log('img');
 			$(this).find("img").attr("src", url + img);
 			$(this).find('.concat-info>span:first-child').removeClass('active');
 		});
@@ -616,7 +618,6 @@
 			$(".re-item-right").width(890 - $(".re-item").width() - 15 - 3);
 			$('.re-item li:eq(0) a').tab('show');
 			$('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
-
 				if ($(".re-item li").length * 66 < $(".tab-content .active ")[0].offsetHeight) {
 					$(".re-item").height($(".tab-content .active ")[0].offsetHeight);
 				} else {

@@ -10,7 +10,7 @@ class Topic extends Model
 {
 	use HasDateTimeFormatter;
     protected $table = 'topic';
-    protected $with=['Category','Info','Commit','Introtdtion','Notice'];
+   	protected $with=['Category','Info','Commit','Introtdtion','Notice'];
 
 	//category的一对多反向关联
 	public function Category(){
