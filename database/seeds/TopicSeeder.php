@@ -18,56 +18,72 @@ class TopicSeeder extends Seeder
      */
     public function run()
     {
-        //
-        $list = DB::connection('mysql_old')->table('topic')->where('is', 1)->first();
-        $listSql = [
-            'title' => $list->name,
-            'seotitle'=>$list->title,
-            'description' => $list->description,
-            'keyword' => $list->keywords,
-            'picture' => $list->picture,
-            'category_id' => $list->oneid,
-        ];
-        $cmmitSql = [
-            'effect' => $list->comeffect,
-            'merit' => $list->commerit,
-            'defect' => $list->comdefect,
-            'crowd' => $list->comcrowd,
-            'risk' => $list->comrisk,
-        ];
-        $infoSql = [
-            'site' => $list->info1,
-            'methods' => $list->info3,
-            'price' => $list->info2,
-            'count' => $list->info4,
-            'keep' => $list->info5,
-            'narcosis' => $list->info6,
-            'materials' => $list->info7,
-            'lengthofstay' => $list->info8,
-            'removethetime' => $list->info9,
-        ];
-        $introdtionSQL = [
-            'operationtime' => $list->intoperation,
-            'swellingtime' => $list->intswelling,
-            'removetime' => $list->intremove,
-            'price' => $list->intprice,
-            'material' => $list->intmaterial
-        ];
-        $noteSql = [
-            'plan' => $list->notpaln,
-            'nurse' => $list->notnurse,
-            'sideeffects' => $list->notsideeffects
-        ];
-        $info = new Info($infoSql);
-        $note = new Notice($noteSql);
-        $commit = new Commit($cmmitSql);
-        $introdtion = new Introtdtion($introdtionSQL);
-        $newTopic = new Topic($listSql);
-        $newTopic->save();
-        $newTopic->Info()->save($info);
-        $newTopic->Notice()->save($note);
-        $newTopic->Commit()->save($commit);
-        $newTopic->Introtdtion()->save($introdtion);
-        DB::connection('mysql_old')->table('topic')->where('id', $list->id)->update(['is'=>999]);
+        while ($list = DB::connection('mysql_old')->table('topic')->where('is', 1)->first()) {
+            if ($list->twoid) {
+                $parent = DB::connection("mysql_old")->table('topic')->where('id', $list->twoid)->value('name');
+                $parent_id = DB::table('topic')->where('title', '=', $parent)->value('id');
+                $listSql = [
+                    'title' => $list->name,
+                    'seotitle' => $list->title,
+                    'description' => $list->description,
+                    'keyword' => $list->keywords,
+                    'picture' => $list->picture,
+                    'category_id' => $list->oneid,
+                    'parent_id' => $parent_id,
+                ];
+            } else {
+                $listSql = [
+                    'title' => $list->name,
+                    'seotitle' => $list->title,
+                    'description' => $list->description,
+                    'keyword' => $list->keywords,
+                    'picture' => $list->picture,
+                    'category_id' => $list->oneid,
+                ];
+            }
+            $cmmitSql = [
+                'effect' => $list->comeffect,
+                'merit' => $list->commerit,
+                'defect' => $list->comdefect,
+                'crowd' => $list->comcrowd,
+                'risk' => $list->comrisk,
+            ];
+            $infoSql = [
+                'site' => $list->info1,
+                'methods' => $list->info3,
+                'price' => $list->info2,
+                'count' => $list->info4,
+                'keep' => $list->info5,
+                'narcosis' => $list->info6,
+                'materials' => $list->info7,
+                'lengthofstay' => $list->info8,
+                'removethetime' => $list->info9,
+            ];
+            $introdtionSQL = [
+                'operationtime' => $list->intoperation,
+                'swellingtime' => $list->intswelling,
+                'removetime' => $list->intremove,
+                'price' => $list->intprice,
+                'material' => $list->intmaterial
+            ];
+            $noteSql = [
+                'plan' => $list->notpaln,
+                'nurse' => $list->notnurse,
+                'sideeffects' => $list->notsideeffects
+            ];
+            $info = new Info($infoSql);
+            $note = new Notice($noteSql);
+            $commit = new Commit($cmmitSql);
+            $introdtion = new Introtdtion($introdtionSQL);
+            $newTopic = new Topic($listSql);
+            $newTopic->save();
+            $newTopic->Info()->save($info);
+            $newTopic->Notice()->save($note);
+            $newTopic->Commit()->save($commit);
+            $newTopic->Introtdtion()->save($introdtion);
+            DB::connection('mysql_old')->table('topic')->where('id', $list->id)->update(['is' => 999]);
+            sleep(1);
+            echo "+1".PHP_EOL;
+        }
     }
 }
