@@ -149,13 +149,13 @@
 				<div class=" mt30">
 					<div class=" yellow-text font18">优缺点</div>
 					<div>
-						<div class="wd50 left">
+						<div class="wd50 float-left">
 							<div class=" flex-start"><span class="op-good  master-spirte"></span> 优点：</div>
 							<div>
 								{!!$topic->Commit->merit??'-'!!}
 							</div>
 						</div>
-						<div class="wd50 right">
+						<div class="wd50 float-right">
 							<div class=" flex-start"><span class="op-bad  master-spirte"></span> 缺点：</div>
 							<div>
 								{!!$topic->Commit->defect??'-'!!}
@@ -194,14 +194,14 @@
 					</div>
 				</div>
 				<div class=" mt30">
-					<div class="wd400 left" style="margin-right:28px">
+					<div class="wd400 float-left" style="margin-right:28px">
 						<div class=" font16 color6"><span class="blue-line"></span>{{$topic->title}}的相关文章：</div>
 						<ul class=" blue-list blue-lists">
 							<!-- <li class=" ellipsis"><a href="/zs/137019.html" target="_blank"><span></span>额头扁平，如何让额头变饱满</a></li>
 							<li class=" ellipsis"><a href="/zs/201382.html" target="_blank"><span></span>额头太窄怎么变宽</a></li> -->
 						</ul>
 					</div>
-					<div class="wd400 left">
+					<div class="wd400 float-left">
 						<div class=" font16 color6"><span class="blue-line"></span>{{$topic->title}}的相关问答：</div>
 						<ul class=" blue-list blue-listss">
 							<!-- <li class=" ellipsis"><a href="/question/1878704.html" target="_blank"><span></span>丰额头的好方法</a></li>
@@ -210,10 +210,11 @@
 					</div>
 				</div>
 			</div>
+			@if(@empty($topic))
 			<div class="re-project  mb30 mt30">
 				<div class="title"><span></span>相关项目<span></span></div>
 				<div class="re-items">
-					<ul class="re-item left">
+					<ul class="re-item float-left">
 						@foreach($child as $item)
 						@if($loop->first)
 						<li class="pointer active">
@@ -226,8 +227,7 @@
 						@endif
 						@endforeach
 					</ul>
-
-					<div class="re-item-right left tab-content">
+					<div class="re-item-right float-left tab-content">
 						@foreach($child as $item)
 						@if($loop->first)
 						<div class="re-lists tab-pane fade active in" id="{{$loop->index}}">
@@ -276,6 +276,8 @@
 					</div>
 				</div>
 			</div>
+			@endif
+			
 		</li>
 		<li class="w-tcright">
 			<div class="relative-zx">
@@ -286,75 +288,25 @@
 					@endforeach
 				</ul>
 			</div>
+			<!--
 			<div class=" relative-zx mt20">
 				<h3><i class="master-spirte rela-ns"></i>相关攻略</h3>
 				<ul class="ns-box">
 					<li>
 						<div class=" ns-img">
 							<a href="/news/46378.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2020/08/27/1121086208-o">
+								<img src="2020/08/27/1121086208-o">
 							</a>
 						</div>
 						<div class=" ns-text">
-
 							<div class=" two-line"><a href="/news/46378.html" target="_blank">做眼角提升手术效果对比图？</a></div>
 							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>2020-08-27</div>
 						</div>
 					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/news/1536.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2017/04/12/1544047256-o">
-
-							</a>
-						</div>
-						<div class=" ns-text">
-
-							<div class=" two-line"><a href="/news/1536.html" target="_blank">做开外眼角需要多少钱？费用是多少？</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>2019-09-26</div>
-						</div>
-					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/news/95691.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2018/09/29/1122037878-o">
-
-							</a>
-						</div>
-						<div class=" ns-text">
-
-							<div class=" two-line"><a href="/news/95691.html" target="_blank">外眼角和内眼角区别是什么</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>2020-09-09</div>
-						</div>
-					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/news/107236.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2018/10/31/1513042593-o">
-
-							</a>
-						</div>
-						<div class=" ns-text">
-
-							<div class=" two-line"><a href="/news/107236.html" target="_blank">开外眼角手术适合哪些人做</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>2020-01-19</div>
-						</div>
-					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/news/70151.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2018/07/21/1820044320-o">
-
-							</a>
-						</div>
-						<div class=" ns-text">
-
-							<div class=" two-line"><a href="/news/70151.html" target="_blank">开眼角手术后眼角痒正常么</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>2019-12-08</div>
-						</div>
-					</li>
 				</ul>
 			</div>
+-->
+			<!--
 			<div class=" relative-zx mt20">
 				<h3><i class="master-spirte rela-qs"></i>相关咨询</h3>
 				<ul class="zx-box">
@@ -363,7 +315,6 @@
 						<div class=" zx-da">
 							<i class="com-project left"></i>
 							<div class="left answer">
-
 								<div><a href="/question/39560.html" target="_blank">
 										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开眼角的手术费用大致是在4000-15000元，作为一个参考的价格区间，这并不是一个准确的数值，还有其他的很多影响因素导致，　</p>
 										<p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、开眼角的价格与术后的效果有关系，不同的眼部美感需求，都会让开眼角手术在精细程度上不同。</p>
@@ -372,90 +323,8 @@
 										<p><br></p>
 									</a></div>
 								<div class=" doctor-na">
-									<div class="doct-img"><a href="/doctor/8033.html" target="_blank"><img src="https://cdn-ssl.meb.com/2019/12/27/1448512136-s"></a></div>
-									<span><a href="/doctor/8033.html" target="_blank">傅荣</a></span>
-									<span class="undelines">/</span>
-									<span>主任医师</span>
-
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class=" zx-wen ellipsis"><i class="com-project"></i><a href="/question/1712780.html" target="_blank">北京哪里开眼角好？</a></div>
-						<div class=" zx-da">
-							<i class="com-project left"></i>
-							<div class="left answer">
-
-								<div><a href="/question/1712780.html" target="_blank">
-										<p>北京做开眼角手术的医院有很多，但是我们一定要选择正规的医院，正规的医院不论是从医生或是设备环境上，都能够给求美者提供更好的服务，而且也能够保障手术的安全及效果。</p>
-									</a></div>
-								<div class=" doctor-na">
-									<div class="doct-img"><a href="/doctor/8639.html" target="_blank"><img src="https://cdn-ssl.meb.com/2019/12/27/1200317956-s"></a></div>
-									<span><a href="/doctor/8639.html" target="_blank">刘暾</a></span>
-									<span class="undelines">/</span>
-									<span>主任医师</span>
-
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class=" zx-wen ellipsis"><i class="com-project"></i><a href="/question/63976.html" target="_blank">开眼角安全吗，开眼角价格是多少钱啊？</a></div>
-						<div class=" zx-da">
-							<i class="com-project left"></i>
-							<div class="left answer">
-
-								<div><a href="/question/63976.html" target="_blank">
-										<p>　　开眼角手术是针对眼裂小，有内眦赘皮的眼睛。开眼角手术是将赘生的上眼皮组织，经由精细的美容手术切缝消除，开眼角手术不会留下明显的手术疤痕。</p>
-										<p>　　开眼角是非常安全的，但是一定要选择正规的医院和医生进行手术。医生的手术技术参差不齐决定了开眼角的安全与否，<strong>想了解开眼角医生可以点击咨询</strong>。</p>
-										<p>　　开眼角价格大概在2000-8000元之间。影响价格的因素如下：</p>
-										<p>　　1、开内眼角多少钱与求美者自身情况有关</p>
-										<p>　　2、开内眼角多少钱与医院选择有关</p>
-										<p>　　3、开内眼角多少钱与医生水平有关</p>
-										<p>　　4、开内眼角多少钱与手术方式有关</p>
-									</a></div>
-								<div class=" doctor-na">
-									<div class="doct-img"><a href="/doctor/8023.html" target="_blank"><img src="https://cdn-ssl.meb.com/doctor/20170921/dbd8ff1a134f4065965cc9b8f76d6f16875-s"></a></div>
-									<span><a href="/doctor/8023.html" target="_blank">陈勇军</a></span>
-									<span class="undelines">/</span>
-									<span>主治医师</span>
-
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class=" zx-wen ellipsis"><i class="com-project"></i><a href="/question/91889.html" target="_blank">开眼角会有副作用吗？大概要多少钱？会不会留疤？</a></div>
-						<div class=" zx-da">
-							<i class="com-project left"></i>
-							<div class="left answer">
-
-								<div><a href="/question/91889.html" target="_blank">
-										<p>开眼角手术一改过去开眼角会遗留明显手术瘢痕的缺点，依照每个人的内眦不同皮肤纹路设计，根据皮瓣整形的原理，改变蒙古皱褶的位置，使内侧眼皮的褶缝，形成与双眼皮皱褶一致的方向，让深藏的粉色泪阜完美展现</p>
-									</a></div>
-								<div class=" doctor-na">
-									<div class="doct-img"><a href="/doctor/2470.html" target="_blank"><img src="https://cdn-ssl.meb.com/2019/12/27/1148579353-s"></a></div>
-									<span><a href="/doctor/2470.html" target="_blank">杨丽</a></span>
-									<span class="undelines">/</span>
-									<span>主任医师</span>
-
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class=" zx-wen ellipsis"><i class="com-project"></i><a href="/question/320087.html" target="_blank">大小眼怎么自我矫正？</a></div>
-						<div class=" zx-da">
-							<i class="com-project left"></i>
-							<div class="left answer">
-
-								<div><a href="/question/320087.html" target="_blank">
-										<p style="white-space: normal;">你好，大小眼是因为发育不完全的原因造成的，是没有办法进行自我矫正的，只能去整形美容医院通过手术整形来达到矫正的效果。所以你可以到当地正规的整形美容医院进行一个整形手术。</p>
-									</a></div>
-								<div class=" doctor-na">
-									<div class="doct-img"><a href="/doctor/8002.html" target="_blank"><img src="https://cdn-ssl.meb.com/2019/12/27/1502019753-s"></a></div>
-									<span><a href="/doctor/8002.html" target="_blank">万伟东</a></span>
+									<div class="doct-img"><a href="/doctor/8033.html" target="_blank"><img src="/27/1448512136-s"></a></div>
+									<span><a href="/doctor/8033.html" target="_blank">荣</a></span>
 									<span class="undelines">/</span>
 									<span>主任医师</span>
 
@@ -465,13 +334,15 @@
 					</li>
 				</ul>
 			</div>
+-->
+			<!--
 			<div class=" relative-zx mt20">
 				<h3><i class="master-spirte rela-zs"></i>相关知识</h3>
 				<ul class="ns-box">
 					<li>
 						<div class=" ns-img">
 							<a href="/zs/1158.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2020/08/20/1413347590">
+								<img src="#">
 							</a>
 						</div>
 						<div class=" ns-text">
@@ -479,61 +350,11 @@
 							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>8/20/20 2:14:58 PM</div>
 						</div>
 					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/zs/144482.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2018/04/13/1512194203">
-							</a>
-						</div>
-						<div class=" ns-text">
-
-							<div class=" two-line"><a href="/zs/144482.html" target="_blank">学生变大眼的快方法</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>10/28/19 10:04:56</div>
-						</div>
-					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/zs/149022.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2020/09/23/1208438196">
-							</a>
-						</div>
-						<div class=" ns-text">
-							<div class=" two-line"><a href="/zs/149022.html" target="_blank">真人实拍开外眼角前后对比图</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>9/23/20 12:08:55</div>
-						</div>
-					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/zs/160863.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/2018/04/23/2201048812">
-
-							</a>
-						</div>
-						<div class=" ns-text">
-
-							<div class=" two-line"><a href="/zs/160863.html" target="_blank">开眼角疤痕增生6个月恢复图片</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>4/24/18 10:49:35</div>
-						</div>
-					</li>
-					<li>
-						<div class=" ns-img">
-							<a href="/zs/78545.html" target="_blank">
-								<img src="https://cdn-ssl.meb.com/image/article/50.jpg">
-
-							</a>
-						</div>
-						<div class=" ns-text">
-							<div class=" two-line"><a href="/zs/78545.html" target="_blank">开内眼角多少钱</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>9/6/19 5:56:09 PM</div>
-						</div>
-					</li>
 				</ul>
 			</div>
+			-->
 		</li>
 	</ul>
-	<div style="width:0px;height:0px;display:none" id="categoryClass" data-value="{{$topic->Category->title}}">
-		{{$topic->Category->title}}
-	</div>
 	<script>
 		$(".topic_concat>li").hover(function() {
 			let src = $(this).find("img").attr("src");

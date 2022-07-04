@@ -10,7 +10,7 @@ class TopicController extends Controller
     //
     public function show(Request $request, Topic $topic)
     {
-        $topic = Topic::find($request->id);
+        $topic = Topic::findOrFail($request->id);
         if (!$topic->parent_id) {
             $topicInfo = Topic::without(['Category', 'Notice', 'Introtdtion', 'Info'])->with('Child')->find($topic->id);
             $child = $topicInfo->Child;

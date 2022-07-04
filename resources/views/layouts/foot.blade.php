@@ -27,39 +27,39 @@
 <div class="clear-both w-full h-px"></div>
 <div class="footer-wrap relative">
 	<div class="wrap-main clearfix">
-		<div class="left left-list">
+		<div class="float-left left-list">
 			<div class="data-tit">关于我们</div>
 			<div class="data-txt"><a target="_blank" href="/about/" style="color: rgb(153, 153, 153);">关于美呗</a></div>
 			<div class="data-txt"><a target="_blank" href="/about/afterservice/" style="color: rgb(153, 153, 153);">用户保障</a></div>
 
 			<div class="data-txt"><a target="_blank" href="/about/legalnotices/" style="color: rgb(153, 153, 153);">法律声明</a></div>
 		</div>
-		<div class="left left-list">
+		<div class="float-left left-list">
 			<div class="data-tit"> 帮助中心</div>
 			<div class="data-txt"><a target="_blank" href="/about/useragreement/" style="color: rgb(153, 153, 153);">用户协议</a></div>
 			<div class="data-txt"><a target="_blank" href="/about/privacyprotection/" style="color: rgb(153, 153, 153);">隐私保护</a></div>
 			<div class="data-txt"><a target="_blank" href="/about/contact/">意见反馈</a></div>
 			<div class="data-txt"><a target="_blank" href="/about/legalnotices/" style="color: rgb(153, 153, 153);">免责声明</a></div>
 		</div>
-		<div class="left left-list">
+		<div class="float-left left-list">
 			<div class="data-tit">用户服务</div>
 			<div class="data-txt"><a target="_blank" href="/about/contact/" style="color: rgb(153, 153, 153);">商务合作</a></div>
 			<div class="data-txt"><a target="_blank" href="/about/buydeposit/" style="color: rgb(153, 153, 153);">定金购买</a></div>
 
 			<div class="data-txt"><a target="_blank" href="/about/afterservice/" style="color: rgb(153, 153, 153);">售后服务</a></div>
 		</div>
-		<div class="left left-list">
+		<div class="float-left left-list">
 			<div class="data-tit">合作单位</div>
 			<div class="data-txt">中华医学会</div>
 			<div class="data-txt">中国整形美容协会</div>
 			<div class="data-txt">中韩国际整形美容学会</div>
 		</div>
-		<div class="right clearfix">
-			<div class="wechat-sys left">
+		<div class="float-right clearfix">
+			<div class="wechat-sys float-left">
 				<div class="meibei-title data-tit">关注美呗</div>
 				<div class="meibei-ewm clearfix">
-					<div class="ewm left"><img src="/images/wechat.png"></div>
-					<div class="ewm-sm right">
+					<div class="ewm float-left"><img src="/images/wechat.png"></div>
+					<div class="ewm-sm float-right">
 						<div class="text-center add-height62" style="line-height: 29px;">扫码 关注 </div>
 						<div class="gf-wx">官方微信</div>
 					</div>
@@ -79,7 +79,7 @@
 <div class="clear-both w-full h-px"></div>
 <div class="copy-right-wrap">
     <div class="friend-link clearfix">
-        <div class="copy-rigth-left left">
+        <div class="copy-rigth-left  float-left">
             <div class="left-word"></div>
             <div class="left-line"></div>
             <div class="more-text">
@@ -89,7 +89,7 @@
                 <div class="mast-text">咨询量累计超<span>8000</span>万次</div>
             </div>
         </div>
-        <div class="copy-rigth-right left">
+        <div class="copy-rigth-right float-left">
             <div class="master-word">Copyright  © 2016 meb.com&nbsp;&nbsp;美呗&nbsp;&nbsp; 成都美尔贝科技股份有限公司&nbsp;保留所有权利 </div>
             <div class="master-word">川卫网审第2015-139号&nbsp;&nbsp;&nbsp;&nbsp; <a href="https://beian.miit.gov.cn/#/Integrated/recordQuery" rel="nofollow">蜀ICP备14030877号-4</a></div>
             <div class="master-word">（川）-经营性-2019-0038&nbsp;&nbsp;&nbsp;&nbsp;川蓉食药监械经营备20190088号&nbsp;&nbsp;&nbsp;&nbsp;（川）网械平台备字（2020）第00004号</div>
