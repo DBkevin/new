@@ -10,7 +10,10 @@ class CategoryController extends Controller
 {
     public function Index(Request $request,Category $category)
     {
-        $topics = DB::table('topic', "p")->select('p.id as par_id',  'c.id as c_id','c.title as c_title','p.title as par_title')->where('p.category_id', $category->id)->rightJoin('topic as c', 'p.id', '=', 'c.parent_id')->get();
+        $topics = DB::table('topic', "p")
+        ->select('p.id as par_id',  'c.id as c_id','c.title as c_title','p.title as par_title')
+        ->where('p.category_id', $category->id)
+        ->rightJoin('topic as c', 'p.id', '=', 'c.parent_id')->get();
         $t = [];
         foreach ($topics as $topic) {
             $res = array_search($topic->par_id, array_column($t, 'par_id'), true);

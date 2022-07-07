@@ -11,9 +11,11 @@
 }
 
 .banner>ul:last-of-type {
-	width: 610px;
+	width: 700px;
 	top: 0px;
 	left: calc((100% - 1200px) / 2);
+	height:420px;
+	overflow: hidden;
 }
 
 .banner>ul:last-of-type>li {
@@ -38,78 +40,13 @@
 
 
 .banner>ul>li>.nav_left>.h-sprite {
-	width: 18px;
+	width: 23px;
 	margin-left: 37px;
-	background-image: url('/images/banner.png');
-	background-size: 234px 23px;
-}
-
-.banner>ul>li>.nav_left>.one {
-	background-position: -18px 0;
-	height: 11px;
-}
-
-.banner>ul>li>.nav_left>.two {
-	background-position: -36px 0;
-	height: 23px;
-}
-
-.banner>ul>li>.nav_left>.three {
-	background-position: -54px 0;
-	height: 22px;
-}
-
-.banner>ul>li>.nav_left>.four {
-	background-position: -72px 0;
-	height: 22px;
-}
-
-.banner>ul>li>.nav_left>.five {
-	background-position: -90px 0;
-	height: 20px;
-}
-
-.banner>ul>li>.nav_left>.six {
-	background-position: -108px 0;
-	height: 18px;
-}
-
-.banner>ul>li>.nav_left>.seven {
-	background-position: -126px 0;
-	height: 14px;
-}
-
-.banner>ul>li>.nav_left>.eight {
-	background-position: -144px 0;
-	height: 20px;
-}
-
-.banner>ul>li>.nav_left>.nine {
-	background-position: -162px 0;
-	height: 11px;
-}
-
-.banner>ul>li>.nav_left>.ten {
-	background-position: -180px 0;
-	height: 20px;
-}
-
-.banner>ul>li>.nav_left>.eleven {
-	background-position: -198px 0;
-	height: 20px;
-}
-
-.banner>ul>li>.nav_left>.twelve {
-	background-position: -216px 0;
-	height: 14px;
-}
-
-.banner>ul>li>.nav_left>.ss {
-	height: 17px;
+	height: 23px;;
 }
 
 .banner>ul>li>.nav_rigt:last-of-type {
-	width: 467px;
+	width: 530px;
 	height: 420px;
 	opacity: 0;
 	transition: all 0.5s ease-in-out;

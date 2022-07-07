@@ -16,4 +16,5 @@ mix.js('resources/js/app.js', 'public/js')
         require('tailwindcss')
     ])
     .postCss('resources/css/category.css', 'public/css')
+    .postCss('resources/css/index.css', 'public/css')
     .postCss('resources/css/topic.css', 'public/css');

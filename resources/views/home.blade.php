@@ -1,3 +1,4 @@
+
 @section('headCss')
 <link href="/css/index.css" rel="stylesheet">
 @endsection
@@ -19,193 +20,31 @@
 		</li>
 	</ul>
 	<ul class="absolute">
+		@foreach($categories as $category)
 		<li class="flex flex-nowrap flex-row">
 			<div class="nav_left">
-				<i class="h-sprite one ">
+				<i class="h-sprite ">
+					<img src="/storage/{{$category['picture']}}" alt="">
 				</i>
-				<span>眼部</span>
+				<span>{{$category['title']}}</span>
 			</div>
 			<div class="nav_rigt">
 				<ul class="wrap">
+					@foreach($category['child'] as $partopic)
 					<li class="wrap">
-						<div class="wrap"><a href="/project/195/" target="_blank" rel="nofollow">开眼角<span class="right">&gt;</span></a></div>
+						<div class="wrap"><a href="{{route('showTopic',[$partopic['par_id']])}}" target="_blank" rel="nofollow">{{$partopic['par_title']}}<span class="right">&gt;</span></a></div>
 						<div class="ft12 color6 mt14 ellipsis wd87 left">
-							<span class="mr12"><a href="/project/1442/" target="_blank" rel="nofollow">开外眼角</a></span>
-							<span class="mr12"><a href="/project/774/" target="_blank" rel="nofollow">开内眼角</a></span>
+							@foreach($partopic['child'] as $topic)
+							<span class="mr12"><a href="{{route('showTopic',[$topic['c_id']])}}" target="_blank" rel="nofollow">{{$topic['c_title']}}</a></span>
+							@endforeach
 						</div>
-						<span class="right rh-more"><a href="/project/kyj/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
+						<span class="right rh-more"><a href="{{route('showTopic',[$partopic['par_id']])}}" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
 					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/532/" target="_blank" rel="nofollow">双眼皮<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-							<span class="mr12"><a href="/project/706/" target="_blank" rel="nofollow">全切双眼皮</a></span>
-							<span class="mr12"><a href="/project/1444/" target="_blank" rel="nofollow">埋线双眼皮</a></span>
-							<span class="mr12"><a href="/project/125/" target="_blank" rel="nofollow">定点双眼皮</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/syp/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/1404/" target="_blank" rel="nofollow">去眼袋<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/901/" target="_blank" rel="nofollow">激光去眼袋</a></span>
-							<span class="mr12"><a href="/project/793/" target="_blank" rel="nofollow">眶隔脂肪释放</a></span>
-							<span class="mr12"><a href="/project/1309/" target="_blank" rel="nofollow">内切去眼袋</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/qyd/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/813/" target="_blank" rel="nofollow">卧蚕<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/2224/" target="_blank" rel="nofollow">玻尿酸丰卧蚕</a></span>
-							<span class="mr12"><a href="/project/2260/" target="_blank" rel="nofollow">自体脂肪丰卧蚕</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/wocan/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/1893/" target="_blank" rel="nofollow">下眼睑下至<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/2248/" target="_blank" rel="nofollow">下睑下至</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/xyjxz/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/1339/" target="_blank" rel="nofollow">泪沟<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/2249/" target="_blank" rel="nofollow">自体脂肪丰泪沟</a></span>
-							<span class="mr12"><a href="/project/2250/" target="_blank" rel="nofollow">玻尿酸丰泪沟</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/clg/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/3/" target="_blank" rel="nofollow">去黑眼圈<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/1400/" target="_blank" rel="nofollow">激光去黑眼圈</a></span>
-							<span class="mr12"><a href="/project/1319/" target="_blank" rel="nofollow">玻尿酸去黑眼圈</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/qhyq/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/2279/" target="_blank" rel="nofollow">眼窝<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/2280/" target="_blank" rel="nofollow">玻尿酸丰眼窝</a></span>
-							<span class="mr12"><a href="/project/2285/" target="_blank" rel="nofollow">自体脂肪丰眼窝</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/yanwo/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/322/" target="_blank" rel="nofollow">眼睑矫正<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/723/" target="_blank" rel="nofollow">上睑提肌</a></span>
-							<span class="mr12"><a href="/project/1021/" target="_blank" rel="nofollow">上眼睑去脂</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/yjzx/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
-					<li class="wrap">
-						<div class="wrap"><a href="/project/846/" target="_blank" rel="nofollow">眼修复<span class="right">&gt;</span></a></div>
-						<div class="ft12 color6 mt14 ellipsis wd87 left">
-
-							<span class="mr12"><a href="/project/2276/" target="_blank" rel="nofollow">眼部修复</a></span>
-						</div>
-						<span class="right rh-more"><a href="/project/ybxf/" target="_blank" rel="nofollow">更多&gt;&gt;</a></span>
-					</li>
+					@endforeach
 				</ul>
 			</div>
 		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite two">
-				</i>
-				<span>鼻部</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite three">
-				</i>
-				<span>面部</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite four">
-				</i>
-				<span>皮肤</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite five">
-				</i>
-				<span>脂肪</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite six">
-				</i>
-				<span>胸部</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite eight">
-				</i>
-				<span>毛发</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite ten">
-				</i>
-				<span>口腔</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite nine">
-				</i>
-				<span>口唇整形</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite ss">
-				</i>
-				<span>微整注射</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite eleven">
-				</i>
-				<span>耳部整形</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
-		<li class="flex flex-nowrap flex-row">
-			<div class="nav_left">
-				<i class="h-sprite seven">
-				</i>
-				<span>眉部整形</span>
-			</div>
-			<div class="nav_rigt"></div>
-		</li>
+		@endforeach
 	</ul>
 </div>
 @endsection
