@@ -22,19 +22,19 @@ class DoctorController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('name', '医生姓名');
             $grid->column('title', '医生头衔');
-            $grid->column('picture', '医生照片');
+            $grid->column('picture', '医生照片')->image('http://cf.test/storage/', 50, 100);
             $grid->column('age', '从业年限');
-            $grid->column('introduce', '医生简介');
+            $grid->column('introduce', '医生简介')->width('10%')->limit(20, '...');
             $grid->column('school', '学历')->width('10%')->limit(20, '...');
             $grid->tags()->pluck('title')->label();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
+                $filter->equal('name', '医生姓名');
             });
+            $grid->disableViewButton();
         });
     }
-
     /**
      * Make a form builder.
      *
