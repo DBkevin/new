@@ -14,4 +14,8 @@ class Doctor extends Model
 	{
 		return $this->belongsToMany('App\Models\Topic', 'tags', 'doctor_id', 'topic_id');
 	}
+	public function Information()
+	{
+		return $this->hasOne('App\Models\Information');
+	}
 }

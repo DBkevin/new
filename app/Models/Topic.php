@@ -47,4 +47,8 @@ class Topic extends Model
 	{
 		return $this->belongsToMany('App\Models\Doctor', 'tags', 'topic_id', 'doctor_id');
 	}
+	public function Information()
+	{
+		return $this->hasOne('App\Models\Information');
+	}
 }
