@@ -20,7 +20,6 @@ class FileController
 
 		// 获取上传的文件
 		$file = $this->file();
-
 		// 获取上传的字段名称
 		$column = $this->uploader()->upload_column;
 

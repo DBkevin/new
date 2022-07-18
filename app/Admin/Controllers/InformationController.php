@@ -30,7 +30,7 @@ class InformationController extends AdminController
             $grid->column('body', '文章内容')->display('查看内容')
                 ->modal(function ($modal) {
                     // 设置弹窗标题
-                    $modal->title( $this->title);
+                    $modal->title($this->title);
                     // 自定义图标
                     $modal->icon('feather icon-book');
                     $card = new Card(null, $this->body);
@@ -68,8 +68,8 @@ class InformationController extends AdminController
                     return [$topics->id => $topics->title];
                 }
             })->ajax('gettopic')->rules('required');
-            $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name",'id'))->rules('required');
-            $form->editor('body', "文章内容");
+            $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
+            $form->editor('body', "文章内容")->rules("required");
             $form->display('created_at');
             $form->display('updated_at');
         });
