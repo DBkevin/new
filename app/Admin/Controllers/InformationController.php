@@ -69,7 +69,7 @@ class InformationController extends AdminController
                 }
             })->ajax('gettopic')->rules('required');
             $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
-            $form->editor('body', "文章内容")->rules("required");
+            $form->editor('body', "文章内容")->rules("required")->imageDirectory('article');
             $form->display('created_at');
             $form->display('updated_at');
         });
