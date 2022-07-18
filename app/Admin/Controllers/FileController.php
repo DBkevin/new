@@ -8,7 +8,7 @@ class FileController
 {
 	use HasUploadedFile;
 
-	public function handle()
+	public function handle($dir="images")
 	{
 		$disk = $this->disk();
 
@@ -24,7 +24,6 @@ class FileController
 		// 获取上传的字段名称
 		$column = $this->uploader()->upload_column;
 
-		$dir = 'images';
 		$newName = $column . '_' . time() . '_' . Str::random(10) . '.'  . $file->getClientOriginalExtension();
 		$result = $disk->putFileAs($dir, $file, $newName);
 

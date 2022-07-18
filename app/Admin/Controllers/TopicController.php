@@ -7,6 +7,7 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Http\Controllers\AdminController;
 use App\Models\Category as CategoryModel;
+use Illuminate\Http\Request;
 use App\Admin\Repositories\Topic as RepTopic;
 
 class TopicController extends AdminController
@@ -22,15 +23,15 @@ class TopicController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('title', '标题')->width('10%')->limit(20, '...');
             $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
-            $grid->column('dirname','栏目地址')->badge();
-            $grid->column('picture','栏目缩略图')->image('http://cf.test/storage/', 50, 100);
+            $grid->column('dirname', '栏目地址')->badge();
+            $grid->column('picture', '栏目缩略图')->image('http://cf.test/storage/', 50, 100);
             $grid->column('description', '栏目描述')->width('10%')->limit(20, '...');
             $grid->column('keyword', '栏目关键字')->width('10%')->limit(20, '...');
             $grid->column('category.title', '所属大栏目')->badge('danger');;
-            $grid->column('parent.title', '父级标题')->display(function($title){
-                if(!$title){
+            $grid->column('parent.title', '父级标题')->display(function ($title) {
+                if (!$title) {
                     return '无父级';
-                }else{
+                } else {
                     return $title;
                 }
             })->badge('success');
@@ -55,7 +56,7 @@ class TopicController extends AdminController
             $form->display('id');
             $form->text('title', '栏目标题')->creationRules('unique:topic,title|min:2', ['unique' => '标题不能重复', 'min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('seotitle', 'seo标题');
-            $form->text('dirname','栏目地址')->creationRules('unique:topic,dirname|min:2',['unique' => '标题不能重复', 'min' => '最少需要2个字符'])->updateRules('min:2');
+            $form->text('dirname', '栏目地址')->creationRules('unique:topic,dirname|min:2', ['unique' => '标题不能重复', 'min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('description', '栏目描述');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images')->autoUpload();
             $form->text('keyword', '关键词用[半角逗号]分割');
@@ -91,5 +92,10 @@ class TopicController extends AdminController
             $form->display('created_at');
             $form->display('updated_at');
         });
+    }
+    public function api(Request $request)
+    {
+        $q = $request->get('q');
+        return Topic::without(['Category', 'Notice', 'Introtdtion', 'Info', 'Child', 'Parent','Commit'])->where('title', 'like', "%$q%")->paginate(null, ['id', 'title as text']);
     }
 }

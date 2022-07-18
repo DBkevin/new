@@ -15,6 +15,9 @@ Route::group([
     $router->get('/', 'HomeController@index');
     $router->resource('Category','CategoryController');
     $router->resource('topic','TopicController');
+    $router->get('gettopic','TopicController@api');
+    $router->get('getdoctor','DoctorController@api');
     $router->resource('doctor','DoctorController');
-    $router->any('users/images', 'FileController@handle');
+    $router->resource('information','InformationController');
+    $router->any('users/images/{dir?}', 'FileController@handle');
 });

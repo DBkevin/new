@@ -16,6 +16,6 @@ class Doctor extends Model
 	}
 	public function Information()
 	{
-		return $this->hasOne('App\Models\Information');
+		return $this->hasMany('App\Models\Information');
 	}
 }

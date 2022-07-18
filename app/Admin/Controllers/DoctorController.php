@@ -26,7 +26,7 @@ class DoctorController extends AdminController
             $grid->column('age', '从业年限');
             $grid->column('introduce', '医生简介')->width('10%')->limit(20, '...');
             $grid->column('school', '学历')->width('10%')->limit(20, '...');
-            $grid->tags()->pluck('title')->label();
+            $grid->tags('擅长项目')->pluck('title')->label();
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->filter(function (Grid\Filter $filter) {
@@ -54,5 +54,8 @@ class DoctorController extends AdminController
             $form->display('created_at');
             $form->display('updated_at');
         });
+    }
+    public function api(){
+            return \App\Models\Doctor::select('id', 'name as text')->get();
     }
 }
