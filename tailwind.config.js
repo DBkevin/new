@@ -10,7 +10,8 @@ module.exports = {
       colors: {
         'headbg': '#f2f2f2',
         'headBor': '#dedede',
-        'doctor':'#ff9d00',
+        'doctor': '#ff9d00',
+        'bashColor':'#ff5959',
       },
       spacing: {
         'cen': '75rem',
@@ -22,7 +23,8 @@ module.exports = {
         '15': '3.75rem',
         'doctor-item-h': '323px',
         'doctor-item-w': '280px',
-        
+        'article': '850px',
+        '25': "6.25rem",
       }
     },
   },

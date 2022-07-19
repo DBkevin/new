@@ -13,7 +13,7 @@
 	@yield('headCss')
 </head>
 
-<body class="font-sans">
+<body class="font-sans" style="background: #f5f5f5">
 	<div class="mx-auto min-w-min xl">
 		@include('layouts.header')
 		@include('layouts._headMenu')
