@@ -242,7 +242,12 @@
 
 }
 
-
+.zslist >li:first-of-type >span:first-of-type{
+	background-color: #ec6909;
+}
+.zslist >li:nth-child(2) >span:first-of-type{
+	background-color: #ec6909;
+}
 .navs-menu {
 	background-color: #FF5959;
 	height: 45px;

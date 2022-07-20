@@ -8,8 +8,8 @@ class ZsController extends Controller
 {
     //
     public function index(Information $information){
-        dd('1234');
-        return view('information.index');
+        $zs=Information::all();
+        return view('information.index',compact('zs'));
     }
     public function show(Request $request){
         $zs=Information::find($request->id)->load("doctor");
