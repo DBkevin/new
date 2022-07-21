@@ -18,4 +18,8 @@ class Doctor extends Model
 	{
 		return $this->hasMany('App\Models\Information');
 	}
+	public function Question()
+	{
+		return $this->hasMany('App\Models\Question');
+	}
 }

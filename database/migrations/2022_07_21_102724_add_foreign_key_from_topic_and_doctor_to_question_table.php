@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddForeignKeyFromTopicAndDoctorToInformationTable extends Migration
+class AddForeignKeyFromTopicAndDoctorToQuestionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddForeignKeyFromTopicAndDoctorToInformationTable extends Migration
      */
     public function up()
     {
-        Schema::table('information', function (Blueprint $table) {
+        Schema::table('question', function (Blueprint $table) {
             //
             $table->integer('topic_id')->unsigned()->after('id')->commit('外键和topic关联');
             $table->foreign('topic_id')->references('id')->on('topic')->onDelete('cascade')->onUpdate('cascade');
@@ -29,11 +29,11 @@ class AddForeignKeyFromTopicAndDoctorToInformationTable extends Migration
      */
     public function down()
     {
-        Schema::table('information', function (Blueprint $table) {
+        Schema::table('question', function (Blueprint $table) {
             //
-            $table->dropForeign('information_topic_id_foreign');
+            $table->dropForeign('question_topic_id_foreign');
             $table->dropColumn('topic_id');
-            $table->dropForeign('information_doctor_id_foreign');
+            $table->dropForeign('question_doctor_id_foreign');
             $table->dropColumn('doctor_id');
         });
     }

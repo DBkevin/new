@@ -13,11 +13,12 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
-    $router->resource('Category','CategoryController');
-    $router->resource('topic','TopicController');
-    $router->get('gettopic','TopicController@api');
-    $router->get('getdoctor','DoctorController@api');
-    $router->resource('doctor','DoctorController');
-    $router->resource('information','InformationController');
+    $router->resource('Category', 'CategoryController');
+    $router->resource('topic', 'TopicController');
+    $router->get('gettopic', 'TopicController@api');
+    $router->get('getdoctor', 'DoctorController@api');
+    $router->resource('doctor', 'DoctorController');
+    $router->resource('information', 'InformationController');
+    $router->resource('question', 'QuestionController');
     $router->any('users/images/{dir?}', 'FileController@handle');
 });

@@ -24,7 +24,7 @@ class InformationController extends AdminController
             $grid->column('id')->sortable();
             $grid->column('title', '标题')->width('10%')->limit(20, '...');
             $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
-            $grid->column('discription', '栏目描述')->width('10%')->limit(20, '...');
+            $grid->column('description', '栏目描述')->width('10%')->limit(20, '...');
             $grid->column('picture', '栏目缩略图')->image('http://cf.test/storage/', 50, 100);
             $grid->column('keywords', '栏目关键字')->width('10%')->limit(20, '...');
             $grid->column('body', '文章内容')->display('查看内容')
@@ -59,7 +59,7 @@ class InformationController extends AdminController
             $form->display('id');
             $form->text('title', "标题")->creationRules('unique:information,title|min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('seotitle', "seo标题,可为空");
-            $form->text('discription', "文章描述")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
+            $form->text('description', "文章描述")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload();
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->select('topic_id', '所属项目')->options(function ($id) {

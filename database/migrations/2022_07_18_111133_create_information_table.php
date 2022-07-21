@@ -17,7 +17,7 @@ class CreateInformationTable extends Migration
             $table->increments('id');
             $table->string('title')->unique()->default('')->comment('资讯标题');
             $table->string('seotitle')->nullable()->comment('seo标题');
-            $table->string('discription')->default('')->comment('描述');
+            $table->string('description')->default('')->comment('描述');
             $table->string('keywords')->default('')->comment('关键词');
             $table->text('body')->comment('文章内容');
             $table->timestamps();
