@@ -26,6 +26,7 @@ class CategoryController extends Controller
         }
         $topics=null;
         $topics=$t;
+
         return  view('Category/index', compact('category', 'topics'));
     }
 }

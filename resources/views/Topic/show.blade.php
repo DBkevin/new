@@ -197,8 +197,14 @@
 					<div class="wd400 float-left" style="margin-right:28px">
 						<div class=" font16 color6"><span class="blue-line"></span>{{$topic->title}}的相关文章：</div>
 						<ul class=" blue-list blue-lists">
-							<!-- <li class=" ellipsis"><a href="/zs/137019.html" target="_blank"><span></span>额头扁平，如何让额头变饱满</a></li>
-							<li class=" ellipsis"><a href="/zs/201382.html" target="_blank"><span></span>额头太窄怎么变宽</a></li> -->
+							@foreach($zs as $item)
+							<li class="ellipsis">
+								<a href="{{route('zsShow',[$item->id])}}" target="_blank">
+									<span></span>
+									{{$item->title}}
+								</a>
+							</li>
+							@endforeach
 						</ul>
 					</div>
 					<div class="wd400 float-left">
@@ -210,7 +216,7 @@
 					</div>
 				</div>
 			</div>
-			@if(@empty($topic))
+			@isset($child)
 			<div class="re-project  mb30 mt30">
 				<div class="title"><span></span>相关项目<span></span></div>
 				<div class="re-items">
@@ -276,8 +282,8 @@
 					</div>
 				</div>
 			</div>
-			@endif
-			
+			@endisset
+
 		</li>
 		<li class="w-tcright">
 			<div class="relative-zx">

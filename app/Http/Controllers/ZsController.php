@@ -12,7 +12,7 @@ class ZsController extends Controller
         return view('information.index',compact('zs'));
     }
     public function show(Request $request){
-        $zs=Information::find($request->id)->load("doctor");
+        $zs=Information::findOrFail($request->id)->load("doctor");
         return view('information.show',compact('zs'));
     }
 }
