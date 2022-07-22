@@ -22,3 +22,7 @@ Route::get('/doctor','DoctorController@Index')->name('doctorIndex');
 Route::get('/doctor/{doctor:id}','DoctorController@show')->name('doctorShow');
 Route::get('/zs',"ZsController@index")->name("zsIndex");
 Route::get("/zs/{id}","ZsController@show")->name('zsShow');
+Route::get('/question',"QuestionController@index")->name("questionIndex");
+Route::get("/question/{id}","QuestionController@show")->name('questionShow');
+
+

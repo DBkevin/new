@@ -241,7 +241,15 @@
 
 
 }
-
+#question-right-xg > li:first-of-type >span{
+	color: #ff5959;
+}
+#question-right-xg > li:nth-child(2) >span{
+	color: #ff5959;
+}
+#question-right-xg > li:nth-child(3) >span{
+	color: #ff5959;
+}
 .zslist >li:first-of-type >span:first-of-type{
 	background-color: #ec6909;
 }

@@ -73,15 +73,12 @@
 					<span style="background:url(/images/small-icon.png) ;margin-right:5px;vertical-align:sub;display:inline-block;width:18px;height:14px;background-position:-93px 0"></span>
 					医美科普
 				</span>
-				<div class="flex items-center justify-center text-white m-1 bg-bashColor h-7 cursor-pointer  w-25 rounded-2xl">
-					<img src="/images/zixun.svg" style="width:22px;margin-right:5px;"alt="">
-					在线资讯
-				</div>
+				@include('layouts.zixu')
 			</div>
 		</div>
 	</div>
 	<div class="w-article bg-white pt-8 pr-10 pb-14 pl-10 overflow-hidden text-xl">
-			{!!$zs->body!!}
+		{!!$zs->body!!}
 	</div>
 </div>
 @endsection

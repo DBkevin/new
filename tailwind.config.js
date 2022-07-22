@@ -6,7 +6,21 @@ module.exports = {
   ],
   content: [],
   theme: {
+    boxShadow: {
+      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
+      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      lg: ' 0 0 15px rgba(250, 206, 206,.8),0 0 15px rgba(250, 206, 206,.8)',
+      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+      '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
+      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
+      none: 'none',
+    },
     extend: {
+      lineHeight: {
+        '11.5':'2.75rem',
+      },
       colors: {
         'headbg': '#f2f2f2',
         'headBor': '#dedede',
@@ -16,7 +30,10 @@ module.exports = {
         '666': '#666',
         '333': '#333',
         'dt': '#7bc1d9',
-
+        'question': '#ff8686',
+        'question-zx': '#ffea61',
+        'question-top': '#e75b4f',
+       'question-border':'#e4e4e4',
       },
       spacing: {
         'cen': '75rem',
@@ -35,7 +52,15 @@ module.exports = {
         '390': '390px',
         '4.5': '1.125rem',
         '7.5': '27px',
-        'zslist':'146px',
+        'zslist': '146px',
+        'qsw': '770px',
+        'p30': '30px',
+        'p40': '40px',
+        '61': '15.375rem',
+        '50.5': '12.625rem',
+        '170': '170px',
+        '5.5':'1.375rem',
+
       }
     },
     fontSize: {
