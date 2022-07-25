@@ -33,7 +33,8 @@ module.exports = {
         'question': '#ff8686',
         'question-zx': '#ffea61',
         'question-top': '#e75b4f',
-       'question-border':'#e4e4e4',
+        'question-border': '#e4e4e4',
+       'question-inde':'#5ac5e5',
       },
       spacing: {
         'cen': '75rem',
@@ -47,6 +48,7 @@ module.exports = {
         'doctor-item-w': '280px',
         'article': '850px',
         '25': "6.25rem",
+        '27':'6.75rem',
         '6/10': '61%',
         '27-5': '104px',
         '390': '390px',
@@ -59,7 +61,11 @@ module.exports = {
         '61': '15.375rem',
         '50.5': '12.625rem',
         '170': '170px',
-        '5.5':'1.375rem',
+        '5.5': '1.375rem',
+        '1/10': '10%',
+        '9/10': '90%',
+        '175': '175px',
+        '49':'49px',
 
       }
     },

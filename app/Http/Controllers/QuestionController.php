@@ -10,7 +10,8 @@ class QuestionController extends Controller
     //
     public function index(Question $Question)
     {
-        $zs = Question::all();
+        $zs = Question::with(['Topic'])->get()->toArray();
+        //内容多了在放出来
         return view('question.index', compact('zs'));
     }
     public function show(Request $request)
