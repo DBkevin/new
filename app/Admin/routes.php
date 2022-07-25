@@ -20,5 +20,6 @@ Route::group([
     $router->resource('doctor', 'DoctorController');
     $router->resource('information', 'InformationController');
     $router->resource('question', 'QuestionController');
+    $router->resource('news', 'NewsController');
     $router->any('users/images/{dir?}', 'FileController@handle');
 });
