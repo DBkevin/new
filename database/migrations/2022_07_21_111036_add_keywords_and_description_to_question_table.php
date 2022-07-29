@@ -15,7 +15,7 @@ class AddKeywordsAndDescriptionToQuestionTable extends Migration
     {
         Schema::table('question', function (Blueprint $table) {
             //
-            $table->string('description')->default('')->after('titel')->comment('描述');
+            $table->string('description')->default()->after('title')->comment('描述');
             $table->string('keywords')->default('')->after('title')->comment('关键词');
         });
     }

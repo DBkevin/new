@@ -25,4 +25,6 @@ Route::get("/zs/{id}", "ZsController@show")->name('zsShow');
 Route::get('/question', "QuestionController@index")->name("questionIndex");
 Route::get("/question/{id}", "QuestionController@show")->name('questionShow');
 Route::get('/news', "NewsController@index")->name("NewsIndex");
-Route::get("/news/{id}", "NewsController@show")->name('NewsShow');
+Route::get("/news/{id}", "NewsController@show")->name('NewsShow')->where('id', '[0-9]+');
+Route::get('/news/{dirname}', "NewsController@list")->name("NewsList")->where('dirname', '[A-Za-z\-\+]+');
+

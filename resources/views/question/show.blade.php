@@ -88,7 +88,7 @@
 				<p class="mt-4 mb-4 text-base leading-7 text-999">
 					{{$question->abody}}
 				</p>
-				<img src="/images/question_zx.png" class="w-full mt-4 mb-4" alt="">
+				@include("layouts._showBanner")
 			</div>
 		</div>
 		<div class="w-article-zx  h-auto cursor-default bg-white text-back text-black  relative overflow-x-hidden mt-12 ">
@@ -125,100 +125,7 @@
 		</div>
 	</div>
 	<div class="w-1/4 mt-p30 ">
-		<div class="mt-5 bg-white h-170 w-full  text-center pt-1">
-			<p class="text-333 text-2xl mt-6 mb-3">厦门美莱整形咨询</p>
-			<p class="text-base text-666">立刻了解适合自身的变美方案</p>
-			<a href="#" class="w-11/12 h-11 bg-question-zx mt-5 text-lg block mx-auto text-666 rounded-md leading-11.5" >
-				免费在线咨询
-			</a>
-		</div>
-		<div class="mt-5 w-full mb-5">
-			<div class="pb-5 overflow-hidden text-xl text-333">
-				<span class="w-1 h-5 5 mr-4 align-middle inline-block bg-inline-block bg-question rounded "></span>相关攻略
-			</div>
-			<ul class="bg-white pt-1 pl-2.5 pr-3.5 pb-p30" id="question-right-xg">
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">深圳除皱美容整形医院哪家好？哪里好？2021激光除皱美容价目表曝光</a>
-				</li>
-			</ul>
-		</div>
-		<div class="mt-5 w-full mb-5">
-			<div class="pb-5 overflow-hidden text-xl text-333">
-				<span class="w-1 h-5 5 mr-4 align-middle inline-block bg-inline-block bg-question rounded "></span>相关整形知识
-			</div>
-			<ul class="bg-white pt-1 pl-2.5 pr-3.5 pb-p30" id="question-right-xg">
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				<li class="w-full mt-5 truncate">
-					<span class="w-7.5 h-7.5 text-2xl mr-2.5 mt-2.5 inline-block italic align-middle text-999">1.</span>
-					<a href="#" class="overflow-ellipsis  text-lg whitespace-nowrap align-middle  text-333 align-left w-full hover:text-bashColor ">假体隆鼻可以垫多高</a>
-				</li>
-				
-			</ul>
-		</div>
+		@include('layouts._showRightList')
 	</div>
 </div>
 @endsection
