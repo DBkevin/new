@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'IndexController@Index')->name('index');
+Route::get('/project','CategoryController@Home')->name('categoryIndex');
 Route::get('/project/{id}', 'TopicController@show')->where('id', '[0-9]+')->name("showTopic"); //匹配数字必须考前
 Route::get("/project/{category:dirname}", "CategoryController@Index")->where('dirname', '[A-Za-z]+')->name('catgory');
 Route::get('/doctor', 'DoctorController@Index')->name('doctorIndex');

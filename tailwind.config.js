@@ -23,6 +23,7 @@ module.exports = {
       '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       none: 'none',
+      project:'0 0 8px rgb(235 235 235 / 80%),0 0 8px rgb(235 235 235 / 80%)',
     },
     extend: {
       lineHeight: {
@@ -52,7 +53,8 @@ module.exports = {
         '5ea3f0': '#5ea3f0',
         'f5f5f5': '#f5f5f5',
         'cacaca': '#cacaca',
-        'ec6909':'#ec6909',
+        'ec6909': '#ec6909',
+        'bbf3f7':'#bbf3f7',
       },
       minHeight: {
         '155': '155px',
@@ -109,7 +111,9 @@ module.exports = {
         '630px': '630px',
         '290px': '290px',
         '176px': '176px',
-        '471px':'471px',
+        '471px': '471px',
+        '420px': '420px',
+        '580px':'580px',
       }
     },
     fontSize: {

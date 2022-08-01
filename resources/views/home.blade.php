@@ -1,11 +1,10 @@
-
 @section('headCss')
 <link href="/css/index.css" rel="stylesheet">
 @endsection
 @extends('layouts.default')
 @section('content')
 @include('layouts._IndexAndDoctorMenu')
-<div class="w-full banner mx-auto  relative">
+<div class="w-full h-420px banner mx-auto  relative">
 	<ul class="w-full mx-auto">
 		<li style="background:url('/images/ban_1.jpg') center">
 		</li>

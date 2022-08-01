@@ -5,14 +5,17 @@
 			<span>整形项目</span>
 		</a>
 		@foreach($menus->all() as $item)
-		@if($item->title==$thisCategory)
-		<a href="/project/{{$item->dirname}}" class="active" data-url="{{$item->dirname}}" target="_blank">
+		@isset($thisCategory)
+			@if($item->title==$thisCategory)
+			<a href="/project/{{$item->dirname}}" class="active" data-url="{{$item->dirname}}" target="_blank">
 			@else
 			<a href="/project/{{$item->dirname}}" data-url="{{$item->dirname}}" target="_blank">
-				@endif
+			@endif
+		@endisset
+			<a href="/project/{{$item->dirname}}" data-url="{{$item->dirname}}" target="_blank">
 				<span>{{$item->title}}</span>
 			</a>
-			@endforeach
+		@endforeach
 	</li>
 </ul>
 <script>
