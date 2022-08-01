@@ -18,7 +18,7 @@
 		@foreach($topics as $topic)
 		<li class="w-580px h-60 mb-10 border text-666 text-base shadow-project hover:border-bbf3f7 relative border-white overflow-hidden">
 			<a href="{{route('showTopic',[$topic->id])}}" class="w-full h-full block">
-				<img src="/storage/{{$topic->picture}}" alt="{{$tipic->title}}" class="block w-full" style="object-fit: scale-down;">
+				<img src="/storage/{{$topic->picture}}" alt="{{$topic->title}}" class="block w-full" style="object-fit: scale-down;">
 				<p class="absolute z-30 text-2xl font-bold left-6 top-40">
 					{{$topic->title}}
 				</p>
