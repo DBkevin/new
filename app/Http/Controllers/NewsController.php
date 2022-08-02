@@ -16,21 +16,20 @@ class NewsController extends Controller
         $zs = News::all();
         return view('News.index', compact('zs'));
     }
-    public function list(Request $request){
-       $dirname=$request->dirname;
-       $news=[];
-       //判断是category 还是topic
-        $dir=Category::where('dirname',$dirname)->first();
-        if($dir){
-            
-        }else{
-           
+    public function list(Request $request)
+    {
+        $dirname = $request->dirname;
+        $news = [];
+        //判断是category 还是topic
+        $dir = Category::where('dirname', $dirname)->first();
+        if ($dir) {
+        } else {
         }
-        return view('News.list',compact('news'));
+        return view('News.list', compact('news'));
     }
     public function show(Request $request)
     {
-        $new = News::findOrFail($request->id)->load('topic');
+        $new = News::findOrFail($request->id);
         return view('News.show', compact('new'));
     }
 }

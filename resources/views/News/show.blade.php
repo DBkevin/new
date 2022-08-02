@@ -66,34 +66,8 @@
 		</div>
 		<div class="w-article-zx bg-white cursor-auto  h-auto">
 			<div class=" mx-auto pt-p30 pb-50 px-10 ">
-				<div class="flex">
-					<div class="w-15 h-155 text-white align-center text-lg bg-bashColor flex justify-center items-center">
-						目录
-					</div>
-					<div class="w-710 min-h-155 h-155 text-lg text-808080 flex justify-center items-center">
-						<ul class="w-full text-bash pl-2 5 overflow-hidden mx-auto flex  flex-wrap ">
-							@foreach($new->Child as $item)
-							@if($loop->odd)
-							<li class="w-300 pl-5 pr-7.5  hover:text-bashColor border-r border-dashed"><a href="#prev{{$loop->iteration}}"><span>{{$loop->iteration}}.</span> {{$item->title}}</a></li>
-							@else
-							<li class="w-300 pl-5 pr-7.5  hover:text-bashColor "><a href="#prev{{$loop->iteration}}"><span>{{$loop->iteration}}.</span> {{$item->title}}</a></li>
-							@endif
-							@endforeach
-						</ul>
-					</div>
-				</div>
-				<ul class="pt-15 overflow-hidden">
-					@foreach($new->Child as $item)
-					<li class="w-full my-8" id="prev{{$loop->iteration}}">
-						<h2 class="text-2xl my-4">{{$loop->iteration}} 、{{$item->title}}</h2>
-						<div class="text-bash text-666 leading-8">
-							{!!$item->body!!}
-							@if($loop->first)
-							@include('layouts.zixu',['height'=>'h-12','width'=>'w-full','textsize'=>'text-xl'])
-							@endif
-						</div>
-					</li>
-					@endforeach
+				<ul class="pt-4 overflow-hidden">
+					{!!$new->body!!}
 					@include("layouts._showBanner")
 				</ul>
 			</div>

@@ -5,7 +5,6 @@ namespace App\Models;
 use Dcat\Admin\Traits\HasDateTimeFormatter;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\NewsChild;
 class News extends Model
 {
 	use HasDateTimeFormatter;
@@ -13,8 +12,5 @@ class News extends Model
 	public function Topic()
 	{
 		return $this->belongsTo('App\Models\Topic');
-	}
-	public function Child(){
-		return $this->hasMany(NewsChild::class,'news_id','id');
 	}
 }
