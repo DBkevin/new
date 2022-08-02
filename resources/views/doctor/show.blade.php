@@ -14,7 +14,7 @@
 
 <ul class="h-9 w-full bg-headbg border-b border-t border-headBor border-solid">
 	<li class="h-9 w-cen flex flex-row mx-auto items-center text-gray-400 text-sm">
-		<a href="/">{{env('APP_NAME')}}</a>> <a href="{{route('doctorIndex')}}">找医生</a>><a href="{{route('doctorShow',[$doctor->id])}}">{{$doctor->name}}</a>
+		<a href="/">{{env('APP_NAME')}}</a>> <a href="{{route('doctorIndex')}}">找医生</a>><a href="{{route('doctorShow',['id'=>$doctor->id])}}">{{$doctor->name}}</a>
 	</li>
 </ul>
 <!--列表-->

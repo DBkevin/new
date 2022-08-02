@@ -34,6 +34,12 @@ class QuestionController extends AdminController
             $grid->column('doctor.name', '所属医生')->badge('primary');
             $grid->column('abody', "回答内容")->width('8%')->limit(10, '...');;
             $grid->disableViewButton();
+            $grid->actions(function (Grid\Displayers\Actions $actions) {
+                //当前ID
+                $id = $actions->row->id;
+                $url = route('questionShow', ['id' => $id]);
+                $actions->append("<a href='$url' target='_blank'><i class='fa fa-eye'></i></a>");
+            });
         });
     }
 
@@ -62,16 +68,33 @@ class QuestionController extends AdminController
             $form->number('qcount', "问题关注人数,可不填")->default(0);
             $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->textarea('abody', "回答内容")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');;
+            if ($form->isEditing()) {
+                $id = $form->getKey();
+                $form->tools(function (Form\Tools $tools) use ($id) {
+                    $tools->disableView();
+                    $url = route('questionShow', ['id' => $id]);
+                    $tools->append("<a class='btn btn-sm btn-success' href='$url'  target='_blank'><i class='fa fa-eye'></i>&nbsp;&nbsp;查看</a>");
+                });
+            }
             $form->display('created_at');
             $form->display('updated_at');
-            $form->saving(function(Form $form){
-                if($form->qage==0){
-                    $form->qage=random_int(18,50);
+            $form->saving(function (Form $form) {
+                if ($form->qage == 0) {
+                    $form->qage = random_int(18, 50);
                 }
-                if($form->qcount==0){
-                    $form->qcount=random_int(25,9999);
+                if ($form->qcount == 0) {
+                    $form->qcount = random_int(25, 9999);
                 }
-               
+            });
+             // 去掉`查看`checkbox
+            $form->footer(function ($footer) {
+                $footer->disableViewCheck();
+
+                // 去掉`继续编辑`checkbox
+                $footer->disableEditingCheck();
+
+                // 去掉`继续创建`checkbox
+                $footer->disableCreatingCheck();
             });
         });
     }

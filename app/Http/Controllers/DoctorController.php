@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin\Repositories\Commit;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 
@@ -13,7 +12,8 @@ class DoctorController extends Controller
         $doctors=  Doctor::all();
         return view('doctor.index',compact('doctors'));
     }
-    public function show(Doctor $doctor){
+    public function show(Request $request,Doctor $doctor){
+        $doctor=Doctor::find($request->id);
         return view('doctor.show',compact('doctor'));
     }
 }

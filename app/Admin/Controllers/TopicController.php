@@ -41,6 +41,12 @@ class TopicController extends AdminController
                 $filter->equal('id');
             });
             $grid->disableViewButton();
+            $grid->actions(function (Grid\Displayers\Actions $actions) {
+                //当前ID
+                $id = $actions->row->id;
+                $url = route('showTopic', ['id' => $id]);
+                $actions->append("<a href='$url' target='_blank'><i class='fa fa-eye'></i></a>");
+            });
         });
     }
 
@@ -91,11 +97,29 @@ class TopicController extends AdminController
             $form->textarea('Notice.sideeffects', '副作用及处理')->rows(3);
             $form->display('created_at');
             $form->display('updated_at');
+            // 去掉`查看`checkbox
+            if ($form->isEditing()) {
+                $id = $form->getKey();
+                $form->tools(function (Form\Tools $tools) use ($id) {
+                    $tools->disableView();
+                    $url = route('showTopic', ['id' => $id]);
+                    $tools->append("<a class='btn btn-sm btn-success' href='$url'  target='_blank'><i class='fa fa-eye'></i>&nbsp;&nbsp;查看</a>");
+                });
+            }
+            $form->footer(function ($footer) {
+                $footer->disableViewCheck();
+
+                // 去掉`继续编辑`checkbox
+                $footer->disableEditingCheck();
+
+                // 去掉`继续创建`checkbox
+                $footer->disableCreatingCheck();
+            });
         });
     }
     public function api(Request $request)
     {
         $q = $request->get('q');
-        return Topic::without(['Category', 'Notice', 'Introtdtion', 'Info', 'Child', 'Parent','Commit'])->where('title', 'like', "%$q%")->paginate(null, ['id', 'title as text']);
+        return Topic::without(['Category', 'Notice', 'Introtdtion', 'Info', 'Child', 'Parent', 'Commit'])->where('title', 'like', "%$q%")->paginate(null, ['id', 'title as text']);
     }
 }

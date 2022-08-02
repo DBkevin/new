@@ -46,6 +46,12 @@ class InformationController extends AdminController
                 $filter->equal('title');
             });
             $grid->disableViewButton();
+            $grid->actions(function (Grid\Displayers\Actions $actions) {
+                //当前ID
+                $id = $actions->row->id;
+                $url = route('zsShow', ['id' => $id]);
+                $actions->append("<a href='$url' target='_blank'><i class='fa fa-eye'></i></a>");
+            });
         });
     }
     /**
@@ -70,8 +76,26 @@ class InformationController extends AdminController
             })->ajax('gettopic')->rules('required');
             $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->editor('body', "文章内容")->rules("required")->imageDirectory('article');
+            if ($form->isEditing()) {
+                $id = $form->getKey();
+                $form->tools(function (Form\Tools $tools) use ($id) {
+                    $tools->disableView();
+                    $url = route('zsShow', ['id' => $id]);
+                    $tools->append("<a class='btn btn-sm btn-success' href='$url'  target='_blank'><i class='fa fa-eye'></i>&nbsp;&nbsp;查看</a>");
+                });
+            }
             $form->display('created_at');
             $form->display('updated_at');
+            // 去掉`查看`checkbox
+            $form->footer(function ($footer) {
+                $footer->disableViewCheck();
+
+                // 去掉`继续编辑`checkbox
+                $footer->disableEditingCheck();
+
+                // 去掉`继续创建`checkbox
+                $footer->disableCreatingCheck();
+            });
         });
     }
 }
