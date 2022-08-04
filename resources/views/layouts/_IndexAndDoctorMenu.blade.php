@@ -1,4 +1,4 @@
-<ul class="w-full navs-menu">
+<ul class="w-full navs-menu bg-white">
 	<li class="w-cen mx-auto flex flex-nowrap align-content  items-center  justify-start ">
 		<a href="{{route('index')}}">首页</a>
 		<a href="{{route('categoryIndex')}}">整形项目</a>

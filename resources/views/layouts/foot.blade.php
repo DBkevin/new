@@ -1,7 +1,7 @@
 <div class="clear-both w-full h-px"></div>
-<div class="relative w-cen mx-auto beauty-born text-gray-500" id="footer">
+<div class="relative w-full mx-auto beauty-born text-gray-500 bg-white pt-p30" id="footer">
 	<div class="beauty-title">美莱，因美而来</div>
-	<div class="relative flex beauty-main mb38 justify-around">
+	<div class="relative flex beauty-main pb-10 justify-around w-cen mx-auto">
 		<div class=" beauty-list relative ">
 			<img src="/images/new-pc-beauity-one.jpg">
 			<div class="absolute text-center part-zy">专业</div>

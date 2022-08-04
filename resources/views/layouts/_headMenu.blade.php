@@ -1,5 +1,6 @@
 <div class="w-full h-9"></div>
-<div class="w-cen mx-auto mt-10 h-24 pb-2 flex  flex-row flex-nowrap align-content items-center justify-between">
+<div class="w-full bg-white pt-10">
+<div class="w-cen mx-auto mt-1 h-24 pb-2 flex  flex-row flex-nowrap align-content items-center justify-between">
 	<img src="/images/logo.png" class="w-72" alt="">
 	<ul class="flex flex-wrap flex flex-col justify-end head-middle">
 		<li class="flex flex-row flex-nowrap align-content items-center justify-around">
@@ -22,4 +23,5 @@
 		</li>
 	</ul>
 	<img src="/images/tel.png" alt="">
+</div>
 </div>

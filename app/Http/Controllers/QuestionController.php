@@ -14,6 +14,7 @@ class QuestionController extends Controller
         //内容多了在放出来
         return view('question.index', compact('zs'));
     }
+
     public function show(Request $request)
     {
         $question = Question::findOrFail($request->id)->load("doctor");

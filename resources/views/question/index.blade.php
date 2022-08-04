@@ -1,6 +1,7 @@
 @section('title','整容咨询_整形美容咨询_整形问答-')
 @extends('layouts.default')
 @section('content')
+@section('body-bg','bg-white')
 <div class="clear-both"></div>
 @include('layouts._IndexAndDoctorMenu')
 <div class="clear-both"></div>

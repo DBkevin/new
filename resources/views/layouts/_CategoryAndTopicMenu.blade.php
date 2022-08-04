@@ -1,21 +1,22 @@
 @inject('menus', 'App\Models\Category')
-<ul class="w-full navs-menu" style="background-color:#fff;">
+<ul class="w-full navs-menu bg-white pt-5 h-17">
 	<li class="w-cen mx-auto flex flex-nowrap align-content items-center justify-start category-list">
 		<a href="{{route('index')}}" target="_blank">
 			<span>首页</span>
 		</a>
 		@foreach($menus->all() as $item)
-		@isset($thisCategory)
+		@if(empty($thisCategory))
+		<a href="/project/{{$item->dirname}}" data-url="{{$item->dirname}}" target="_blank">
+			@else
 			@if($item->title==$thisCategory)
 			<a href="/project/{{$item->dirname}}" class="active" data-url="{{$item->dirname}}" target="_blank">
-			@else
-			<a href="/project/{{$item->dirname}}" data-url="{{$item->dirname}}" target="_blank">
-			@endif
-		@endisset
-			<a href="/project/{{$item->dirname}}" data-url="{{$item->dirname}}" target="_blank">
-				<span>{{$item->title}}</span>
-			</a>
-		@endforeach
+				@else
+				<a href="/project/{{$item->dirname}}" data-url="{{$item->dirname}}" target="_blank">
+					@endif
+					@endif
+					<span>{{$item->title}}</span>
+				</a>
+				@endforeach
 	</li>
 </ul>
 <script>

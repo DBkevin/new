@@ -5,7 +5,7 @@
 @extends('layouts.default')
 @section('content')
 @include('layouts._CategoryAndTopicMenu',['thisCategory'=>$topic->Category->title])
-
+@section('body-bg','bg-white')
 <ul class="h-9 w-full bg-headbg border-b border-t border-headBor border-solid">
 	<li class="h-9 w-cen flex flex-row mx-auto items-center text-gray-400 text-sm">
 		<a href="/">{{env('APP_NAME')}}</a>> <a href="{{route('catgory',[$topic->Category->dirname])}}">{{$topic->Category->title}}</a>><a href="{{route('showTopic',[$topic->id])}}">{{$topic->title}}</a>
@@ -13,36 +13,8 @@
 </ul>
 <!--列表-->
 <div class="w-cen mx-auto">
-	<ul class="topic_concat flex flex-row  divide-x justify-start">
-		<li>
-			<div class="concat-img">
-				<img src="/images/cont1.png" alt="">
-			</div>
-			<div class="concat-info">
-				<span>快速咨询</span>
-				<span>1分钟快速解答</span>
-			</div>
-		</li>
-		<li>
-			<div class="concat-img">
-				<img src="/images/cont2.png" alt="">
-			</div>
-			<div class="concat-info">
-				<span>整形价格查询</span>
-				<span>免费查询真实价格</span>
-			</div>
-		</li>
-		<li>
-			<div class="concat-img">
-				<img src="/images/cont3.png" alt="">
-			</div>
-			<div class="concat-info">
-				<span>真实案例</span>
-				<span>真实反馈案例查询</span>
-			</div>
-		</li>
-	</ul>
-	<ul class="flex flex-row flex-nowrap justify-between">
+	@include('layouts._showTop',['width'=>'w-full','wrap'=>'flex-nowrap','height'=>'h-24.5'])
+	<ul class="flex flex-row flex-nowrap justify-between pb-10">
 		<li class="w-tcleft">
 			<div class="topic overflow-hidden relative beauty-pic">
 				<img src="/storage/{{$topic->picture}}" alt="">
@@ -198,6 +170,9 @@
 						<div class=" font16 color6"><span class="blue-line"></span>{{$topic->title}}的相关文章：</div>
 						<ul class=" blue-list blue-lists">
 							@foreach($zs as $item)
+							@if($loop->index>=2)
+							@break
+							@endif
 							<li class="ellipsis">
 								<a href="{{route('zsShow',[$item->id])}}" target="_blank">
 									<span></span>
@@ -210,13 +185,22 @@
 					<div class="wd400 float-left">
 						<div class=" font16 color6"><span class="blue-line"></span>{{$topic->title}}的相关问答：</div>
 						<ul class=" blue-list blue-listss">
-							<!-- <li class=" ellipsis"><a href="/question/1878704.html" target="_blank"><span></span>丰额头的好方法</a></li>
-							<li class=" ellipsis"><a href="/question/11801.html" target="_blank"><span></span>填充额头是用自身脂肪填充还是玻尿酸好？</a></li> -->
+							@foreach($question as $item)
+							@if($loop->index>=2)
+							@break
+							@endif
+							<li class="ellipsis">
+								<a href="{{route('questionShow',[$item->id])}}" target="_blank">
+									<span></span>
+									{{$item->title}}
+								</a>
+							</li>
+							@endforeach
 						</ul>
 					</div>
 				</div>
 			</div>
-			@isset($child)
+			@if(!empty($child[0]))
 			<div class="re-project  mb30 mt30">
 				<div class="title"><span></span>相关项目<span></span></div>
 				<div class="re-items">
@@ -282,7 +266,7 @@
 					</div>
 				</div>
 			</div>
-			@endisset
+			@endif
 
 		</li>
 		<li class="w-tcright">
@@ -294,71 +278,66 @@
 					@endforeach
 				</ul>
 			</div>
-			<!--
 			<div class=" relative-zx mt20">
 				<h3><i class="master-spirte rela-ns"></i>相关攻略</h3>
 				<ul class="ns-box">
+					@foreach($news as $item)
 					<li>
-						<div class=" ns-img">
-							<a href="/news/46378.html" target="_blank">
-								<img src="2020/08/27/1121086208-o">
+						<div class="ns-img">
+							<a href="{{route('NewsShow',[$item->id])}}" target="_blank" class="overflow-hidden w-79px h-59px inline-block">
+								<img  src="/storage/{{$item->picture}}">
 							</a>
 						</div>
-						<div class=" ns-text">
-							<div class=" two-line"><a href="/news/46378.html" target="_blank">做眼角提升手术效果对比图？</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>2020-08-27</div>
+						<div class="ns-text">
+							<div class=" two-line"> <a href="{{route('NewsShow',[$item->id])}}" target="_blank">{{$item->title}}</a></div>
+							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>{{$item->created_at->format('Y.m.d')}}</div>
 						</div>
 					</li>
+					@endforeach
 				</ul>
 			</div>
--->
-			<!--
 			<div class=" relative-zx mt20">
 				<h3><i class="master-spirte rela-qs"></i>相关咨询</h3>
 				<ul class="zx-box">
+					@foreach($question as $item)
 					<li>
-						<div class=" zx-wen ellipsis"><i class="com-project"></i><a href="/question/39560.html" target="_blank">开眼角价格</a></div>
+						<div class=" zx-wen ellipsis"><i class="com-project"></i><a href="{{route('questionShow',[$item->id])}}" target="_blank">{{$item->title}}</a></div>
 						<div class=" zx-da">
-							<i class="com-project left"></i>
+							<i class="com-project float-left"></i>
 							<div class="left answer">
-								<div><a href="/question/39560.html" target="_blank">
-										<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开眼角的手术费用大致是在4000-15000元，作为一个参考的价格区间，这并不是一个准确的数值，还有其他的很多影响因素导致，　</p>
-										<p>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、开眼角的价格与术后的效果有关系，不同的眼部美感需求，都会让开眼角手术在精细程度上不同。</p>
-										<p>　　2、求美者对不同医院的选择，价格也就不同。</p>
-										<p>　　3、不同的手术方案也会直接影响开眼角手术的价格。</p>
-										<p><br></p>
+								<div><a href="{{route('questionShow',[$item->id])}}" target="_blank">
+										{!! $item->abody!!}
 									</a></div>
 								<div class=" doctor-na">
-									<div class="doct-img"><a href="/doctor/8033.html" target="_blank"><img src="/27/1448512136-s"></a></div>
-									<span><a href="/doctor/8033.html" target="_blank">荣</a></span>
+									<div class="doct-img"><a href="{{route('doctorShow',[$item->Doctor->id])}}" target="_blank"><img src="/storage/{{$item->Doctor->picture}}"></a></div>
+									<span><a href="{{route('doctorShow',[$item->Doctor->id])}}" target="_blank">{{$item->Doctor->name}}</a></span>
 									<span class="undelines">/</span>
-									<span>主任医师</span>
-
+									<span>{{$item->Doctor->title}}</span>
 								</div>
 							</div>
 						</div>
 					</li>
+					@endforeach
 				</ul>
 			</div>
--->
-			<!--
 			<div class=" relative-zx mt20">
 				<h3><i class="master-spirte rela-zs"></i>相关知识</h3>
 				<ul class="ns-box">
+					@foreach($zs as $item)
 					<li>
-						<div class=" ns-img">
-							<a href="/zs/1158.html" target="_blank">
-								<img src="#">
+						<div class="ns-img">
+							<a href="{{route('zsShow',[$item->id])}}" target="_blank" class="overflow-hidden w-79px h-59px inline-block">
+								<img src="/storage/{{$item->picture}}" alt="">
 							</a>
 						</div>
 						<div class=" ns-text">
-							<div class=" two-line"><a href="/zs/1158.html" target="_blank">开眼角前后对比图—真实经验分享</a></div>
-							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>8/20/20 2:14:58 PM</div>
+							<div class=" two-line"><a href="{{route('zsShow',[$item->id])}}" target="_blank">{{$item->title}}</a></div>
+							<div class=" flex-start colorb2"><span class="casedata-icon two-sprite"></span>{{$item->created_at->format('d/m/y H:m:s')}}</div>
 						</div>
 					</li>
+					@endforeach
 				</ul>
 			</div>
-			-->
 		</li>
 	</ul>
 	<script>

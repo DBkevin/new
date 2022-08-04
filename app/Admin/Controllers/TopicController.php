@@ -120,6 +120,6 @@ class TopicController extends AdminController
     public function api(Request $request)
     {
         $q = $request->get('q');
-        return Topic::without(['Category', 'Notice', 'Introtdtion', 'Info', 'Child', 'Parent', 'Commit'])->where('title', 'like', "%$q%")->paginate(null, ['id', 'title as text']);
+        return Topic::without(['Category', 'Notice', 'Introtdtion', 'Info', 'Child', 'Parent', 'Commit'])->where('title', 'like', "%$q%")->whereNull('parent_id')->paginate(null, ['id', 'title as text']);
     }
 }
