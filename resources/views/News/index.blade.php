@@ -14,6 +14,35 @@
 	</ul>
 </div>
 <div class="clear-both"></div>
+<ul class="w-cen mx-auto flex justify-between flex-nowrap block py-5">
+	<li class="w-220px h-auto bg-FF8080">
+		<ul class="w-full h-auto  text-white relative">
+			@foreach($category as $item)
+			<li class="w-full h-45px border-t border-FF8080 hover:bg-bashColor  justify-center items-center flex  " id="newNav">
+				<a href="#" class="block text-xl flex justify-center items-center  ">
+					<i class="w-5 h-6 inline-block mr-5.5" style="background: url(/storage/{{$item->picture}}) no-repeat center; background-size: cover;"></i>
+					{{$item->title}}
+				</a>
+				<div class="hidden w-415px h-566px  bg-white z-20 absolute top-0 left-220px none overflow-hidden" id="newsCen">
+					<ul class="block w-full h-full pt-5 pl-5  flex flex-wrap justify-left content-start px-1 py-1 text-666">
+						@foreach($item->topics as $topic)
+						<li class="text-sm py-2  mx-2 leading-27px border-b hover:text-bashColor hover:border-bashColor">
+							<a href="{{route('NewsList',[$topic->dirname])}}" target="_black">
+								{{$topic->title}}
+							</a>
+						</li>
+						@endforeach
+					</ul>
+				</div>
+			</li>
+			@endforeach
+		</ul>
+	</li>
+	<li class="w-4/5 bg-red-400">
+		123123
+	</li>
+	<li>3</li>
+</ul>
 <ul class="w-cen mx-auto flex justify-between flex-wrap block bg-white">
 	<li class="mt-50 w-579 h-380 px-4 border ml-0.5 hover:shadow-bash">
 		<div class="flex h-19 items-center justify-between w-full text-5ea3f0">
@@ -758,126 +787,28 @@
 			</div>
 		</li>
 		<ul class=" w-630px flex justify-between flex-wrap">
-			<li class="w-290px h-17 mt-9 overflow-hidden flex  justify-between">
-				<a href="#" class="block w-24.5 h-17 overflow-hidden ">
-					<img src="/storage/article/picture_1658890550_tHGxzoPGeh.jpg" alt="" class="w-full h-full" class="inline-block">
+			@foreach($zs as $item)
+			<li class="w-290px h-17 mt-9 overflow-hidden flex justify-between">
+				<a href="{{route('zsShow',[$item->id])}}" class="block w-24.5 h-17 overflow-hidden ">
+					<img src="/storage/{{$item->picture}}" alt="" class="w-full h-full" class="inline-block">
 				</a>
 				<div class="ml-4 flex text-999 jutify-center overflow-hidden text-sm w-176px flex-wrap ">
-					<a href="#" class="text-sm max-h-11 leading-6 text-333 truncate mt-2.5 hover:text-bashColor h-4.5">
-						假体隆鼻麻药打哪里
+					<a href="{{route('zsShow',[$item->id])}}" class="text-sm max-h-11 leading-6 text-333 truncate mt-2.5 hover:text-bashColor h-4.5">
+						{{$item->title}}
 					</a>
 					<div class="w-full text-999 mt-2 text-xs flex ">
 						<span class="inline-block mr-2">
 							<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px;vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							2022/7/2
+							{{$item->created_at->format('Y/m/d')}}
 						</span>
 						<span class="inline-block ">
 							<i style="background: url('/images/small-icon.png');background-position:-81px  0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							张少军
+							{{$item->Doctor->name}}
 						</span>
 					</div>
 				</div>
 			</li>
-			<li class="w-290px h-17 mt-9 overflow-hidden flex  justify-between">
-				<a href="#" class="block w-24.5 h-17 overflow-hidden ">
-					<img src="/storage/article/picture_1658890550_tHGxzoPGeh.jpg" alt="" class="w-full h-full" class="inline-block">
-				</a>
-				<div class="ml-4 flex text-999 jutify-center overflow-hidden text-sm w-176px flex-wrap ">
-					<a href="#" class="text-sm max-h-11 leading-6 text-333 truncate mt-2.5 hover:text-bashColor h-4.5">
-						假体隆鼻麻药打哪里
-					</a>
-					<div class="w-full text-999 mt-2 text-xs flex ">
-						<span class="inline-block mr-2">
-							<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px;vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							2022/7/2
-						</span>
-						<span class="inline-block ">
-							<i style="background: url('/images/small-icon.png');background-position:-81px  0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							张少军
-						</span>
-					</div>
-				</div>
-			</li>
-			<li class="w-290px h-17 mt-9 overflow-hidden flex  justify-between">
-				<a href="#" class="block w-24.5 h-17 overflow-hidden ">
-					<img src="/storage/article/picture_1658890550_tHGxzoPGeh.jpg" alt="" class="w-full h-full" class="inline-block">
-				</a>
-				<div class="ml-4 flex text-999 jutify-center overflow-hidden text-sm w-176px flex-wrap ">
-					<a href="#" class="text-sm max-h-11 leading-6 text-333 truncate mt-2.5 hover:text-bashColor h-4.5">
-						假体隆鼻麻药打哪里
-					</a>
-					<div class="w-full text-999 mt-2 text-xs flex ">
-						<span class="inline-block mr-2">
-							<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px;vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							2022/7/2
-						</span>
-						<span class="inline-block ">
-							<i style="background: url('/images/small-icon.png');background-position:-81px  0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							张少军
-						</span>
-					</div>
-				</div>
-			</li>
-			<li class="w-290px h-17 mt-9 overflow-hidden flex  justify-between">
-				<a href="#" class="block w-24.5 h-17 overflow-hidden ">
-					<img src="/storage/article/picture_1658890550_tHGxzoPGeh.jpg" alt="" class="w-full h-full" class="inline-block">
-				</a>
-				<div class="ml-4 flex text-999 jutify-center overflow-hidden text-sm w-176px flex-wrap ">
-					<a href="#" class="text-sm max-h-11 leading-6 text-333 truncate mt-2.5 hover:text-bashColor h-4.5">
-						假体隆鼻麻药打哪里
-					</a>
-					<div class="w-full text-999 mt-2 text-xs flex ">
-						<span class="inline-block mr-2">
-							<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px;vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							2022/7/2
-						</span>
-						<span class="inline-block ">
-							<i style="background: url('/images/small-icon.png');background-position:-81px  0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							张少军
-						</span>
-					</div>
-				</div>
-			</li>
-			<li class="w-290px h-17 mt-9 overflow-hidden flex  justify-between">
-				<a href="#" class="block w-24.5 h-17 overflow-hidden ">
-					<img src="/storage/article/picture_1658890550_tHGxzoPGeh.jpg" alt="" class="w-full h-full" class="inline-block">
-				</a>
-				<div class="ml-4 flex text-999 jutify-center overflow-hidden text-sm w-176px flex-wrap ">
-					<a href="#" class="text-sm max-h-11 leading-6 text-333 truncate mt-2.5 hover:text-bashColor h-4.5">
-						假体隆鼻麻药打哪里
-					</a>
-					<div class="w-full text-999 mt-2 text-xs flex ">
-						<span class="inline-block mr-2">
-							<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px;vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							2022/7/2
-						</span>
-						<span class="inline-block ">
-							<i style="background: url('/images/small-icon.png');background-position:-81px  0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							张少军
-						</span>
-					</div>
-				</div>
-			</li>
-			<li class="w-290px h-17 mt-9 overflow-hidden flex  justify-between">
-				<a href="#" class="block w-24.5 h-17 overflow-hidden ">
-					<img src="/storage/article/picture_1658890550_tHGxzoPGeh.jpg" alt="" class="w-full h-full" class="inline-block">
-				</a>
-				<div class="ml-4 flex text-999 jutify-center overflow-hidden text-sm w-176px flex-wrap ">
-					<a href="#" class="text-sm max-h-11 leading-6 text-333 truncate mt-2.5 hover:text-bashColor h-4.5">
-						假体隆鼻麻药打哪里
-					</a>
-					<div class="w-full text-999 mt-2 text-xs flex ">
-						<span class="inline-block mr-2">
-							<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px;vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							2022/7/2
-						</span>
-						<span class="inline-block ">
-							<i style="background: url('/images/small-icon.png');background-position:-81px  0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-							张少军
-						</span>
-					</div>
-				</div>
-			</li>
+			@endforeach
 		</ul>
 	</ul>
 	<ul class="w-471px">
@@ -886,99 +817,26 @@
 				<span>医美咨询</span>
 			</div>
 		</li>
-		<ul >
+		<ul>
+			@foreach($question as $item)
 			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-ec6909 rounded-sm" style="vertical-align:super">1</span>
+				<a href="{{route('questionShow',[$item->id])}}" class="text-333 hover:text-bashColor">
+					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-ec6909 rounded-sm" style="vertical-align:super">{{$loop->iteration}}</span>
 					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
+						{{$item->title}}
 					</span>
 				</a>
 				<span class="inline-block text-999 text-xs">
 					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
+					{{$item->created_at->format('y/m/d')}}
 				</span>
 			</li>
-			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-ec6909 rounded-sm" style="vertical-align:super">1</span>
-					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
-					</span>
-				</a>
-				<span class="inline-block text-999 text-xs">
-					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
-				</span>
-			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-cacaca rounded-sm" style="vertical-align:super">1</span>
-					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
-					</span>
-				</a>
-				<span class="inline-block text-999 text-xs">
-					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
-				</span>
-			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-cacaca rounded-sm" style="vertical-align:super">1</span>
-					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
-					</span>
-				</a>
-				<span class="inline-block text-999 text-xs">
-					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
-				</span>
-			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-cacaca rounded-sm" style="vertical-align:super">1</span>
-					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
-					</span>
-				</a>
-				<span class="inline-block text-999 text-xs">
-					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
-				</span>
-			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-cacaca rounded-sm" style="vertical-align:super">1</span>
-					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
-					</span>
-				</a>
-				<span class="inline-block text-999 text-xs">
-					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
-				</span>
-			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-cacaca rounded-sm" style="vertical-align:super">1</span>
-					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
-					</span>
-				</a>
-				<span class="inline-block text-999 text-xs">
-					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
-				</span>
-			<li class="h-5.5 mt-5 mb-3 flex justify-between">
-				<a href="#" class="text-333 hover:text-bashColor">
-					<span class="inline-block px-1.5 mr-2.5 text-xs  leading-22px text-white bg-cacaca rounded-sm" style="vertical-align:super">1</span>
-					<span class=" inline-block truncate w-80">
-						杭州牙齿矫正到哪里
-					</span>
-				</a>
-				<span class="inline-block text-999 text-xs">
-					<i style="background: url('/images/small-icon.png');background-position:-48px 0;background-size:200px 200px; vertical-align:sub" class="w-3.5 h-3.5 inline-block mr-2 "></i>
-					2022-07-28
-				</span>
-		
+			@endforeach
 		</ul>
 	</ul>
 </div>
 <div class="clear-both"></div>
+<script>
+
+</script>
 @endsection

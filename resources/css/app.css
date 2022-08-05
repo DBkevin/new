@@ -10,9 +10,7 @@
 		border-radius: 5px;
 	}
 
-	.w-article-zx {
-		
-	}
+	.w-article-zx {}
 
 	.w-article-zx>li {
 		width: 424px;
@@ -46,33 +44,39 @@
 		z-index: 2;
 		color: #ff5959 !important;
 	}
-	.w-article-zx li:hover:first-child .concat-img >img {
+
+	.w-article-zx li:hover:first-child .concat-img>img {
 		display: none;
 	}
-	.w-article-zx li:hover:first-child  .concat-img  {
-		background:url("/images/cont1-1.png")
+
+	.w-article-zx li:hover:first-child .concat-img {
+		background: url("/images/cont1-1.png")
 	}
-	.w-article-zx li:hover:nth-child(2) .concat-img >img {
+
+	.w-article-zx li:hover:nth-child(2) .concat-img>img {
 		display: none;
 	}
-	.w-article-zx li:hover:nth-child(2) .concat-img  {
-		background:url("/images/cont2-1.png")
+
+	.w-article-zx li:hover:nth-child(2) .concat-img {
+		background: url("/images/cont2-1.png")
 	}
-	
-	.w-article-zx li:hover:nth-child(3) .concat-img >img {
+
+	.w-article-zx li:hover:nth-child(3) .concat-img>img {
 		display: none;
 	}
-	.w-article-zx li:hover:nth-child(3) .concat-img  {
-		background:url("/images/cont3-1.png")
+
+	.w-article-zx li:hover:nth-child(3) .concat-img {
+		background: url("/images/cont3-1.png")
 	}
-	
-	.w-article-zx li:hover:nth-child(4) .concat-img >img {
+
+	.w-article-zx li:hover:nth-child(4) .concat-img>img {
 		display: none;
 	}
-	.w-article-zx li:hover:nth-child(4) .concat-img  {
-		background:url("/images/cont4-1.png")
+
+	.w-article-zx li:hover:nth-child(4) .concat-img {
+		background: url("/images/cont4-1.png")
 	}
-	
+
 	.w-article-zx>li>.concat-info span:first-child {
 		font-size: 20px;
 		color: #000;
@@ -236,23 +240,28 @@
 
 
 }
-#question-right-xg > li:first-of-type >span{
+
+#question-right-xg>li:first-of-type>span {
 	color: #ff5959;
 }
-#question-right-xg > li:nth-child(2) >span{
+
+#question-right-xg>li:nth-child(2)>span {
 	color: #ff5959;
 }
-#question-right-xg > li:nth-child(3) >span{
+
+#question-right-xg>li:nth-child(3)>span {
 	color: #ff5959;
 }
-.zslist >li:first-of-type >span:first-of-type{
+
+.zslist>li:first-of-type>span:first-of-type {
 	background-color: #ec6909;
 }
-.zslist >li:nth-child(2) >span:first-of-type{
+
+.zslist>li:nth-child(2)>span:first-of-type {
 	background-color: #ec6909;
 }
-.navs-menu {
-}
+
+.navs-menu {}
 
 .navs-menu>li {
 	height: 100%;
@@ -645,4 +654,8 @@
 .two-pic img,
 .thr-pic img {
 	width: 100%;
+}
+
+#newNav:hover  #newsCen {
+	display: block;
 }

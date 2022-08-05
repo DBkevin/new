@@ -15,8 +15,14 @@ class NewsController extends Controller
     //
     public function index(News $News)
     {
-        $zs = News::all();
-        return view('News.index', compact('zs'));
+        $category = Category::with(['topics' => function ($query) {
+            $query->whereNull('parent_id');
+        }])->get();
+        $zs = Information::orderBy('created_at', 'desc')
+            ->take(6)
+            ->get();
+        $question = Question::orderBy('created_at', 'desc')->take(8)->get();
+        return view('News.index', compact('zs', 'question', 'category'));
     }
     public function list(Request $request)
     {
@@ -27,7 +33,7 @@ class NewsController extends Controller
             //是顶级大栏目id就是大栏目ID
             //查询所有新闻
             $parent = $dir;
-            $curr=$parent;
+            $curr = $parent;
         } else {
             //是Topic,就先去查一级
             $curr = Topic::where('dirname', $dirname)->withOut('Info')->first();

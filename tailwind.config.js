@@ -12,6 +12,10 @@ module.exports = {
   ],
   content: [],
   theme: {
+    inset: {
+      '220px': '220px',
+      '0':'0px',
+    },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
       DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
@@ -29,7 +33,8 @@ module.exports = {
       lineHeight: {
         '11.5': '2.75rem',
         '58px': '58px',
-        '22px':'22px',
+        '22px': '22px',
+        '27px':'27px',
       },
       colors: {
         'headbg': '#f2f2f2',
@@ -54,7 +59,8 @@ module.exports = {
         'f5f5f5': '#f5f5f5',
         'cacaca': '#cacaca',
         'ec6909': '#ec6909',
-        'bbf3f7':'#bbf3f7',
+        'bbf3f7': '#bbf3f7',
+        'FF8080':'#FF8080',
       },
       minHeight: {
         '155': '155px',
@@ -117,7 +123,11 @@ module.exports = {
         '190px': '190px',
         '850px': '850px',
         '79px': '79px',
-        '59px':'59px',
+        '59px': '59px',
+        '220px': '220px',
+        '45px': '45px',
+        '415px': '415px',
+        '566px':'566px',
       }
     },
     fontSize: {
