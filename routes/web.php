@@ -3,7 +3,7 @@
 
 use Doctrine\DBAL\Schema\Index;
 use Illuminate\Support\Facades\Route;
-
+use App\Services\InsteadImg;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,4 +29,5 @@ Route::get("/question/{idrname}", "QuestionController@list")->name('questionList
 Route::get('/news', "NewsController@index")->name("NewsIndex");
 Route::get("/news/{id}", "NewsController@show")->name('NewsShow')->where('id', '[0-9]+');
 Route::get('/news/{dirname}', "NewsController@list")->name("NewsList")->where('dirname', '[A-Za-z\-\+]+');
+
 

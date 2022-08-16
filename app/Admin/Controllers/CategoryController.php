@@ -59,10 +59,8 @@ class CategoryController extends AdminController
             // 去掉`查看`checkbox
             $form->footer(function ($footer) {
                 $footer->disableViewCheck();
-
                 // 去掉`继续编辑`checkbox
                 $footer->disableEditingCheck();
-
                 // 去掉`继续创建`checkbox
                 $footer->disableCreatingCheck();
             });

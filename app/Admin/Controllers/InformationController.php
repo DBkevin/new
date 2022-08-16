@@ -5,11 +5,13 @@ namespace App\Admin\Controllers;
 use App\Admin\Repositories\Information;
 use App\Models\Doctor;
 use App\Models\Topic;
+use App\Services\GetKeyAndDescription;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Widgets\Card;
+use App\Services\InsteadImg;
 
 class InformationController extends AdminController
 {
@@ -23,7 +25,7 @@ class InformationController extends AdminController
         return Grid::make(new Information(), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('title', '标题')->width('10%')->limit(20, '...');
-            $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
+            //  $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
             $grid->column('description', '栏目描述')->width('10%')->limit(20, '...');
             $grid->column('picture', '栏目缩略图')->image('http://cf.test/storage/', 50, 100);
             $grid->column('keywords', '栏目关键字')->width('10%')->limit(20, '...');
@@ -64,7 +66,7 @@ class InformationController extends AdminController
         return Form::make(new Information(), function (Form $form) {
             $form->display('id');
             $form->text('title', "标题")->creationRules('unique:information,title|min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
-            $form->text('seotitle', "seo标题,可为空");
+            //$form->text('seotitle', "seo标题,可为空");
             $form->text('description', "文章描述")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload();
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
@@ -95,6 +97,26 @@ class InformationController extends AdminController
 
                 // 去掉`继续创建`checkbox
                 $footer->disableCreatingCheck();
+            });
+            $form->submitted(function (Form $form) {
+                //检查body里面是否有站外的图片
+                $oldBody = $form->body;
+                $newBody = new InsteadImg($oldBody);
+                if ($newBody->is) {
+                    $form->body = $newBody->body;
+                    if (empty($form->picture)) {
+                        $form->picture = $newBody->newPicture[0];
+                    }
+                } else {
+                    return $form->response()->error('获取远程图片失败~');
+                }
+                $newsKe =  new GetKeyAndDescription($form->body);
+                if (empty($form->keywords)) {
+                    $form->keywords=$newsKe->getKey();
+                }
+                if(empty($form->description)){
+                    $form->description=$newsKe->getDescription();
+                }
             });
         });
     }

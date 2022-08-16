@@ -9,6 +9,8 @@ use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use App\Models\Topic;
 use App\Models\Doctor;
+use App\Services\InsteadImg;
+use App\Services\GetKeyAndDescription;
 
 class QuestionController extends AdminController
 {
@@ -86,7 +88,7 @@ class QuestionController extends AdminController
                     $form->qcount = random_int(25, 9999);
                 }
             });
-             // 去掉`查看`checkbox
+            // 去掉`查看`checkbox
             $form->footer(function ($footer) {
                 $footer->disableViewCheck();
 
@@ -95,6 +97,26 @@ class QuestionController extends AdminController
 
                 // 去掉`继续创建`checkbox
                 $footer->disableCreatingCheck();
+            });
+            $form->submitted(function (Form $form) {
+                //检查body里面是否有站外的图片
+                $oldBody = $form->body;
+                $newBody = new InsteadImg($oldBody);
+                if ($newBody->is) {
+                    $form->body = $newBody->body;
+                    if (empty($form->picture)) {
+                        $form->picture = $newBody->newPicture[0];
+                    }
+                } else {
+                    return $form->response()->error('获取远程图片失败~');
+                }
+                $newsKe =  new GetKeyAndDescription($form->body);
+                if (empty($form->keywords)) {
+                    $form->keywords = $newsKe->getKey();
+                }
+                if (empty($form->description)) {
+                    $form->description = $newsKe->getDescription();
+                }
             });
         });
     }

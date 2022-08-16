@@ -25,11 +25,11 @@ class FileController
 
 		$newName = $column . '_' . time() . '_' . Str::random(10) . '.'  . $file->getClientOriginalExtension();
 		$result = $disk->putFileAs($dir, $file, $newName);
-
 		$path = "{$dir}/$newName";
+		$stragePath='/storage/'.$path;
 
 		return $result
-			? $this->responseUploaded($path, $disk->url($path))
+			? $this->responseUploaded($path, $disk->url($stragePath))
 			: $this->responseErrorMessage('文件上传失败');
 	}
 }
