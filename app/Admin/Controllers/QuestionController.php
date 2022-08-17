@@ -31,8 +31,6 @@ class QuestionController extends AdminController
             $grid->column('qage', "提问者年龄")->display(function ($age) {
                 return $age . "岁";
             });
-            $grid->column('qaddress', "提问者地址");
-            $grid->column('qcount', "关注该问题人数");
             $grid->column('doctor.name', '所属医生')->badge('primary');
             $grid->column('abody', "回答内容")->width('8%')->limit(10, '...');;
             $grid->disableViewButton();
@@ -80,14 +78,6 @@ class QuestionController extends AdminController
             }
             $form->display('created_at');
             $form->display('updated_at');
-            $form->saving(function (Form $form) {
-                if ($form->qage == 0) {
-                    $form->qage = random_int(18, 50);
-                }
-                if ($form->qcount == 0) {
-                    $form->qcount = random_int(25, 9999);
-                }
-            });
             // 去掉`查看`checkbox
             $form->footer(function ($footer) {
                 $footer->disableViewCheck();
@@ -100,22 +90,17 @@ class QuestionController extends AdminController
             });
             $form->submitted(function (Form $form) {
                 //检查body里面是否有站外的图片
-                $oldBody = $form->body;
+                $oldBody = $form->abody;
                 $newBody = new InsteadImg($oldBody);
                 if ($newBody->is) {
                     $form->body = $newBody->body;
-                    if (empty($form->picture)) {
-                        $form->picture = $newBody->newPicture[0];
-                    }
-                } else {
-                    return $form->response()->error('获取远程图片失败~');
                 }
-                $newsKe =  new GetKeyAndDescription($form->body);
-                if (empty($form->keywords)) {
+                $newsKe =  new GetKeyAndDescription($form->abody);
+                if (is_null($form->keywords)) {
                     $form->keywords = $newsKe->getKey();
                 }
-                if (empty($form->description)) {
-                    $form->description = $newsKe->getDescription();
+                if (is_null($form->description)) {
+                    $form->description = $form->qbody;
                 }
             });
         });

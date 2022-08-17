@@ -29,7 +29,7 @@ class FileController
 		$stragePath='/storage/'.$path;
 
 		return $result
-			? $this->responseUploaded($path, $disk->url($stragePath))
+			? $this->responseUploaded($path, $stragePath)
 			: $this->responseErrorMessage('文件上传失败');
 	}
 }

@@ -20,4 +20,23 @@ class Question extends Model
 	{
 		return $this->belongsTo('App\Models\Doctor');
 	}
+
+	public function SetQcountAttribute($value)
+	{
+		if (empty($value) || $value == 0) {
+			$this->attributes['qcount'] = random_int(100, 999);
+		}
+	}
+	public function SetQaddressAttribute($value)
+	{
+		if (empty($value)) {
+			$this->attributes['qaddress'] = "福建";
+		}
+	}
+	public function SetQageAttribute($value)
+	{
+		if (empty($value) || $value === 0) {
+			$this->attributes['qage'] = random_int(18, 40);
+		}
+	}
 }

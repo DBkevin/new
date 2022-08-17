@@ -18,4 +18,5 @@ class Information extends Model
 	public function Doctor(){
 		return $this->belongsTo('App\Models\Doctor');
 	}
+	
 }

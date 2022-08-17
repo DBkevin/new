@@ -10,6 +10,7 @@ use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Widgets\Card;
 use App\Services\InsteadImg;
 use App\Services\GetKeyAndDescription;
+
 class NewsController extends AdminController
 {
     /**
@@ -87,37 +88,33 @@ class NewsController extends AdminController
             // 去掉`查看`checkbox
             $form->footer(function ($footer) {
                 $footer->disableViewCheck();
-
                 // 去掉`继续编辑`checkbox
                 $footer->disableEditingCheck();
-
                 // 去掉`继续创建`checkbox
                 $footer->disableCreatingCheck();
             });
-            $form->saving(function (Form $form) {
-                if ($form->count == 0) {
-                    $form->count = random_int(25, 9999);
-                }
-            });
-             $form->submitted(function (Form $form) {
+            $form->submitted(function (Form $form) {
                 //检查body里面是否有站外的图片
                 $oldBody = $form->body;
                 $newBody = new InsteadImg($oldBody);
                 if ($newBody->is) {
                     $form->body = $newBody->body;
-                    if (empty($form->picture)) {
+                    if (is_null($form->picture)) {
                         $form->picture = $newBody->newPicture[0];
                     }
                 } else {
-                    return $form->response()->error('获取远程图片失败~');
+                    if ($newBody->isPic) {
+                        return $form->response()->error('获取远程图片失败~');
+                    }
                 }
                 $newsKe =  new GetKeyAndDescription($form->body);
-                if (empty($form->keywords)) {
-                    $form->keywords=$newsKe->getKey();
+                if (is_null($form->keywords)) {
+                    $form->keywords = $newsKe->getKey();
                 }
-                if(empty($form->description)){
-                    $form->description=$newsKe->getDescription();
+                if (is_null($form->description)) {
+                    $form->description = $newsKe->getDescription();
                 }
+               
             });
         });
     }

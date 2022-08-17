@@ -27,7 +27,7 @@ class InformationController extends AdminController
             $grid->column('title', '标题')->width('10%')->limit(20, '...');
             //  $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
             $grid->column('description', '栏目描述')->width('10%')->limit(20, '...');
-            $grid->column('picture', '栏目缩略图')->image('http://cf.test/storage/', 50, 100);
+            $grid->column('picture', '栏目缩略图')->image(config('app.url').'storage', 50, 100);
             $grid->column('keywords', '栏目关键字')->width('10%')->limit(20, '...');
             $grid->column('body', '文章内容')->display('查看内容')
                 ->modal(function ($modal) {
@@ -66,9 +66,16 @@ class InformationController extends AdminController
         return Form::make(new Information(), function (Form $form) {
             $form->display('id');
             $form->text('title', "标题")->creationRules('unique:information,title|min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
-            //$form->text('seotitle', "seo标题,可为空");
             $form->text('description', "文章描述")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
-            $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload();
+            if ($form->isEditing()) {
+                $id = $form->getKey();
+                $form->tools(function (Form\Tools $tools) use ($id) {
+                    $tools->disableView();
+                    $url = route('zsShow', ['id' => $id]);
+                    $tools->append("<a class='btn btn-sm btn-success' href='$url'  target='_blank'><i class='fa fa-eye'></i>&nbsp;&nbsp;查看</a>");
+                });
+            } 
+            $form->image('picture', '栏目图片')->accept('jpg,png,gif,jpeg')->url('users/images/pciture')->retainable();
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->select('topic_id', '所属项目')->options(function ($id) {
                 $topics = Topic::find($id);
@@ -78,14 +85,7 @@ class InformationController extends AdminController
             })->ajax('gettopic')->rules('required');
             $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->editor('body', "文章内容")->rules("required")->imageDirectory('article');
-            if ($form->isEditing()) {
-                $id = $form->getKey();
-                $form->tools(function (Form\Tools $tools) use ($id) {
-                    $tools->disableView();
-                    $url = route('zsShow', ['id' => $id]);
-                    $tools->append("<a class='btn btn-sm btn-success' href='$url'  target='_blank'><i class='fa fa-eye'></i>&nbsp;&nbsp;查看</a>");
-                });
-            }
+
             $form->display('created_at');
             $form->display('updated_at');
             // 去掉`查看`checkbox
@@ -104,18 +104,20 @@ class InformationController extends AdminController
                 $newBody = new InsteadImg($oldBody);
                 if ($newBody->is) {
                     $form->body = $newBody->body;
-                    if (empty($form->picture)) {
+                    if (is_null($form->picture)) {
                         $form->picture = $newBody->newPicture[0];
                     }
                 } else {
-                    return $form->response()->error('获取远程图片失败~');
+                    if ($newBody->isPic) {
+                        return $form->response()->error('获取远程图片失败~');
+                    }
                 }
                 $newsKe =  new GetKeyAndDescription($form->body);
-                if (empty($form->keywords)) {
-                    $form->keywords=$newsKe->getKey();
+                if (is_null($form->keywords)) {
+                    $form->keywords = $newsKe->getKey();
                 }
-                if(empty($form->description)){
-                    $form->description=$newsKe->getDescription();
+                if (is_null($form->description)) {
+                    $form->description = $newsKe->getDescription();
                 }
             });
         });

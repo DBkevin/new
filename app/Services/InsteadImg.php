@@ -14,6 +14,8 @@ class InsteadImg
 	public  $arr = []; //是二维数组 0是图片地址,1是分离后的域名,可能有多个
 	public $is = false;
 	public $newPicture = [];
+	public $msg;
+	public $isPic = true;
 	/*
 	$this->arr[1]的结构
 	  1 => array:4 [
@@ -28,10 +30,13 @@ class InsteadImg
 		preg_match(self::BASHURLPATTERN, config('app.url'), $this->bashURL); //数组[0]就是
 		$this->body = $body;
 		$this->getImgUrl();
-		foreach ($this->arr[1] as $item) {
-			$this->checkImgLinks($item);
+		if (!empty($this->arr[1])) {
+			foreach ($this->arr[1] as $item) {
+				$this->checkImgLinks($item);
+			}
+		} else {
+			$this->isPic = false;
 		}
-
 	}
 	//提取出图片UrlURL 放到$arr 里面
 	public function getImgUrl()
@@ -43,9 +48,9 @@ class InsteadImg
 			foreach ($this->arr[1] as $src) {
 				$src_real = strtok($src, '?'); //分割，去掉请求参数
 				$ext = pathinfo($src_real, PATHINFO_EXTENSION); //获取拓展名
-				if (in_array($ext, ['jpg', 'jpeg', 'gif', 'png'])) {
-					echo $src_real . PHP_EOL;
-				}
+				// if (in_array($ext, ['jpg', 'jpeg', 'gif', 'png'])) {
+				// 	echo $src_real . PHP_EOL;
+				// }
 			}
 		}
 	}
@@ -53,28 +58,27 @@ class InsteadImg
 	public function getImg($url)
 	{
 		//$url是要下载的图片地址
-			if (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0) {
-				$client = new Client();
-				$data = $client->request('get', $url);
-				if ($data->getStatusCode() === 200) {
-					$ContetnType = $data->getHeaders()["Content-Type"];
-					$tmp = explode("/", $ContetnType[0]);
-					$type = end($tmp);
-					$img = $data->getBody()->getContents();
-					//拼接成最终的名字
-					$dir = "article/" . time() . '_' . Str::random(10) . '.' . $type;
-					$result = Storage::disk('admin')->put($dir, $img);
-					$newPath = '/storage/' . $dir;
-					if ($result) {
-						$this->setBody($url, $newPath); //替换body里面的
-						$this->newPicture[] = $dir;
-						$this->is = true;
-					} else {
-						$this->is = false;
-					}
-					
+		if (strpos($url, 'http://') === 0 || strpos($url, 'https://') === 0) {
+			$client = new Client();
+			$data = $client->request('get', $url);
+			if ($data->getStatusCode() === 200) {
+				$ContetnType = $data->getHeaders()["Content-Type"];
+				$tmp = explode("/", $ContetnType[0]);
+				$type = end($tmp);
+				$img = $data->getBody()->getContents();
+				//拼接成最终的名字
+				$dir = "article/" . time() . '_' . Str::random(10) . '.' . $type;
+				$result = Storage::disk('admin')->put($dir, $img);
+				$newPath = '/storage/' . $dir;
+				if ($result) {
+					$this->setBody($url, $newPath); //替换body里面的
+					$this->newPicture[] = $dir;
+					$this->is = true;
+				} else {
+					$this->is = false;
 				}
 			}
+		}
 	}
 	public function setBody($old, $new)
 	{
@@ -91,20 +95,20 @@ class InsteadImg
 		]
 		*/
 		preg_match(self::BASHURLPATTERN, $url, $tmp);
-		
-		if ($tmp[0]) { //不为空
+		if (empty($tmp[0])) {
+			//数组空,既没有域名用的绝对路径.所以不需要处理,直接返回即可
+			//为空不处理 为空就是没有外链,用的相对路径
+			$this->is = true;
+			$this->newPicture[] = $url;
+		} else {
 			if ($tmp[0] === $this->bashURL[0]) {
-				$this->is=true;
-				$this->newPicture[]=$url;
+				$this->is = true;
+				$this->newPicture[] = $url;
 				//吧当前的图片加入到newPicture()里面
 			} else {
 				//不等于,需要下载下来,$url 传递给参数
 				$this->getImg($url);
 			}
-		} else {
-			//为空不处理 为空就是没有外链,用的相对路径
-				$this->is=true;
-				$this->newPicture[]=$url;
 		}
 	}
 }
