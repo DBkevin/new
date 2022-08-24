@@ -75,7 +75,11 @@
 				</span>
 				@include('layouts.zixu')
 			</div>
+			
 		</div>
+		<div class="flex justify-between text-999 text-sm leading-loose w-full overflow-hidden">
+					关键词({{$zs->keywords}})
+				</div>
 	</div>
 	<div class="w-article bg-white pt-8 pr-10 pb-14 pl-10 overflow-hidden text-xl">
 		{!!$zs->body!!}

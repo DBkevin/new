@@ -20,6 +20,9 @@
 					<span><i class="text-bashColor mr-2.5 text-sm not-italic">{{$new->count}}</i>已浏览 | {{$new->created_at}}</span>
 					@include('layouts.zixu')
 				</div>
+				<div class="flex justify-between text-999 text-sm leading-loose w-full overflow-hidden">
+					关键词({{$new->keywords}})
+				</div>
 				<div class="h-px my-5 border-t w-full"></div>
 				<img src="/storage/{{$new->picture}}" alt="" class="inline-block mr-7 5 w-180 h-28 overflow-hidden">
 				<p class="inline-block mt-3 text-bash text-999 leading-7 w-560 float-right">
