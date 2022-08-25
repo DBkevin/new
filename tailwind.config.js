@@ -61,6 +61,7 @@ module.exports = {
         'ec6909': '#ec6909',
         'bbf3f7': '#bbf3f7',
         'FF8080':'#FF8080',
+        'eee':'#eee',
       },
       minHeight: {
         '155': '155px',
@@ -130,8 +131,10 @@ module.exports = {
         '566px': '566px',
         '660px': '660px',
         '587px':'58,7px',
-        '288px':'288px',
-      }
+        '288px': '288px',
+        "m1.1": '1.1rem',
+        
+      },
     },
     fontSize: {
       'xs1': '13px',
@@ -147,6 +150,9 @@ module.exports = {
       '5xl': '3rem',
       '6xl': '4rem',
       '7xl': '5rem',
+    },
+    maxWidth: {
+      'mobie':'750px',
     }
   },
   plugins: [],
