@@ -22,4 +22,8 @@ class Doctor extends Model
 	{
 		return $this->hasMany('App\Models\Question');
 	}
+	public function News()
+	{
+		return $this->hasMany('App\Models\News');
+	}
 }

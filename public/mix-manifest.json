@@ -1,7 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/css/m_index.css": "/css/m_index.css",
+    "/css/m_show.css": "/css/m_show.css",
     "/css/app.css": "/css/app.css",
-    "/css/category.css": "/css/category.css",
     "/css/index.css": "/css/index.css",
     "/css/topic.css": "/css/topic.css"
 }

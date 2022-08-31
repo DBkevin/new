@@ -14,12 +14,16 @@ class News extends Model
 	{
 		return $this->belongsTo('App\Models\Topic');
 	}
-		public function SetCountAttribute($value)
+	public function SetCountAttribute($value)
 	{
 		if (empty($value)) {
 			$this->attributes['count'] = random_int(100, 999);
 		}
 	}
-	
 
+	//和topic的反向一对多关联
+	public function Doctor()
+	{
+		return $this->belongsTo('App\Models\Doctor');
+	}
 }

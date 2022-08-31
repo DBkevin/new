@@ -37,6 +37,7 @@ class NewsController extends AdminController
 
                     return "<div style='padding:10px 10px 0'>$card</div>";
                 });
+            $grid->column('doctor.name', '所属医生')->badge('primary');
             $grid->column('count');
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
@@ -70,10 +71,12 @@ class NewsController extends AdminController
                     return [$topics->id => $topics->title];
                 }
             })->ajax('gettopic')->rules('required');
+            $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload();
             $form->text('description', "文章导读")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->editor('body', '文章正文')->rules('required');
+
             $form->text('count');
             $form->display('created_at');
             $form->display('updated_at');
@@ -114,7 +117,6 @@ class NewsController extends AdminController
                 if (is_null($form->description)) {
                     $form->description = $newsKe->getDescription();
                 }
-               
             });
         });
     }

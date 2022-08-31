@@ -39,14 +39,15 @@
 		}(window, document));
 	</script>
 	@yield('headCss')
+	@yield('headJs')
 </head>
 
 <body class="font-sans @yield('body-bg','bg-eee') max-w-mobie  mx-auto w-full">
 	<div class="mx-auto">
 		@include('Mobies.layouts.header')
-		@include('Mobies.layouts.banner')
 		@yield('content')
 		<!--foot-->
+		@include('Mobies.layouts.footer')
 	</div>
 </body>
 

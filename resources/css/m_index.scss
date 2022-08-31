@@ -1,0 +1,110 @@
+.m-hot {
+	padding: 0 .3rem;
+	letter-spacing: 0.02rem;
+	&>ul:first-of-type {
+		font-size: calc(0.13 * 32vw);
+		height: .8rem;
+		line-height: .8rem;
+		border-bottom: 1px solid #f1f1f1;
+		background: #fff;
+		overflow: hidden;
+		margin-bottom: 0;
+		-ms-flex-align: center;
+		align-items: center;
+		box-sizing: border-box;
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		padding: 0 .3rem;
+	}
+}
+
+
+.m-hot>div:first-child,
+.center>div:first-child {
+	padding: .4rem 0;
+}
+
+.m-hot>div:first-child>span:first-child,
+.center>div:first-child>span:first-child {
+	width: .06rem;
+	height: .34rem;
+	margin-right: .18rem;
+	background: linear-gradient(#fff, #d4afb2);
+}
+
+.m-hot>div:first-child>span:last-child,
+.center>div:first-child>span:last-child {
+	font-size: calc(0.13 * 34vw);
+	line-height: .34rem;
+}
+
+.m-hot>.m-hot-tag>span {
+	background: #f3f3f3;
+	border-radius: .24rem;
+	color: #4d4d4d;
+	font-size: calc(0.13 * 26vw);
+	margin-bottom: .25rem;
+	display: block;
+	text-align: center;
+	width: calc((7.5rem - .6rem - .6rem) / 4);
+	height: 0.48rem;
+	line-height: 0.48rem;
+	margin-right: .2rem;
+}
+
+.m-hot>.m-hot-tag>span:nth-child(4n) {
+	margin-right: 0;
+}
+
+.center {
+	letter-spacing: 0.02rem;
+	margin-top: .2rem;
+	padding: 0 .3rem;
+}
+
+.center>div:first-child {
+	padding-bottom: .1rem;
+}
+
+.center>a>div:first-child {
+	padding: .3rem 0;
+}
+
+.center>a>div:first-child>div:first-child {
+	font-size: calc(0.13 * 32vw);
+	line-height: .48rem;
+}
+
+.center>a>div:first-child>div:last-child {
+	font-size: calc(0.13 * 24vw);
+	line-height: .3rem;
+	margin-top: .25rem;
+}
+
+.center>a>div:first-child>div:last-child>span:first-child {
+	background: #a8d8f2;
+	color: #fff;
+	border-radius: 4px;
+	margin-right: 0.15rem;
+	display: inline-block;
+	width: .56rem;
+	height: .28rem;
+	padding: 0;
+	line-height: .28rem;
+	font-size: inherit;
+	text-align: center;
+}
+
+.center>a>div:first-child>div:last-child>span:last-child {
+	font-size: calc(0.13 * 28vw);
+}
+
+.center>a>div:first-child>div:last-child>i {
+	color: #b2b2b2;
+	margin: 0 1%;
+}
+
+.center>a>div:first-child>div:last-child>div {
+	color: #b2b2b2;
+}
