@@ -4,18 +4,51 @@
 <div class="clear-both"></div>
 @include('layouts._IndexAndDoctorMenu')
 <div class="clear-both"></div>
-<div class="w-full h-doctor-ban mx-auto  relative">
-	<ul class="w-full mx-auto">
-		<li class="h-doctor-ban" style="background:url('/images/ban_1.jpg') center no-repeat;background-size: cover;">
-		</li>
-	</ul>
-</div>
-<div class="w-cen mx-auto mt-8 flex ">
+<ul class="w-cen mx-auto flex justify-between flex-nowrap block py-5 h-587px overflow-hidden">
+	<li class="w-220px h-auto bg-FF8080">
+		<ul class="w-full h-auto  text-white relative">
+			@foreach($category as $item)
+			<li class="w-full h-45px border-t border-FF8080 hover:bg-bashColor  justify-center items-center flex  " id="newNav">
+				<a href="{{route('ZsList',[$item->dirname])}}" class="block text-xl flex justify-center items-center  ">
+					@if(isset($item->topics))
+					<i class="w-5 h-6 inline-block mr-5.5" style="background: url(/storage/{{$item->picture}}) no-repeat center; background-size: cover;"></i>
+					@endif
+					{{$item->title}}
+				</a>
+				@if(isset($item->topics))
+				<div class="hidden w-415px h-566px  bg-white z-20 absolute top-0 left-220px none overflow-hidden" id="newsCen">
+					<ul class="block w-full h-full pt-5 pl-5  flex flex-wrap justify-left content-start px-1 py-1 text-666">
+						@foreach($item->topics as $topic)
+						<li class="text-sm py-2  mx-2 leading-27px border-b hover:text-bashColor hover:border-bashColor">
+							<a href="{{route('ZsList',[$topic->dirname])}}" target="_black">
+								{{$topic->title}}
+							</a>
+						</li>
+						@endforeach
+					</ul>
+				</div>
+				@endif
+			</li>
+			@endforeach
+		</ul>
+	</li>
+	<li class="w-660px  h-full">
+		<img src="/images/zixun_banner.png" alt="" class="w-full block h-288">
+		<ul class="w-full flex flex-wrap justify-wetween">
+			<!--目前为空-->
+		</ul>
+	</li>
+	<li class="w-tcright h-full">
+		<img src="/images/newsInfo.png" alt="">
+	</li>
+</ul>
+<div class="w-full bg-white mx-auto">
+<div class="w-cen mx-auto mt-8 pt-8 flex ">
 	<ul class="flex flex-nowrap w-full justify-between">
 		<li class="w-tcleft">
 			<h1 class="pb-3 border-b text-xl">
 				<span class="inline-block mr-2 w-8 h-7 align-bottom" style="background-image:url('/images/small-icon.png') ;background-size:200px,200px;background-position:-37px,-89px"></span>
-				优质整形美容知识推荐
+				{{$curr->title??"优质美容整形"}}知识推荐
 			</h1>
 			<ul class="flex flex-nowrap w-full justify-between mt-4">
 				<li class="w-80 h-input flex justify-between flex-col  ">
@@ -190,6 +223,6 @@
 		</li>
 	</ul>
 </div>
-
+</div>
 <div class="clear-both"></div>
 @endsection
