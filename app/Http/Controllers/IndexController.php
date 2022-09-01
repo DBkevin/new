@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use App\Services\isMobile;
+use App\Services\IsMobile;
 class IndexController extends Controller
 {
     //
@@ -43,7 +43,7 @@ class IndexController extends Controller
         }
         $categories = $t;
         $t = null;
-        $isMobie = isMobile::isMobile();
+        $isMobie = IsMobile::isMobile();
         if ($isMobie){
             return view('Mobies/home',compact('categories'));
         } else{

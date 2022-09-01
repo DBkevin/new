@@ -34,19 +34,15 @@ class ZsController extends Controller
                 $query->whereNull('parent_id');
             }])->where('id', $dir->id)->get();
             $category = $category[0]['topics'];
-            $zs = Information::all();
-            return view('information.index', compact('category', 'curr'));
+            $parent_id=$category->pluck('id')->toArray();
+            $zs = Information::wherein('topic_id',$parent_id)->with(['doctor'])->orderBy('created_at', 'desc')->take(10)->get();
+            return view('information.index', compact('category', 'curr','zs'));
         } else {
-            //是Topic,就先去查一级
             $curr = Topic::where('dirname', $dirname)->withOut('Info')->first();
             $parent = Category::find($curr->category_id);
             $zs=Information::where('topic_id',$curr->id)->paginate(10);
             return view("information.list",compact('curr','parent','zs'));
         }
-        // $newsID = Topic::where('parent_id', $parent->id)->pluck('id')->toArray();
-        // $news = Information::whereIn('topic_id', $newsID)->paginate(10);
-        // $sibling = Topic::where('category_id', $parent->id)->whereNull('parent_id')->select('id', 'dirname', 'title')->get();
-        // $isMobie = IsMobile::isMobile();
 
     }
     public function show(Request $request)

@@ -27,7 +27,7 @@ class InformationController extends AdminController
             $grid->column('title', '标题')->width('10%')->limit(20, '...');
             //  $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
             $grid->column('description', '栏目描述')->width('10%')->limit(20, '...');
-            $grid->column('picture', '栏目缩略图')->image(config('app.url').'storage', 50, 100);
+            $grid->column('picture', '栏目缩略图')->image("",50,50);
             $grid->column('keywords', '栏目关键字')->width('10%')->limit(20, '...');
             $grid->column('body', '文章内容')->display('查看内容')
                 ->modal(function ($modal) {
