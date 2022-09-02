@@ -13,13 +13,13 @@ class ZsController extends Controller
     //
     public function index(Information $information)
     {
+        $category = Category::with(['topics' => function ($query) {
+            $query->whereNull('parent_id');
+        }])->get();
         $Mobile = IsMobile::isMobile();
         if ($Mobile) {
-            
+            return view('Mobies.Zs.index', compact('category'));
         } else {
-            $category = Category::with(['topics' => function ($query) {
-                $query->whereNull('parent_id');
-            }])->get();
             $zs = Information::all();
             return view('information.index', compact('zs', 'category'));
         }
@@ -29,18 +29,24 @@ class ZsController extends Controller
         $dirname = $request->dirname;
         //判断是category 还是topic
         $dir = Category::where('dirname', $dirname)->first();
+
         if ($dir) {
             //是顶级大栏目id就是大栏目ID
-            //查询所有zs和分类
-            $parent = $dir;
-            $curr = $parent;
             //查找所有下级
             $category = Category::with(['topics' => function ($query) {
                 $query->whereNull('parent_id');
             }])->where('id', $dir->id)->get();
-            $category = $category[0]['topics'];
+            $category = $category[0]['topics']; //提取2个
+            $parent = $dir;
+            $curr = $parent;
             $parent_id = $category->pluck('id')->toArray();
             $zs = Information::wherein('topic_id', $parent_id)->with(['doctor'])->orderBy('created_at', 'desc')->take(10)->get();
+            //然后判断是否不是手机端
+            $Mobile = IsMobile::isMobile();
+            if ($Mobile) {
+                return view('Mobies.Zs.listDir', compact('dir', 'category','zs'));
+            }
+            //查询所有zs和分类
             return view('information.index', compact('category', 'curr', 'zs'));
         } else {
             $curr = Topic::where('dirname', $dirname)->withOut('Info')->first();
