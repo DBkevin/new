@@ -19,6 +19,7 @@ class CategoryController extends AdminController
         return Grid::make(new Category(), function (Grid $grid) {
             $grid->column('id')->sortable();
             $grid->column('title', '大栏目标题');
+            $grid->column('slogan', '手机端用');
             $grid->column('keywords', '栏目关键字');
             $grid->column('description', '栏目描述');
             $grid->column('dirname', '栏目地址');
@@ -43,6 +44,7 @@ class CategoryController extends AdminController
         return Form::make(new Category(), function (Form $form) {
             $form->display('id');
             $form->text('title', '大栏目标题')->creationRules('unique:category,title|min:2', ['unique' => '大标题不能重复', 'min' => '最少需要2个字符']);
+             $form->text('slogan', '手机端用')->required();
             $form->text('dirname', '前端访问路径')->creationRules('unique:category,dirname|min:2');
             $form->text('keywords', '栏目关键词');
             $form->text('description', '栏目描述');

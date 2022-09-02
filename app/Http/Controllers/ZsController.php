@@ -13,11 +13,16 @@ class ZsController extends Controller
     //
     public function index(Information $information)
     {
-        $category = Category::with(['topics' => function ($query) {
-            $query->whereNull('parent_id');
-        }])->get();
-        $zs = Information::all();
-        return view('information.index', compact('zs', 'category'));
+        $Mobile = IsMobile::isMobile();
+        if ($Mobile) {
+            
+        } else {
+            $category = Category::with(['topics' => function ($query) {
+                $query->whereNull('parent_id');
+            }])->get();
+            $zs = Information::all();
+            return view('information.index', compact('zs', 'category'));
+        }
     }
     public function list(Request $request)
     {
@@ -34,16 +39,15 @@ class ZsController extends Controller
                 $query->whereNull('parent_id');
             }])->where('id', $dir->id)->get();
             $category = $category[0]['topics'];
-            $parent_id=$category->pluck('id')->toArray();
-            $zs = Information::wherein('topic_id',$parent_id)->with(['doctor'])->orderBy('created_at', 'desc')->take(10)->get();
-            return view('information.index', compact('category', 'curr','zs'));
+            $parent_id = $category->pluck('id')->toArray();
+            $zs = Information::wherein('topic_id', $parent_id)->with(['doctor'])->orderBy('created_at', 'desc')->take(10)->get();
+            return view('information.index', compact('category', 'curr', 'zs'));
         } else {
             $curr = Topic::where('dirname', $dirname)->withOut('Info')->first();
             $parent = Category::find($curr->category_id);
-            $zs=Information::where('topic_id',$curr->id)->paginate(10);
-            return view("information.list",compact('curr','parent','zs'));
+            $zs = Information::where('topic_id', $curr->id)->paginate(10);
+            return view("information.list", compact('curr', 'parent', 'zs'));
         }
-
     }
     public function show(Request $request)
     {
