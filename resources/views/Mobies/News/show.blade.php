@@ -31,7 +31,7 @@
 					$words=array_slice($words,0,2)
 					@endphp
 					@foreach($words as $item)
-						<span class="flex flex-nowrap items-center justify-between"><i>#</i>{{$item}}<i class="text-white rounded-full not-italic text-right">></i></span>
+					<span class="flex flex-nowrap items-center justify-between"><i>#</i>{{$item}}<i class="text-white rounded-full not-italic text-right">></i></span>
 					@endforeach
 				</div>
 				<div class="text-999">
@@ -39,20 +39,32 @@
 				</div>
 			</div>
 			<div class="text-999 font-normal">
-				<span>{{$new->count/3}}</span>人咨询 &nbsp; {{$new->count}}人阅读
+				@php
+				$readCoun=floor($new->count/3);
+				@endphp
+				<span>{{$readCoun}}</span>人咨询 &nbsp; {{$new->count}}人阅读
 			</div>
 		</div>
 	</div>
 	<div class="bodycenter mx-auto overflow-hidden">
+		@if(empty($type))
 		<h1>导读</h1>
 		<p class="text-666 mb-0">
 			{{$new->description}}
 		</p>
-		<div class="m-body ">
-		{!!$new->body!!}
+		@endif
+		<div class="m-body" id="mBody">
+			{!!$new->body!!}
 		</div>
 	</div>
 </div>
 <div class="w-full h-8 bg-white">
 </div>
+<!-- <script>
+	$(function() {
+		$("#mBody").find("div").css({
+			"width": "",
+		});
+	})
+</script> -->
 @endsection

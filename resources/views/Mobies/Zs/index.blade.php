@@ -7,7 +7,7 @@
 	@foreach($category as $item)
 	<li class="flex justify-between border-b">
 		<a href="{{route('ZsList',[$item->dirname])}}" class="w-1/5">
-			<img src="/storage/{{$item->picture}}"  class="w-full h-full" alt="">
+			<img src="/storage/{{$item->picture}}" class="w-full h-full" alt="">
 		</a>
 		<div class="w-3/4">
 			<a href="{{route('ZsList',[$item->dirname])}}" class="block w-full">
@@ -18,6 +18,8 @@
 	</li>
 	@endforeach
 </ul>
+<div class="w-full h-8 bg-white">
+</div>
 <style>
 	.zsIndex {
 		margin-top: 10px;

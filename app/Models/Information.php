@@ -28,7 +28,7 @@ class Information extends Model
 		return Str::limit(strip_tags($this->body),120,"...");
 	}
 	public function getCountAttribute($value){
-		return random_int(9999,9999999);
+		return random_int(99,999);
 	}
 	
 }

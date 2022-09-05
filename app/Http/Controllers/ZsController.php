@@ -44,20 +44,29 @@ class ZsController extends Controller
             //然后判断是否不是手机端
             $Mobile = IsMobile::isMobile();
             if ($Mobile) {
-                return view('Mobies.Zs.listDir', compact('dir', 'category','zs'));
+                return view('Mobies.Zs.listDir', compact('dir', 'category', 'zs'));
             }
             //查询所有zs和分类
             return view('information.index', compact('category', 'curr', 'zs'));
         } else {
             $curr = Topic::where('dirname', $dirname)->withOut('Info')->first();
-            $parent = Category::find($curr->category_id);
-            $zs = Information::where('topic_id', $curr->id)->paginate(10);
+            $zs = Information::where('topic_id', $curr->id)->get();
+            $Mobile = IsMobile::isMobile();
+            if ($Mobile) {
+                return view('Mobies.Zs.list', compact('curr', 'zs'));
+            }
             return view("information.list", compact('curr', 'parent', 'zs'));
         }
     }
     public function show(Request $request)
     {
         $zs = Information::findOrFail($request->id)->load("doctor");
+        $Mobile = IsMobile::isMobile();
+        if ($Mobile) {
+            $new = $zs;
+            $type = 123;
+            return view('Mobies.News.show', compact('new', 'type'));
+        }
         return view('information.show', compact('zs'));
     }
 }
