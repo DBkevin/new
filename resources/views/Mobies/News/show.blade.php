@@ -60,11 +60,11 @@
 </div>
 <div class="w-full h-8 bg-white">
 </div>
-<!-- <script>
+<script>
 	$(function() {
 		$("#mBody").find("div").css({
 			"width": "",
 		});
 	})
-</script> -->
+</script>
 @endsection

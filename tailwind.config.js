@@ -61,7 +61,8 @@ module.exports = {
         'ec6909': '#ec6909',
         'bbf3f7': '#bbf3f7',
         'FF8080':'#FF8080',
-        'eee':'#eee',
+        'eee': '#eee',
+        'edf0f7':'#edf0f7',
       },
       minHeight: {
         '155': '155px',
@@ -133,7 +134,9 @@ module.exports = {
         '587px':'58,7px',
         '288px': '288px',
         "m1.1": '1.1rem',
-        '70%':'70%',
+        '892':'892px',
+        '70%': '70%',
+        '25px':'25px'
         
       },
     },
