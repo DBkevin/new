@@ -132,9 +132,9 @@
 				@foreach($category as $items)
 				<ul class="text-666 border-b border-white mt-2 pb-1.5 w-full overflow-hidden text-xs leading-7 flex flex-wrap  justify-start hidden">
 					@foreach($items->topics as $item)
-					<li class="ml-25px inline-block">
+					<li class="ml-25px inline-block hover:text-bashColor">
 						<a href="{{route('questionList',$item->dirname)}}">
-						{{$item->title}}
+							{{$item->title}}
 						</a>
 					</li>
 					@endforeach
@@ -144,7 +144,7 @@
 		</div>
 		<div class="w-fuu mx-auto question-box mb-8 text-666 overflow-hidden">
 			@foreach($questions as $items)
-			<ul class="mt-3 w-full overflow-hidden">
+			<ul class="mt-3 w-full overflow-hidden hidden" id="menu-one">
 				@foreach($items as $item)
 				<li class="text-666 py-2 w-full overflow-hidden text-base flex justify-between">
 					<a href="{{route('questionShow',$item->id)}}" class="inline-block hover:text-bashColor ellipsis w-892 overflow-ellipsis whitespace-normal">
@@ -162,6 +162,23 @@
 		</div>
 	</div>
 </div>
+<script>
+	$(".question-title>ul>li:first").addClass("title-choose");
+	$(".question-title>div>ul:first").show();
+	$(".question-box >ul:first").show();
+	$('.question-title>ul>li').hover(function() {
+		let index = $(this).index(),
+			id = $(".question-box").find('ul').eq(index).index(),
+			twoMenu = $(".question-title>div").find("ul").eq(index).index();
+		if (index === id) {
+			$(this).addClass("title-choose").siblings().removeClass("title-choose");
+			$(".question-box").find("ul").eq(index).show().siblings().hide();
+			$(".question-title>div").find("ul").eq(index).show().siblings().hide();
+		} else {
+			return;
+		}
+	});
+</script>
 
 <div class="clear-both"></div>
 @endsection
