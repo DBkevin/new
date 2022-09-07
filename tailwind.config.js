@@ -34,7 +34,8 @@ module.exports = {
         '11.5': '2.75rem',
         '58px': '58px',
         '22px': '22px',
-        '27px':'27px',
+        '27px': '27px',
+        '12':'3rem',
       },
       colors: {
         'headbg': '#f2f2f2',
@@ -62,7 +63,8 @@ module.exports = {
         'bbf3f7': '#bbf3f7',
         'FF8080':'#FF8080',
         'eee': '#eee',
-        'edf0f7':'#edf0f7',
+        'edf0f7': '#edf0f7',
+        'f0f0f0': '#f0f0f0',
       },
       minHeight: {
         '155': '155px',
@@ -104,6 +106,7 @@ module.exports = {
         '150': '150px',
         '155': '155px',
         '710': '710px',
+        '700':'700px',
         '180': '180px',
         '560': '560px',
         '50': '50px',

@@ -24,11 +24,11 @@ class QuestionController extends Controller
         $cateogry = Category::with(['topics' => function ($query) {
             $query->whereNull('parent_id');
         }])->get();
-        $questions=[];
+        $questions = [];
         foreach ($category as $item) {
-           $questions[]=Question::whereIn('topic_id',$item->topics()->pluck('id')->toArray())->take(10)->get();
+            $questions[] = Question::whereIn('topic_id', $item->topics()->pluck('id')->toArray())->take(10)->get();
         }
-        return view('question.index', compact('zs', 'category','questions'));
+        return view('question.index', compact('zs', 'category', 'questions'));
     }
     public function list(Request $request)
     {
@@ -60,9 +60,15 @@ class QuestionController extends Controller
         //PC端
         if ($dir) {
             $parents = Topic::where('category_id', $dir->id)->whereNull('parent_id')->get(); //所有的子级 大栏目
-            $zs = Question::whereIn('topic_id', $parents->pluck('id')->toArray())->paginate(10);
+            $zs = Question::whereIn('topic_id', $parents->pluck('id')->toArray())->take(10)->get();
+            $questions = [];
+            foreach ($parents as $item) {
+                $questions[] = Question::where('topic_id', $item->id)->take(10)->get();
+            }
+            return view('question.list', compact('zs', 'parents', 'dir',"questions"));
         } else {
             $Parent = Topic::where('dirname', $dirname)->firstOrfail();
+            return "列表";
         }
     }
 

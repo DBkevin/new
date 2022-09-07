@@ -38,14 +38,14 @@
 					</div>
 					<div class="text-sm mt-6 text-999 flex justify-between">
 						<span class="inline-flex ">
-							<i style="background-image:url('images/question-master.png');background-size:200px 200px;background-position:-56px -35px" class="inlike-block w-4 h-4 mr-2.5 align-sub"></i>
+							<i style="background-image:url('/images/question-master.png');background-size:200px 200px;background-position:-56px -35px" class="inlike-block w-4 h-4 mr-2.5 align-sub"></i>
 							<span>本答案由专业 &nbsp;</span>
 							<a class="text-question-inde" href="{{route('doctorShow',[$item->Doctor->id])}}">{{$item->Doctor->name}}</a>
 							<span>&nbsp;提供</span>
 							<span class=" ml-3">发布于{{$item->created_at}}</span>
 						</span>
 						<span class="inline-flex">
-							<i style="background-image:url('images/question-master.png');background-size:200px 200px;background-position:-28px -35px" class="inlike-block w-4.5 h-4.5 mr-2 align-sub"></i>
+							<i style="background-image:url('/images/question-master.png');background-size:200px 200px;background-position:-28px -35px" class="inlike-block w-4.5 h-4.5 mr-2 align-sub"></i>
 							0
 						</span>
 					</div>
