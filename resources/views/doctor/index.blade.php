@@ -1,4 +1,5 @@
 @section('title','医生')
+@section('body-bg','bg-white')
 @extends('layouts.default')
 @section('content')
 <div class="clear-both"></div>

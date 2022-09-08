@@ -285,7 +285,7 @@
 					<li>
 						<div class="ns-img">
 							<a href="{{route('NewsShow',[$item->id])}}" target="_blank" class="overflow-hidden w-79px h-59px inline-block">
-								<img  src="/storage/{{$item->picture}}">
+								<img src="/storage/{{$item->picture}}">
 							</a>
 						</div>
 						<div class="ns-text">
