@@ -65,11 +65,11 @@ class QuestionController extends Controller
             foreach ($parents as $item) {
                 $questions[] = Question::where('topic_id', $item->id)->take(10)->get();
             }
-            return view('question.list', compact('zs', 'parents', 'dir',"questions"));
+            return view('question.list', compact('zs', 'parents', 'dir', "questions"));
         } else {
             $dir = Topic::where('dirname', $dirname)->firstOrfail();
-            $questions=Question::where('topic_id',$dir->id)->paginate();
-            return  view('question.listchild',compact('dir','questions'));
+            $questions = Question::where('topic_id', $dir->id)->paginate();
+            return  view('question.listchild', compact('dir', 'questions'));
         }
     }
 
@@ -82,10 +82,5 @@ class QuestionController extends Controller
         }
         //相关根据ID查询暂无,有了再改
         return view('question.show', compact('question'));
-    }
-
-    private function setArr($arr)
-    {
-        return json_decode(json_encode($arr), true);
     }
 }
