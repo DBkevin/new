@@ -67,8 +67,9 @@ class QuestionController extends Controller
             }
             return view('question.list', compact('zs', 'parents', 'dir',"questions"));
         } else {
-            $Parent = Topic::where('dirname', $dirname)->firstOrfail();
-            return "列表";
+            $dir = Topic::where('dirname', $dirname)->firstOrfail();
+            $questions=Question::where('topic_id',$dir->id)->paginate();
+            return  view('question.listchild',compact('dir','questions'));
         }
     }
 

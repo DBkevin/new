@@ -17,7 +17,9 @@
 			<ul class="w-40">
 				@foreach($parents as $item)
 				<li class="bg-f0f0f0 text-666 hover:bg-doctor hover:text-white border-b border-white hover:border-f0f0f0 h-12 text-bash leading-12 pl-7">
+					<a href="{{route('questionList',$item->dirname)}}" alt="{{$item->title}}">
 					{{$item->title}}
+					</a>
 				</li>
 				@endforeach
 			</ul>
