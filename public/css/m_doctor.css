@@ -1,0 +1,87 @@
+.doctorListMenu {
+  margin-top: 0.1rem;
+}
+
+.doctorShow {
+  height: 4.7rem;
+  padding: 0.4rem 0 0;
+  background: #d6a4a4;
+  background: linear-gradient(-48deg, #d6a4a4, #dae2f8);
+}
+
+.doctorShow > .doctorPic {
+  margin: 0 auto 0.3rem;
+  width: 2.58rem;
+  height: 2.58rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.doctorShow > .doctorInfo {
+  padding: 0 0.3rem;
+}
+
+.doctorShow > .doctorInfo > h1 {
+  line-height: 0.4rem;
+  font-size: 4.42vw;
+}
+
+.doctorShow > .doctorInfo > h2 {
+  font-size: 3.12vw;
+  line-height: 0.3rem;
+  margin-top: 0.2rem;
+}
+
+.doctorShow > .doctorInfo > .tag {
+  width: 6.9rem;
+  height: 0.54rem;
+  line-height: 0.54rem;
+}
+
+.doctorShow > .doctorInfo > .tag > div {
+  margin: 0.3rem auto 0;
+  padding: 0 0.4rem;
+  line-height: 0.54rem;
+  background: #fff;
+  border-radius: 0.27rem;
+  color: #666;
+  box-shadow: 0 1px 0.3rem 0 rgba(0, 0, 0, 0.1);
+  font-size: 3.64vw;
+}
+
+.doctorInfos {
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.doctorInfos > div {
+  padding-bottom: 0.4rem;
+  box-shadow: 0 0.1rem 0.3rem 1px rgba(0, 0, 0, 0.12);
+  border-radius: 6px;
+  margin: 0 0.3rem;
+  padding: 0.2rem;
+}
+
+.doctorInfos > div > p {
+  font-size: 3.12vw;
+  text-indent: 2em;
+}
+
+.doctorInfos > div > h1 {
+  font-size: 3.9vw;
+}
+
+.doctorInfos > div > div {
+  font-size: 3.12vw;
+  margin-top: 0.2rem;
+  line-height: 0.3rem;
+}
+
+.doctorInfos > div > div > span > i:first-child {
+  color: #ff8686;
+}
+
+.doctorInfos > div > div > span > i:last-child {
+  margin-left: 0.2rem;
+}
+

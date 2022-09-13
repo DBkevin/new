@@ -1,0 +1,88 @@
+.doctorListMenu {
+	margin-top: .1rem;
+}
+
+.doctorShow {
+	height: 4.7rem;
+	padding: .4rem 0 0;
+	background: #d6a4a4;
+	background: -webkit-linear-gradient(-48deg, #d6a4a4, #dae2f8);
+	background: -o-linear-gradient(-48deg, #d6a4a4, #dae2f8);
+	background: -moz-linear-gradient(-48deg, #d6a4a4, #dae2f8);
+	background: linear-gradient(-48deg, #d6a4a4, #dae2f8);
+
+	&>.doctorPic {
+		margin: 0 auto .3rem;
+		width: 2.58rem;
+		height: 2.58rem;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+
+	&>.doctorInfo {
+		padding: 0 .3rem;
+
+		&>h1 {
+			line-height: .40rem;
+			font-size: calc(0.13*34vw);
+		}
+
+		&>h2 {
+			font-size: calc(0.13 * 24vw);
+			line-height: .30rem;
+			margin-top: .2rem;
+		}
+
+		&>.tag {
+			width: 6.9rem;
+			height: .54rem;
+			line-height: .54rem;
+
+			&>div {
+				margin: .3rem auto 0;
+				padding: 0 .4rem;
+				line-height: .54rem;
+				background: #fff;
+				border-radius: .27rem;
+				color: #666;
+				-moz-box-shadow: 0 1px .3rem 0 rgba(0, 0, 0, 0.1);
+				-webkit-box-shadow: 0 1px .3rem 0 rgba(0, 0, 0, 0.1);
+				box-shadow: 0 1px .3rem 0 rgba(0, 0, 0, 0.1);
+				font-size: calc(0.13 * 28vw);
+			}
+		}
+	}
+}
+
+.doctorInfos {
+	margin-bottom: .2rem;
+	padding-bottom: .2rem;
+	&>div {
+		padding-bottom: .4rem;
+		-moz-box-shadow: 0 .1rem .3rem 1px rgba(0, 0, 0, 0.12);
+		-webkit-box-shadow: 0 .1rem .3rem 1px rgba(0, 0, 0, 0.12);
+		box-shadow: 0 .1rem .3rem 1px rgba(0, 0, 0, 0.12);
+		border-radius: 6px;
+		margin: 0 .3rem;
+		padding: .2rem;
+		&>p{
+			font-size:calc(0.13*24vw);
+			text-indent: 2em;
+		}
+
+		&>h1 {
+			font-size: calc(0.13*30vw);
+		}
+		&>div{
+			font-size:calc(0.13*24vw);
+			margin-top: .2rem;
+			line-height: .3rem;
+			&>span>i:first-child{
+					color:#ff8686;
+			}
+			&>span>i:last-child{
+				margin-left: .2rem;
+			}
+		}
+	}
+}

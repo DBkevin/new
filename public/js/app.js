@@ -29237,6 +29237,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/css/m_doctor.scss":
+/*!*************************************!*\
+  !*** ./resources/css/m_doctor.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/css/m_index.scss":
 /*!************************************!*\
   !*** ./resources/css/m_index.scss ***!
@@ -29403,15 +29414,16 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
 /***/ }),
 
 /***/ 0:
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/css/m_index.scss ./resources/css/m_question.scss ./resources/css/m_show.scss ./resources/css/app.css ./resources/css/index.css ./resources/css/topic.css ***!
-  \********************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/css/m_index.scss ./resources/css/m_question.scss ./resources/css/m_doctor.scss ./resources/css/m_show.scss ./resources/css/app.css ./resources/css/index.css ./resources/css/topic.css ***!
+  \**************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /var/www/news/resources/js/app.js */"./resources/js/app.js");
 __webpack_require__(/*! /var/www/news/resources/css/m_index.scss */"./resources/css/m_index.scss");
 __webpack_require__(/*! /var/www/news/resources/css/m_question.scss */"./resources/css/m_question.scss");
+__webpack_require__(/*! /var/www/news/resources/css/m_doctor.scss */"./resources/css/m_doctor.scss");
 __webpack_require__(/*! /var/www/news/resources/css/m_show.scss */"./resources/css/m_show.scss");
 __webpack_require__(/*! /var/www/news/resources/css/app.css */"./resources/css/app.css");
 __webpack_require__(/*! /var/www/news/resources/css/index.css */"./resources/css/index.css");

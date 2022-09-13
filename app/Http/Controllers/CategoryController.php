@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Topic;
+
 class CategoryController extends Controller
 {
     public function Index(Request $request, Category $category)
@@ -30,14 +31,15 @@ class CategoryController extends Controller
             $topics = DB::table('topic', "p")->select('p.id as par_id', 'p.title as par_title')->where('p.category_id', $category->id)->get();
             $d = [];
             foreach ($topics as $topic) {
-               $d[]=['name'=>$topic->par_title,'par_id'=>$topic->par_id,"child"=>[]];
+                $d[] = ['name' => $topic->par_title, 'par_id' => $topic->par_id, "child" => []];
             }
             $topics = $d;
         }
         return  view('Category/index', compact('category', 'topics'));
     }
-    public function Home(Request $request){
-        $topics=Topic::without(['Category', 'Notice', 'Introtdtion', 'Info'])->whereNotNull('parent_id')->select('id','picture','title')->paginate(10);
+    public function Home(Request $request)
+    {
+        $topics = Topic::without(['Category', 'Notice', 'Introtdtion', 'Info'])->whereNotNull('parent_id')->select('id', 'picture', 'title')->paginate(10);
         return  view('Category/home', compact('topics'));
     }
 }
