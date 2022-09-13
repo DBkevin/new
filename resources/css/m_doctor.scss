@@ -1,7 +1,37 @@
 .doctorListMenu {
+	padding-top: .1rem;
 	margin-top: .1rem;
+	&>h1{
+		font-size:calc(0.13*38vw);
+		margin-left: .2rem;
+		padding-left: .2rem;
+	}
+	>ul{
+		margin-bottom: .3rem;
+		padding-bottom: .3rem;
+	}
+	&>ul>li{
+		margin:3vh 3vw;
+		font-size: 1rem;
+		padding:.1rem 0;
+		&>a{
+			margin-bottom: 1.5vh;
+			>div:first-of-type{
+				width: 25vw;
+				height: 25vw;
+			}
+			>div:last-of-type{
+				width:65vw;
+				padding-left: 4%;
+				font-size:.3rem;
+				>h3>span{
+					color:#a692ce;
+				}
+			}
+		}
+	}
 }
-
+/***show*/
 .doctorShow {
 	height: 4.7rem;
 	padding: .4rem 0 0;

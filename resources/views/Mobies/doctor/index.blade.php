@@ -11,7 +11,34 @@
 	<img src="/m/images/doctor.jpg" alt="" class="w-full">
 </div>
 <div class="w-full doctorListMenu bg-white">
-123
+	<h1 class="border-l-2 border-bashColor ">热门医生推荐</h1>
+	<ul class="w-full border-t">
+		@foreach($doctors as $item)
+		<li class="border-b">
+			<a href="{{route('doctorShow',$item->id)}}" class="w-full flex justify-between items-center">
+				<div class="rounded-full overflow-hidden ">
+					<img src="/storage/{{$item->picture}}" alt="">
+				</div>
+				<div class="table-cell align-middle text-999">
+					<h1 class="truncate">{{$item->name}}</h1>
+					<h2 >{{$item->title}} | 执业年限：{{$item->age}}</h2>
+					<h3 class="truncate">擅长项目：
+						@foreach($item->tags as $tag)
+						<span>{{$tag->title}}</span>
+						@if($loop->last)
+						@else
+						、
+						@endif
+						@endforeach
+					</h3>
+					<h4 class="truncate">
+						个人简介：{{$item->introduce}}
+					</h4>
+				</div>
+			</a>
+		</li>
+		@endforeach
+	</ul>
 </div>
 <div class="w-full h-8 bg-white">
 </div>
