@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::name('api.')->group(function () {
+    Route::get('project', 'Api\TopicControlle@index')->name('project');
+    Route::get('doctor/{name}','Api\TopicControlle@getDoctor')->name('getDoctor');
 });
+
