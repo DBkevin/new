@@ -11,6 +11,7 @@ use App\Models\Topic;
 use App\Models\Doctor;
 use App\Services\InsteadImg;
 use App\Services\GetKeyAndDescription;
+use App\Models\Flag;
 
 class QuestionController extends AdminController
 {
@@ -26,6 +27,7 @@ class QuestionController extends AdminController
             $grid->column('title', '标题')->width('8%')->limit(10, '...');
             $grid->column('topic.title', '所属项目')->badge('success');
             $grid->column('qbody', '提问内容')->width('8%')->limit(10, '...');
+            $grid->Flags()->pluck('name')->label();
             $grid->column('description', '栏目描述')->width('8%')->limit(10, '...');
             $grid->column('keywords', '栏目关键字')->width('8%')->limit(10, '...');
             $grid->column('qage', "提问者年龄")->display(function ($age) {
@@ -60,6 +62,7 @@ class QuestionController extends AdminController
                     return [$topics->id => $topics->title];
                 }
             })->ajax('gettopic')->rules('required');
+            $form->select('flags', "标签")->options(Flag::all()->pluck('name','id'))->help("文章标签信息,首页就是出现在首页,列表就是出现在在列表,不选就没有");
             $form->text('description', "文章描述")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('qbody', "提问内容,最多200多个字符")->creationRules('min:2|max:255', ['min' => '最少需要2个字符', "max" => "最多不能超过255个字符"])->updateRules('min:2');

@@ -30,5 +30,7 @@ class Information extends Model
 	public function getCountAttribute($value){
 		return random_int(99,999);
 	}
-	
+	public function Flags(){
+		return $this->belongsToMany("App\Models\Flag","flags_foreign","information_id","flag_id");
+	}
 }

@@ -10,6 +10,7 @@ use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Widgets\Card;
 use App\Services\InsteadImg;
 use App\Services\GetKeyAndDescription;
+use App\Models\Flag;
 
 class NewsController extends AdminController
 {
@@ -27,6 +28,7 @@ class NewsController extends AdminController
             $grid->column('description')->width('10%')->limit(20, '...');
             $grid->column('picture', '栏目缩略图')->image('http://cf.test/storage/', 50, 100);
             $grid->column('Topic.title', '所属栏目')->badge('success');
+            $grid->Flags()->pluck('name')->label();
             $grid->column('body', '文章内容')->display('查看内容')
                 ->modal(function ($modal) {
                     // 设置弹窗标题
@@ -62,6 +64,7 @@ class NewsController extends AdminController
      */
     protected function form()
     {
+
         return Form::make(new News(), function (Form $form) {
             $form->display('id');
             $form->text('title', "标题")->creationRules('unique:news,title|min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
@@ -71,12 +74,12 @@ class NewsController extends AdminController
                     return [$topics->id => $topics->title];
                 }
             })->ajax('gettopic')->rules('required');
+            $form->select('flags', "标签")->options(Flag::all()->pluck('name','id'))->help("文章标签信息,首页就是出现在首页,列表就是出现在在列表,不选没有");
             $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload();
             $form->text('description', "文章导读")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->editor('body', '文章正文')->rules('required');
-
             $form->text('count');
             $form->display('created_at');
             $form->display('updated_at');

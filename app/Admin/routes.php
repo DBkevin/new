@@ -20,6 +20,7 @@ Route::group([
     $router->resource('doctor', 'DoctorController');
     $router->resource('information', 'InformationController');
     $router->resource('question', 'QuestionController');
+    $router->resource('flag', 'FlagController');
     $router->resource('news', 'NewsController',[
         'names'=>['index'=>'NewsIndex'],
     ]);

@@ -26,4 +26,8 @@ class News extends Model
 	{
 		return $this->belongsTo('App\Models\Doctor');
 	}
+	//标签多对多关联
+	public function Flags(){
+		return $this->belongsToMany("App\Models\Flag","flags_foreign","news_id","flag_id");
+	}
 }

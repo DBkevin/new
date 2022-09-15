@@ -39,4 +39,8 @@ class Question extends Model
 			$this->attributes['qage'] = random_int(18, 40);
 		}
 	}
+	//标签多对多关联
+	public function Flags(){
+		return $this->belongsToMany("App\Models\Flag","flags_foreign","question_id","flag_id");
+	}
 }
