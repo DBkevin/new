@@ -26,7 +26,7 @@ class NewsController extends AdminController
             $grid->column('title');
             $grid->column('keywords')->width('10%')->limit(20, '...');
             $grid->column('description')->width('10%')->limit(20, '...');
-            $grid->column('picture', '栏目缩略图')->image('http://cf.test/storage/', 50, 100);
+            $grid->column('picture', '栏目缩略图')->image('/storage/', 50, 100);
             $grid->column('Topic.title', '所属栏目')->badge('success');
             $grid->Flags()->pluck('name')->label();
             $grid->column('body', '文章内容')->display('查看内容')
