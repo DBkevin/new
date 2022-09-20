@@ -66,9 +66,11 @@
 }
 
 .banner>ul>li>.nav_left:hover+div,
+.banner>ul>li>.nav_rigt,
 .banner>ul>li>.nav_rigt:hover {
 	visibility: visible;
 	opacity: 1;
+	display: block;
 }
 
 .banner>ul>li a {

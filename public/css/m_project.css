@@ -1,0 +1,21 @@
+.pro_banner {
+  height: 43.5185185185vw;
+}
+
+.pro_banner + div:first-of-type {
+  padding: 0.3rem;
+}
+
+.pro_banner + div:first-of-type > h1:first-of-type {
+  padding-bottom: 0.3rem;
+  font-size: 3.9vw;
+}
+
+.pro_banner + div:first-of-type > h1:first-of-type > img {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.1rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+

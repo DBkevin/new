@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Topic;
+use App\Services\IsMobile;
 
 class CategoryController extends Controller
 {
@@ -40,6 +41,10 @@ class CategoryController extends Controller
     public function Home(Request $request)
     {
         $topics = Topic::without(['Category', 'Notice', 'Introtdtion', 'Info'])->whereNotNull('parent_id')->select('id', 'picture', 'title')->paginate(10);
+        $isMobie = IsMobile::isMobile();
+        if ($isMobie) {
+            return view('Mobies.project.list', compact('topics'));
+        }
         return  view('Category/home', compact('topics'));
     }
 }

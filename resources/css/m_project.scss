@@ -1,0 +1,16 @@
+.pro_banner{
+	height:calc(100vw * 470 / 1080);
+}
+.pro_banner+div:first-of-type{
+	padding:.3rem;
+	&>h1:first-of-type{
+		padding-bottom: .3rem;
+		font-size: calc(0.13 * 30vw);
+		&>img{
+			width: .4rem;
+			height:.4rem;
+			margin-right: .1rem;
+			object-fit:contain;
+		}
+	}
+}

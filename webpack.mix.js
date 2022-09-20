@@ -20,4 +20,5 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/css/m_index.scss', 'public/css')
     .sass('resources/css/m_question.scss', 'public/css')
     .sass('resources/css/m_doctor.scss', 'public/css')
+    .sass('resources/css/m_project.scss', 'public/css')
     .sass('resources/css/m_show.scss', 'public/css/');
