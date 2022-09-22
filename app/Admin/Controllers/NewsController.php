@@ -42,11 +42,12 @@ class NewsController extends AdminController
             $grid->column('doctor.name', '所属医生')->badge('primary');
             $grid->column('count');
             $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
             $grid->disableViewButton();
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-                $filter->equal('title');
+                $filter->panel();
+                $filter->like("title", "文章名称");
+                $filter->like("Doctor.id", "医生姓名")->select(\App\Models\Doctor::all()->pluck("name", 'id')->toArray());
+                $filter->between('created_at', "发布时间")->date();
             });
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 //当前ID
@@ -67,20 +68,19 @@ class NewsController extends AdminController
 
         return Form::make(new News(), function (Form $form) {
             $form->display('id');
-            $form->text('title', "标题")->creationRules('unique:news,title|min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
-            $form->select('topic_id', '所属项目')->options(function ($id) {
+            $form->text('title', "标题(必填)")->creationRules('unique:news,title|min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
+            $form->text('keywords', "关键词(选填)")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
+            $form->text('description', "文章导读(选填)")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
+            $form->select('flags', "文章位置(选填)")->options(Flag::all()->pluck('name', 'id'))->help("文章标签信息,首页就是出现在首页,列表就是出现在在列表,不选没有");
+            $form->select('topic_id', '所属项目(必填)')->options(function ($id) {
                 $topics = Topic::find($id);
                 if ($topics) {
                     return [$topics->id => $topics->title];
                 }
             })->ajax('gettopic')->rules('required');
-            $form->select('flags', "标签")->options(Flag::all()->pluck('name','id'))->help("文章标签信息,首页就是出现在首页,列表就是出现在在列表,不选没有");
-            $form->select('doctor_id', "所属医生")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
+            $form->select('doctor_id', "所属医生(必填)")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload();
-            $form->text('description', "文章导读")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
-            $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
-            $form->editor('body', '文章正文')->rules('required');
-            $form->text('count');
+            $form->editor('body', '文章正文(必填)')->rules('required');
             $form->display('created_at');
             $form->display('updated_at');
             if ($form->isEditing()) {

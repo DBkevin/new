@@ -86,7 +86,7 @@
 					</div>
 				</div>
 				<p class="mt-4 mb-4 text-base leading-7 text-999">
-					{{$question->abody}}
+					{!!$question->abody!!}
 				</p>
 				@include("layouts._showBanner")
 			</div>

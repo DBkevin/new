@@ -32,7 +32,7 @@
 		</div>
 		<div class="w-article-zx bg-white cursor-auto w-850px  h-auto">
 			<div class=" mx-auto  pb-50 px-10 ">
-				<ul class="pt-4 overflow-hidden leading-loose text-xl">
+				<ul class="pt-4 overflow-hidden leading-loose text-xl text-666">
 					{!!$new->body!!}
 					@include("layouts._showBanner",["zs"=>$zs,"question"=>$question])
 				</ul>
