@@ -71,7 +71,7 @@ return [
 
         'namespace' => 'App\\Admin\\Controllers',
 
-        'middleware' => ['web', 'admin'],
+        'middleware' => ['web', 'admin','admin.permission:allow,administrator,editor'],
 
         'enable_session_middleware' => false,
     ],
@@ -144,7 +144,8 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => Dcat\Admin\Models\Administrator::class,
+                //'model'  => Dcat\Admin\Models\Administrator::class,
+                'model'  => App\Models\Adminuser::class,
             ],
         ],
 

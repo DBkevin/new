@@ -33,4 +33,7 @@ class Information extends Model
 	public function Flags(){
 		return $this->belongsToMany("App\Models\Flag","flags_foreign","information_id","flag_id");
 	}
+	public function Users(){
+		return $this->belongsToMany("App\Models\Adminuser","adminuser_foreign","information_id","adminuser_id");
+	}
 }

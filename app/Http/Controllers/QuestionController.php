@@ -57,7 +57,7 @@ class QuestionController extends Controller
             }
             return view('Mobies.Question.index', compact('zs', 'category', 'parents', 'dir', 'Parent'));
         }
-        //PC端
+        
         if ($dir) {
             $parents = Topic::where('category_id', $dir->id)->whereNull('parent_id')->get(); //所有的子级 大栏目
             $zs = Question::whereIn('topic_id', $parents->pluck('id')->toArray())->take(10)->get();

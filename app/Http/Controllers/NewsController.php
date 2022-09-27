@@ -49,20 +49,31 @@ class NewsController extends Controller
             //查询所有新闻
             $parent = $dir;
             $curr = $parent;
+            //先把所有大栏目下的小栏目查出来
+            $newsID = Topic::where('category_id', $parent->id)->whereNULL('parent_id')->pluck('id')->toArray();
+            $news = News::whereIn('topic_id', $newsID)->paginate(10);
+            $sibling = Topic::where('category_id', $parent->id)->whereNull('parent_id')->select('id', 'dirname', 'title')->get();
+            $isMobie = IsMobile::isMobile();
+            if ($isMobie) {
+                $newsTop = $news;
+                return view('Mobies.News.index', compact("newsTop", "curr"));
+            } else {
+                return view('News.list', compact('news', 'sibling',  'parent', 'curr'));
+            }
         } else {
-            //是Topic,就先去查一级
-            $curr = Topic::where('dirname', $dirname)->withOut('Info')->first();
-            $parent = Category::find($curr->category_id); //父级
-        }
-        $newsID = Topic::where('parent_id', $parent->id)->pluck('id')->toArray();
-        $news = News::whereIn('topic_id', $newsID)->paginate(10);
-        $sibling = Topic::where('category_id', $parent->id)->whereNull('parent_id')->select('id', 'dirname', 'title')->get();
-         $isMobie = IsMobile::isMobile();
-        if ($isMobie) {
-            $newsTop=$news;
-            return view('Mobies.News.index', compact("newsTop","curr"));
-        }else{
-        return view('News.list', compact('news', 'sibling',  'parent', 'curr'));
+            //是Topic直接查找当前的
+            $curr = Topic::where('dirname', $dirname)->withOut('Info')->first(); //查找到当前
+            $parent = Category::find($curr->category_id); //不需要父级了,因为当前就是二级大栏目
+            $newsID = Topic::where('parent_id', $parent->id)->pluck('id')->toArray();
+            $news = News::where('topic_id', $curr->id)->paginate(5);//查找当前的栏目
+            $sibling = Topic::where('category_id', $parent->id)->whereNull('parent_id')->select('id', 'dirname', 'title')->get();
+            $isMobie = IsMobile::isMobile();
+            if ($isMobie) {
+                $newsTop = $news;
+                return view('Mobies.News.index', compact("newsTop", "curr"));
+            } else {
+                return view('News.list', compact('news', 'sibling',  'parent', 'curr'));
+            }
         }
     }
     public function show(Request $request)

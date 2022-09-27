@@ -50,7 +50,8 @@ class ZsController extends Controller
             return view('information.index', compact('category', 'curr', 'zs'));
         } else {
             $curr = Topic::where('dirname', $dirname)->withOut('Info')->first();
-            $zs = Information::where('topic_id', $curr->id)->get();
+            $parent=$curr;
+            $zs = Information::where('topic_id', $curr->id)->paginate(10);
             $Mobile = IsMobile::isMobile();
             if ($Mobile) {
                 return view('Mobies.Zs.list', compact('curr', 'zs'));

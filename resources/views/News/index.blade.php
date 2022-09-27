@@ -96,14 +96,14 @@
 				</div>
 			</div>
 		</div>
-		@break($loop->index>0)
+			@break($loop->index<=1)
 		@endforeach
 		<ul class="justify-between  pl-4 list-disc list-outside bg-rose-200">
 			@foreach($item['news'] as $new)
 			@continue($loop->index==0)
-			<li class="mt-3  flex justify-between leading-5 text-666 ">
+			<li class="mt-3  flex justify-between leading-5 truncate text-666 hover:text-bashColor ">
 				<a  href="{{route('NewsShow',[$new['id']])}}" class="truncate inline-block"> <span class="w-2 h-2 bg-ccc mr-2 rounded-full align-middle inline-block"></span> {{$new['title']}}</a>
-				<span class="block text-ccc text-xs1">{{$new['created_at']}}</span>
+				<span class="inline-block text-ccc text-xs1">{{$new['created_at']}}</span>
 			</li>
 			@endforeach
 		</ul>

@@ -11,6 +11,8 @@ use Dcat\Admin\Widgets\Card;
 use App\Services\InsteadImg;
 use App\Services\GetKeyAndDescription;
 use App\Models\Flag;
+use App\Models\Adminuser;
+use Dcat\Admin\Admin;
 
 class NewsController extends AdminController
 {
@@ -28,7 +30,8 @@ class NewsController extends AdminController
             $grid->column('description')->width('10%')->limit(20, '...');
             $grid->column('picture', '栏目缩略图')->image('/storage/', 50, 100);
             $grid->column('Topic.title', '所属栏目')->badge('success');
-            $grid->Flags()->pluck('name')->label();
+            $grid->Flags("标签")->pluck('name')->label();
+            $grid->Users("发布者")->pluck('name')->label();
             $grid->column('body', '文章内容')->display('查看内容')
                 ->modal(function ($modal) {
                     // 设置弹窗标题
@@ -48,6 +51,7 @@ class NewsController extends AdminController
                 $filter->like("title", "文章名称");
                 $filter->like("Doctor.id", "医生姓名")->select(\App\Models\Doctor::all()->pluck("name", 'id')->toArray());
                 $filter->between('created_at', "发布时间")->date();
+                $filter->like('Users.id',"文章发布者")->select(Adminuser::all()->pluck("name","id")->toArray());
             });
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 //当前ID
@@ -79,8 +83,9 @@ class NewsController extends AdminController
                 }
             })->ajax('gettopic')->rules('required');
             $form->select('doctor_id', "所属医生(必填)")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
-            $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload();
+            $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload()->required();
             $form->editor('body', '文章正文(必填)')->rules('required');
+            $form->hidden('users')->value(Admin::user()->id);
             $form->display('created_at');
             $form->display('updated_at');
             if ($form->isEditing()) {

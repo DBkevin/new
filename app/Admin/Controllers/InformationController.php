@@ -13,6 +13,9 @@ use Dcat\Admin\Http\Controllers\AdminController;
 use Dcat\Admin\Widgets\Card;
 use App\Services\InsteadImg;
 use App\Models\Flag;
+use App\Models\Adminuser;
+use Dcat\Admin\Admin;
+
 class InformationController extends AdminController
 {
     /**
@@ -30,6 +33,7 @@ class InformationController extends AdminController
             $grid->column('picture', '栏目缩略图')->image("",50,50);
             $grid->column('keywords', '栏目关键字')->width('10%')->limit(20, '...');
             $grid->Flags()->pluck('name')->label();
+            $grid->Users("发布者")->pluck('name')->label();
             $grid->column('body', '文章内容')->display('查看内容')
                 ->modal(function ($modal) {
                     // 设置弹窗标题
@@ -45,8 +49,9 @@ class InformationController extends AdminController
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
+                $filter->panel();
                 $filter->equal('title');
+                $filter->like('Users.id',"文章发布者")->select(Adminuser::all()->pluck("name","id")->toArray());
             });
             $grid->disableViewButton();
             $grid->actions(function (Grid\Displayers\Actions $actions) {
@@ -77,6 +82,7 @@ class InformationController extends AdminController
                     $tools->append("<a class='btn btn-sm btn-success' href='$url'  target='_blank'><i class='fa fa-eye'></i>&nbsp;&nbsp;查看</a>");
                 });
             } 
+            $form->hidden('users')->value(Admin::user()->id);
             $form->image('picture', '栏目图片')->accept('jpg,png,gif,jpeg')->url('users/images/pciture')->retainable();
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->select('topic_id', '所属项目')->options(function ($id) {

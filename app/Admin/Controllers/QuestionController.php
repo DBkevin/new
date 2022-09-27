@@ -12,6 +12,8 @@ use App\Models\Doctor;
 use App\Services\InsteadImg;
 use App\Services\GetKeyAndDescription;
 use App\Models\Flag;
+use App\Models\Adminuser;
+use Dcat\Admin\Admin;
 
 class QuestionController extends AdminController
 {
@@ -28,6 +30,7 @@ class QuestionController extends AdminController
             $grid->column('topic.title', '所属项目')->badge('success');
             $grid->column('qbody', '提问内容')->width('8%')->limit(10, '...');
             $grid->Flags()->pluck('name')->label();
+            $grid->Users("发布者")->pluck('name')->label();
             $grid->column('keywords', '栏目关键字')->width('8%')->limit(10, '...');
             $grid->column('doctor.name', '所属医生')->badge('primary');
             $grid->column('abody', "回答内容")->width('8%')->limit(10, '...');;
@@ -38,6 +41,7 @@ class QuestionController extends AdminController
                 $filter->like("title", "文章名称");
                 $filter->like("Doctor.id", "医生姓名")->select(\App\Models\Doctor::all()->pluck("name", 'id')->toArray());
                 $filter->between('created_at', "发布时间")->date();
+                $filter->like('Users.id',"文章发布者")->select(Adminuser::all()->pluck("name","id")->toArray());
             });
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 //当前ID
@@ -68,6 +72,7 @@ class QuestionController extends AdminController
                     return [$topics->id => $topics->title];
                 }
             })->ajax('gettopic')->rules('required');
+            $form->hidden('users')->value(Admin::user()->id);
             $form->select('doctor_id', "所属医生(必填)")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->editor('abody', "回答内容(必填)")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');;
             if ($form->isEditing()) {

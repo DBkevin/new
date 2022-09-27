@@ -24,4 +24,7 @@ class Question extends Model
 	public function Flags(){
 		return $this->belongsToMany("App\Models\Flag","flags_foreign","question_id","flag_id");
 	}
+	public function Users(){
+		return $this->belongsToMany("App\Models\Adminuser","adminuser_foreign","question_id","adminuser_id");
+	}
 }

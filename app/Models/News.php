@@ -30,4 +30,7 @@ class News extends Model
 	public function Flags(){
 		return $this->belongsToMany("App\Models\Flag","flags_foreign","news_id","flag_id");
 	}
+	public function Users(){
+		return $this->belongsToMany("App\Models\Adminuser","adminuser_foreign","news_id","adminuser_id");
+	}
 }
