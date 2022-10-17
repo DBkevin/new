@@ -1,22 +1,8 @@
-<div class="h-9 w-full border-b border-headbg bg-headbg fixed top-0 z-50">
-	<div class="w-cen mx-auto flex flex-row flex-nowrap h-9 align-content items-center justify-between">
+<div class="h-p30 w-full  bg-headbg fixed top-0 z-50">
+	<div class="w-cen mx-auto flex flex-row flex-nowrap h-p30 align-content items-center justify-between text-666 text-sm">
 		<ul class="flex flex-row flex-nowrap">
 			<li>
-				<a href="" class="px-2.5">
-					<span class="w-4 h-4 mr-3.5 inline-block" style="background:url(/images/icon.png) 0px -1px no-repeat"></span> 手机美莱
-				</a>
-			</li>
-			<li>
-				<a href="" class="px-2.5">
-					<span class="w-4 h-4 mr-3.5 inline-block" style="background:url(/images/icon.png) 0px -63px no-repeat"></span>
-					美莱小程序
-				</a>
-			</li>
-			<li>
-				<a href="" class="px-2.5">
-					<span class="w-4 h-4 mr-3.5 inline-block" style="background:url(/images/icon.png) 0px -63px no-repeat"></span>
-					美莱公众号
-				</a>
+				 专注科技品质·实力专业塑美
 			</li>
 		</ul>
 		<ul>
