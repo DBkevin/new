@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Information;
+use App\Models\News;
+use App\Models\Question;
 use Illuminate\Support\Facades\DB;
 use App\Services\IsMobile;
+use Illuminate\Database\Eloquent\Builder;
 class IndexController extends Controller
 {
     //
@@ -44,10 +48,19 @@ class IndexController extends Controller
         $categories = $t;
         $t = null;
         $isMobie = IsMobile::isMobile();
+        $questions=Question::whereHas('Flags',function(Builder $query){
+            $query->where('flag_id',1);
+        })->orderBy("created_at","desc")->take(10)->get();
+        $news=News::whereHas('Flags',function(Builder $query){
+            $query->where('flag_id',1);
+        })->orderBy('created_at',"desc")->take(8)->get();
+        $zsList=Information::whereHas("Flags",function(Builder $query){
+            $query->where('flag_id',1);
+        })->orderBy('created_at',"desc")->take(5)->get();
         if ($isMobie){
             return view('Mobies/home',compact('categories'));
         } else{
-            return  view('home', compact('categories'));
+            return  view('home', compact('categories','questions',"news",'zsList'));
         }
     }
     private function setArr($arr)
