@@ -14,6 +14,7 @@
 </head>
 
 <body class="font-sans @yield('body-bg','bg-white') ">
+	@include('layouts.rightMenu')
 	<div class="mx-auto min-w-min xl">
 		@include('layouts.header')
 		@include('layouts._headMenu')
