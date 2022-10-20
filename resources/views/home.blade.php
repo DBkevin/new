@@ -288,11 +288,11 @@
 							<h3 class="text-xl  overflow-hidden overflow-ellipsis py-2.5 text-333 w-full whitespace-nowrap ">
 								{{$item->title}}
 							</h3>
-							<p class="text-666 text-base h-45px overflow-ellipsis overflow-hidden" style="-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;">
-								{{$item->body}}
-							</p>
+							<div class="text-666 text-base h-45px overflow-ellipsis overflow-hidden" style="-webkit-line-clamp:2;-webkit-box-orient:vertical;display:-webkit-box;">
+								{!!$item->body!!}
+							</div>
 							<span class="text-999 inline-block py-2.5 text-sm">
-								2022-10-16 16:22:05
+							{{$item->created_at}}
 							</span>
 						</div>
 					</a>

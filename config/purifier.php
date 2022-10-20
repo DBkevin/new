@@ -33,7 +33,8 @@ return [
         ],
         'body' => [
             'HTML.Doctype'             => 'XHTML 1.0 Transitional',
-            'HTML.Allowed'             => 'div,b,strong,i,em,a[href|title],ul,ol,ol[start],li,p[style],br,img[width|height|alt|src],*[style|class],pre,hr,code,h2,h3,h4,h5,h6,blockquote,del,table,thead,tbody,tr,th,td',
+            #'HTML.Allowed'             => 'div,b,strong,i,em,a[href|title],ul,ol,ol[start],li,p[style],br,img[width|height|alt|src],*[style|class],pre,hr,code,h2,h3,h4,h5,h6,blockquote,del,table,thead,tbody,tr,th,td',
+            'HTML.Allowed'             => 'p,img[width|height|alt|src]',
             'CSS.AllowedProperties'    => ' ',
             'AutoFormat.AutoParagraph' => true,
             'AutoFormat.RemoveEmpty'   => true,
@@ -112,5 +113,3 @@ return [
     ],
 
 ];
-
- 

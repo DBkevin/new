@@ -51,7 +51,7 @@ class NewsController extends AdminController
                 $filter->like("title", "文章名称");
                 $filter->like("Doctor.id", "医生姓名")->select(\App\Models\Doctor::all()->pluck("name", 'id')->toArray());
                 $filter->between('created_at', "发布时间")->date();
-                $filter->like('Users.id',"文章发布者")->select(Adminuser::all()->pluck("name","id")->toArray());
+                $filter->like('Users.id', "文章发布者")->select(Adminuser::all()->pluck("name", "id")->toArray());
             });
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 //当前ID
@@ -85,7 +85,9 @@ class NewsController extends AdminController
             $form->select('doctor_id', "所属医生(必填)")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->image('picture', '栏目图片')->uniqueName()->accept('jpg,png,gif,jpeg')->url('users/images/article')->autoUpload()->required();
             $form->editor('body', '文章正文(必填)')->rules('required');
-            $form->hidden('users')->value(Admin::user()->id);
+            if ($form->isCreating()) {
+                $form->hidden('users')->value(Admin::user()->id);
+            }
             $form->display('created_at');
             $form->display('updated_at');
             if ($form->isEditing()) {
@@ -106,6 +108,8 @@ class NewsController extends AdminController
             });
             $form->submitted(function (Form $form) {
                 //检查body里面是否有站外的图片
+                $body = clean($form->body, "body");
+                $form->body = $body;
                 $oldBody = $form->body;
                 $newBody = new InsteadImg($oldBody);
                 if ($newBody->is) {

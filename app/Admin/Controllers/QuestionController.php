@@ -41,7 +41,7 @@ class QuestionController extends AdminController
                 $filter->like("title", "文章名称");
                 $filter->like("Doctor.id", "医生姓名")->select(\App\Models\Doctor::all()->pluck("name", 'id')->toArray());
                 $filter->between('created_at', "发布时间")->date();
-                $filter->like('Users.id',"文章发布者")->select(Adminuser::all()->pluck("name","id")->toArray());
+                $filter->like('Users.id', "文章发布者")->select(Adminuser::all()->pluck("name", "id")->toArray());
             });
             $grid->actions(function (Grid\Displayers\Actions $actions) {
                 //当前ID
@@ -72,7 +72,9 @@ class QuestionController extends AdminController
                     return [$topics->id => $topics->title];
                 }
             })->ajax('gettopic')->rules('required');
-            $form->hidden('users')->value(Admin::user()->id);
+            if ($form->isCreating()) {
+                $form->hidden('users')->value(Admin::user()->id);
+            }
             $form->select('doctor_id', "所属医生(必填)")->options(\App\Models\Doctor::all()->pluck("name", 'id'))->rules('required');
             $form->editor('abody', "回答内容(必填)")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');;
             if ($form->isEditing()) {
@@ -103,6 +105,7 @@ class QuestionController extends AdminController
             });
             $form->submitted(function (Form $form) {
                 //检查body里面是否有站外的图片
+                $form->abody = clean($form->abody, "body");
                 $oldBody = $form->abody;
                 $newBody = new InsteadImg($oldBody);
                 $form->qage = random_int(18, 45);

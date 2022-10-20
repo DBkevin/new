@@ -30,7 +30,7 @@ class InformationController extends AdminController
             $grid->column('title', '标题')->width('10%')->limit(20, '...');
             //  $grid->column('seotitle', 'SEO标题')->width('10%')->limit(20, '...');
             $grid->column('description', '栏目描述')->width('10%')->limit(20, '...');
-            $grid->column('picture', '栏目缩略图')->image("",50,50);
+            $grid->column('picture', '栏目缩略图')->image("", 50, 50);
             $grid->column('keywords', '栏目关键字')->width('10%')->limit(20, '...');
             $grid->Flags()->pluck('name')->label();
             $grid->Users("发布者")->pluck('name')->label();
@@ -51,7 +51,7 @@ class InformationController extends AdminController
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->panel();
                 $filter->equal('title');
-                $filter->like('Users.id',"文章发布者")->select(Adminuser::all()->pluck("name","id")->toArray());
+                $filter->like('Users.id', "文章发布者")->select(Adminuser::all()->pluck("name", "id")->toArray());
             });
             $grid->disableViewButton();
             $grid->actions(function (Grid\Displayers\Actions $actions) {
@@ -73,7 +73,7 @@ class InformationController extends AdminController
             $form->display('id');
             $form->text('title', "标题")->creationRules('unique:information,title|min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->text('description', "文章描述")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
-            $form->select('flags', "标签")->options(Flag::all()->pluck('name','id'))->help("文章标签信息,首页就是出现在首页,列表就是出现在在列表,不选就没有");
+            $form->select('flags', "标签")->options(Flag::all()->pluck('name', 'id'))->help("文章标签信息,首页就是出现在首页,列表就是出现在在列表,不选就没有");
             if ($form->isEditing()) {
                 $id = $form->getKey();
                 $form->tools(function (Form\Tools $tools) use ($id) {
@@ -81,8 +81,10 @@ class InformationController extends AdminController
                     $url = route('zsShow', ['id' => $id]);
                     $tools->append("<a class='btn btn-sm btn-success' href='$url'  target='_blank'><i class='fa fa-eye'></i>&nbsp;&nbsp;查看</a>");
                 });
-            } 
-            $form->hidden('users')->value(Admin::user()->id);
+            }
+            if ($form->isCreating()) {
+                $form->hidden('users')->value(Admin::user()->id);
+            }
             $form->image('picture', '栏目图片')->accept('jpg,png,gif,jpeg')->url('users/images/pciture')->retainable();
             $form->text('keywords', "关键词用[半角逗号]分割")->creationRules('min:2', ['min' => '最少需要2个字符'])->updateRules('min:2');
             $form->select('topic_id', '所属项目')->options(function ($id) {
@@ -108,6 +110,7 @@ class InformationController extends AdminController
             });
             $form->submitted(function (Form $form) {
                 //检查body里面是否有站外的图片
+                $form->body = clean($form->body, "body");
                 $oldBody = $form->body;
                 $newBody = new InsteadImg($oldBody);
                 if ($newBody->is) {
