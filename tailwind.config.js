@@ -3,6 +3,7 @@ module.exports = {
     extend: {
       backgroundColor: ['active'],
       textColor: ['active'],
+      display:['group-hover']
     }
   },
   purge: [

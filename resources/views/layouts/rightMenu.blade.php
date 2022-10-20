@@ -1,6 +1,6 @@
 <div class="fixed right-1/50 top-2/5 w-15 h-182 bg-white border  z-50 rounded-60 shadow-right">
 		<div class="absolute  w-12 h-12 cursor-pointer rounded-full group" style="top:8px;left:6px;">
-			<div class="absolute z-50 opacity-0  group-hover:opacity-100" style="right:30px;top:-75px;width:215px;height:190px;">
+			<div class="absolute  hidden z-50   group-hover:block" style="right:30px;top:-75px;width:215px;height:190px;">
 				<div class="absolute z-50 w-190px h-190px border bg-white top-0" style="transition: all .5s;right: 25px;border-radius: 6px;">
 					<div class="w-150 h-150 absolute flex justify-center items-center" style="top:20px;left:20px;border-radius: 10px;">
 						<img src="https://www.mylike.com/images/swt/wx_qrcode.jpg" alt="" class="w-150 h-150">
