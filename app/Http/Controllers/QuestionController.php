@@ -60,7 +60,7 @@ class QuestionController extends Controller
         
         if ($dir) {
             $parents = Topic::where('category_id', $dir->id)->whereNull('parent_id')->get(); //所有的子级 大栏目
-            $zs = Question::whereIn('topic_id', $parents->pluck('id')->toArray())->take(10)->get();
+            $zs = Question::whereIn('topic_id', $parents->pluck('id')->toArray())->paginate();
             $questions = [];
             foreach ($parents as $item) {
                 $questions[] = Question::where('topic_id', $item->id)->take(10)->get();

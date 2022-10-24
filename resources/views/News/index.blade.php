@@ -13,7 +13,7 @@
 			@foreach($category as $item)
 			<li class="w-full h-45px border-t border-FF8080 hover:bg-bashColor  justify-center items-center flex  " id="newNav">
 				<a href="#" class="block text-xl flex justify-center items-center  ">
-					<i class="w-5 h-6 inline-block mr-5.5" style="background: url(/storage/{{$item->picture}}) no-repeat center; background-size: cover;"></i>
+					<i class="w-5 h-6 inline-block mr-5.5" style="background: url(/storage/{{$item->picture}}) no-repeat center; background-size: cover;filter:grayscale(100%) brightness(200%);"></i>
 					{{$item->title}}
 				</a>
 				<div class="hidden w-415px h-566px  bg-white z-20 absolute top-0 left-220px none overflow-hidden" id="newsCen">

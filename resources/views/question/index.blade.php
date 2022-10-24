@@ -22,6 +22,7 @@
 			<ul>
 				@foreach($zs as $item)
 				<li class="pt-6 pb-4 w-full border-b border-question-border border-solid">
+					<a href="{{route('questionShow',$item->id)}}">
 					<div class="text-lg text-333 w-full truncate">
 						<span style="background: url('/images/question-master.png'); background-position:-102px -34px;" class="inline-block w-7 h-7 mr-4   align-middle"></span>
 						<a href="{{route('questionShow',[$item->id])}}">
@@ -32,9 +33,9 @@
 						<span class="w-1/10 text-question-inde text-sm block ">
 							最佳回复
 						</span>
-						<p class="w-9/10 overflow-ellipsis overflow-hidden h-auto" style="line-height: 24px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
-							{{$item->abody}}
-						</p>
+						<div class="w-9/10 overflow-ellipsis overflow-hidden h-auto" style="line-height: 24px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
+							{!!$item->abody!!}
+						</div>
 					</div>
 					<div class="text-sm mt-6 text-999 flex justify-between">
 						<span class="inline-flex ">
@@ -49,9 +50,13 @@
 							0
 						</span>
 					</div>
+					</a>
 				</li>
 				@endforeach
 			</ul>
+			<div class="my-8">
+				{{$zs->links()}}
+			</div>
 		</li>
 		<li class="w-tcright">
 			@include('layouts._listzixun')

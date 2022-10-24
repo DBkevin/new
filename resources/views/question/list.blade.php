@@ -18,7 +18,7 @@
 				@foreach($parents as $item)
 				<li class="bg-f0f0f0 text-666 hover:bg-doctor hover:text-white border-b border-white hover:border-f0f0f0 h-12 text-bash leading-12 pl-7">
 					<a href="{{route('questionList',$item->dirname)}}" alt="{{$item->title}}">
-					{{$item->title}}
+						{{$item->title}}
 					</a>
 				</li>
 				@endforeach
@@ -30,17 +30,18 @@
 				</div>
 				<ul class="mb-8">
 					@foreach($zs as $item)
-					<li class="border-b border-gray-300 pt-6 pb-4">
+					<li class="border-b border-gray-300 pt-6 pb-4 overflow-hidden">
+						<a href="{{route('questionShow',$item->id)}}">
 						<div class="text-666 truncate text-xl whitespace-nowrap hover:text-bashColor  ">
 							<span class="w-7 h-7 mr-4 align-top inline-block" style="background: url('/images/question-master.png');background-size: 200px 200px;background-position:-102px -34px">
 							</span>
 							{{$item->title}}
 						</div>
-						<div class="mt-6 text-bash text-666 flex justify-between">
+						<div class="mt-6 text-bash text-666 flex justify-between overflow-hidden">
 							<span class="w-1/10 inline-block text-sm" style="color:#5ac5e5">最佳回复：</span>
-							<p class="w-9/10 overflow-ellipsis overflow-hidden h-auto" style="line-height: 24px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
-								{{$item->abody}}
-							</p>
+							<div class="w-9/10 overflow-ellipsis overflow-hidden break-words  h-auto" style="line-height: 24px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;">
+								{!!$item->abody!!}
+							</div>
 						</div>
 						<div class="text-sm mt-6 text-999 flex justify-between">
 							<span class="inline-flex ">
@@ -52,12 +53,15 @@
 							</span>
 							<span class="inline-flex">
 								<i style="background-image:url('/images/question-master.png');background-size:200px 200px;background-position:-28px -35px" class="inlike-block w-4.5 h-4.5 mr-2 align-sub"></i>
-								0
+								1
 							</span>
 						</div>
+						</a>
 					</li>
 					@endforeach
-
+					<div class="my-8">
+						{{$zs->links()}}
+					</div>
 				</ul>
 			</div>
 

@@ -23,5 +23,5 @@
 		@include('layouts.foot')
 	</div>
 </body>
-
+	
 </html>

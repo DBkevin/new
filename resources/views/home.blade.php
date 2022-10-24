@@ -158,17 +158,21 @@
 			</li>
 		</ul>
 		<div class="clear"></div>
-		<ul class="w-full mt-10 overflow-hidden  h-8" style="line-height:1.9rem;" id="yy">
-			<li class="border rounded-xl border-newBashColor text-center leding-loose text-newBashColor w-32 float-left">
+		<ul class="w-full mt-10 overflow-hidden  justify-between h-8 flex " style="line-height:1.9rem;">
+			<li class="border rounded-xl border-newBashColor text-center leding-loose text-newBashColor w-32  ">
 				新入驻医院
 			</li>
-			@foreach($categories as $category)
-			@foreach($category['child'] as $partopic)
-			<li class="float-left mx-4">
-				厦门{{$partopic['par_title']}}医院
-			</li>
-			@endforeach
-			@endforeach
+			<div class="flex-1 overflow-hidden">
+				<ul id="yy" class=" h-8 flex-1  whitespace-nowrap" style="margin-left:0 ; animation: cssmarquee 30s linear infinite;">
+					@foreach($categories as $category)
+					@foreach($category['child'] as $partopic)
+					<li class=" mx-4 overflow-hidden  inline-block overflow-ellipsis whitespace-nowrap  leding-loose">
+						厦门{{$partopic['par_title']}}医院
+					</li>
+					@endforeach
+					@endforeach
+				</ul>
+			</div>
 		</ul>
 	</div>
 	<div class="w-newCen mx-auto mt-16">
@@ -222,17 +226,22 @@
 			</li>
 
 		</ul>
-		<ul class="w-full mt-10 overflow-hidden  h-8" style="line-height:1.9rem;" id="doctor">
+		<ul class="w-full mt-10 overflow-hidden   justify-between  flex  h-8" style="line-height:1.9rem;" id="doctor">
 			<li class="border rounded-xl border-newBashColor text-center leding-loose text-newBashColor w-32 float-left">
 				热门医生
 			</li>
-			@foreach($categories as $category)
-			@foreach($category['child'] as $partopic)
-			<li class="float-left mx-4">
-				厦门{{$partopic['par_title']}}医生
-			</li>
-			@endforeach
-			@endforeach
+
+			<div class="flex-1 overflow-hidden">
+				<ul id="yy" class=" h-8 flex-1  whitespace-nowrap" style="margin-left:0 ; animation: cssmarquee 30s linear infinite;">
+					@foreach($categories as $category)
+					@foreach($category['child'] as $partopic)
+					<li class=" mx-4 overflow-hidden  inline-block overflow-ellipsis whitespace-nowrap  leding-loose">
+						厦门{{$partopic['par_title']}}医生
+					</li>
+					@endforeach
+					@endforeach
+				</ul>
+			</div>
 		</ul>
 	</div>
 	<div class="w-newCen mx-auto my-16">
@@ -292,7 +301,7 @@
 								{!!$item->body!!}
 							</div>
 							<span class="text-999 inline-block py-2.5 text-sm">
-							{{$item->created_at}}
+								{{$item->created_at}}
 							</span>
 						</div>
 					</a>
@@ -357,4 +366,25 @@
 
 	</div>
 </div>
+<style>
+	@keyframes cssmarqueeWrapper {
+		0% {
+			transform: translateX(100%);
+		
+		}
+
+		100% {
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes cssmarquee {
+		0% {
+			transform: translateX(0);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+</style>
 @endsection

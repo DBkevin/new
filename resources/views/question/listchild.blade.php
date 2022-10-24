@@ -16,7 +16,7 @@
 	<ul class="flex flex-nowrap w-full justify-between">
 		<li class="w-tcleft ">
 			<div class="w-full py-2.5 border-t border-b">
-				<span class="ml-2 text-sm">
+				<span class="ml-2 text-3xl">
 					{{$dir->title}}全部攻略共 <span class="text-doctor">{{$questions->total()}}</span>篇
 				</span>
 			</div>
@@ -34,7 +34,9 @@
 				</li>
 				@endforeach
 			</ul>
+			<div class="my-8">
 			{{$questions->links()}}
+			</div>
 		</li>
 		<li class="w-tcright">
 			@include('layouts._listzixun')

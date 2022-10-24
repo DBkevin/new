@@ -56,7 +56,9 @@
 				</li>
 				@endforeach
 			</ul>
+			<div class="my-8">
 			{{$news->links()}}
+			</div>
 		</li>
 		<li class="w-tcright">
 			@include('layouts._listzixun')
