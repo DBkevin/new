@@ -23,7 +23,7 @@ class CategoryController extends AdminController
             $grid->column('keywords', '栏目关键字');
             $grid->column('description', '栏目描述');
             $grid->column('dirname', '栏目地址');
-            $grid->column('picture', '栏目缩略图')->image('http://cf.test/storage/', 23, 23);
+            $grid->column('picture', '栏目缩略图')->image('/storage/', 23, 23);
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
             $grid->disableViewButton();
